@@ -257,6 +257,47 @@ function create_post_types() {
     );
 
 
+
+
+    register_post_type(
+        'partenaire', // Register Custom Post Type
+        array(
+            'labels' => array(
+                'name' => __('Partenaires', 'webfactor'), // Rename these to suit
+                'singular_name' => __('Partenaire', 'webfactor'),
+                'add_new' => __('Ajouter', 'webfactor'),
+                'add_new_item' => __('Ajouter Partenaire', 'webfactor'),
+                'edit' => __('Modifier', 'webfactor'),
+                'edit_item' => __('Modifier Partenaire', 'webfactor'),
+                'new_item' => __('Ajouter Partenaire', 'webfactor'),
+                'view' => __('Afficher Partenaire', 'webfactor'),
+                'view_item' => __('Afficher Partenaire', 'webfactor'),
+                'search_items' => __('Rechercher Partenaires', 'webfactor'),
+                'not_found' => __('Pas de Partenaire trouvé', 'webfactor'),
+                'not_found_in_trash' => __('Pas de Partenaire trouvé dans la corbeille', 'webfactor')
+            ),
+
+            'public' => true,
+            'publicly_queryable' => false, // dont allow to see on front end
+            'exclude_from_search' => true, // dont show in search
+            'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+            'has_archive' => true,
+            'supports' => array(
+                'title',
+                'editor',
+                'excerpt',
+                'thumbnail'
+            ), // Go to Dashboard Custom HTML5 Blank post for supports
+            'can_export' => true, // Allows export in Tools > Export
+            'taxonomies' => array(
+                //    'post_tag',
+                //    'category'
+            ) // Add Category and Post Tags support
+        )
+    );
+
+
+
     $cat_labels = array(
         'name'                       => 'Catégories',
         'singular_name'              => 'Catégorie',
@@ -286,4 +327,5 @@ function create_post_types() {
     register_taxonomy('concert_category', array('concert'), $cat_args);
     register_taxonomy('extra_category', array('extra'), $cat_args);
     register_taxonomy('rencontre_category', array('rencontre'), $cat_args);
+    register_taxonomy('partenaire_category', array('partenaire'), $cat_args);
 }
