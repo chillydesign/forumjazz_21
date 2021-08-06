@@ -147,96 +147,9 @@ function blankslate_comment_count($count) {
 
 
 add_action('init', 'create_post_types'); // Add our Slide Type
-add_action('init', 'create_post_type_video'); // Add our Video Custom Post Type
 
 // Create 1 Custom Post type for a Demo, called HTML5-Blank
 function create_post_types() {
-
-    register_post_type(
-        'programmation', // Register Custom Post Type
-        array(
-            'labels' => array(
-                'name' => __('Programmation', 'webfactor'), // Rename these to suit
-                'singular_name' => __('Programmation', 'webfactor'),
-                'add_new' => __('Ajouter', 'webfactor'),
-                'add_new_item' => __('Ajouter Programmation', 'webfactor'),
-                'edit' => __('Modifier', 'webfactor'),
-                'edit_item' => __('Modifier Programmation', 'webfactor'),
-                'new_item' => __('Ajouter Programmation', 'webfactor'),
-                'view' => __('Afficher Programmation', 'webfactor'),
-                'view_item' => __('Afficher Programmation', 'webfactor'),
-                'search_items' => __('Rechercher Programmation', 'webfactor'),
-                'not_found' => __('Pas de Programmation trouvée', 'webfactor'),
-                'not_found_in_trash' => __('Pas de Programmation trouvée dans la corbeille', 'webfactor')
-            ),
-
-            'public' => true,
-            'publicly_queryable' => false, // dont allow to see on front end
-            'exclude_from_search' => true, // dont show in search
-            'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-            'has_archive' => true,
-            'supports' => array(
-                'title',
-                'editor',
-                'excerpt',
-                'thumbnail'
-            ), // Go to Dashboard Custom HTML5 Blank post for supports
-            'can_export' => true, // Allows export in Tools > Export
-            'taxonomies' => array(
-                //    'post_tag',
-                //    'category'
-            ) // Add Category and Post Tags support
-        )
-    );
-
-
-    function create_post_type_video() {
-
-        $args_video_cat = array(
-
-            'hierarchical'               => true,
-            'public'                     => true,
-            'show_ui'                    => true,
-            'show_admin_column'          => true,
-            'show_in_nav_menus'          => true,
-            'show_tagcloud'              => false,
-        );
-        register_taxonomy('video_cat', array('video'), $args_video_cat);
-
-
-        register_post_type(
-            'video', // Register Custom Post Type
-            array(
-                'labels' => array(
-                    'name' => __('Vidéo', 'video'), // Rename these to suit
-                    'singular_name' => __('Vidéo', 'video'),
-                    'add_new' => __('Ajouter', 'video'),
-                    'add_new_item' => __('Nouvelle Vidéo', 'video'),
-                    'edit' => __('Modifier', 'video'),
-                    'edit_item' => __('Modifier Vidéo', 'video'),
-                    'new_item' => __('Ajouter Vidéo', 'video'),
-                    'view' => __('Afficher Vidéo', 'video'),
-                    'view_item' => __('Afficher Vidéo', 'video'),
-                    'search_items' => __('Rechercher Vidéo', 'video'),
-                    'not_found' => __('Aucune vidéo trouvée', 'video'),
-                    'not_found_in_trash' => __('Aucune vidéo trouvée dans la corbeille', 'video')
-                ),
-                'public' => true,
-                'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-                'has_archive' => true,
-                'supports' => array(
-                    'title',
-                    'editor',
-                    'excerpt',
-                    'thumbnail'
-                ), // Go to Dashboard Custom HTML5 Blank post for supports
-                'can_export' => true, // Allows export in Tools > Export
-                'taxonomies' => array(
-                    'video_cat'
-                ) // Add Category and Post Tags support
-            )
-        );
-    }
 
 
     register_post_type(
@@ -278,24 +191,25 @@ function create_post_types() {
 
 
     register_post_type(
-        'agenda', // Register Custom Post Type
+        'extra', // Register Custom Post Type
         array(
             'labels' => array(
-                'name' => __('Agendas', 'webfactor'), // Rename these to suit
-                'singular_name' => __('Agenda', 'webfactor'),
+                'name' => __('Extras', 'webfactor'), // Rename these to suit
+                'singular_name' => __('Extra', 'webfactor'),
                 'add_new' => __('Ajouter', 'webfactor'),
-                'add_new_item' => __('Ajouter Agenda', 'webfactor'),
+                'add_new_item' => __('Ajouter Extra', 'webfactor'),
                 'edit' => __('Modifier', 'webfactor'),
-                'edit_item' => __('Modifier Agenda', 'webfactor'),
-                'new_item' => __('Ajouter Agenda', 'webfactor'),
-                'view' => __('Afficher Agenda', 'webfactor'),
-                'view_item' => __('Afficher Agenda', 'webfactor'),
-                'search_items' => __('Rechercher Agendas', 'webfactor'),
-                'not_found' => __('Pas de Agenda trouvé', 'webfactor'),
-                'not_found_in_trash' => __('Pas de Agenda trouvé dans la corbeille', 'webfactor')
+                'edit_item' => __('Modifier Extra', 'webfactor'),
+                'new_item' => __('Ajouter Extra', 'webfactor'),
+                'view' => __('Afficher Extra', 'webfactor'),
+                'view_item' => __('Afficher Extra', 'webfactor'),
+                'search_items' => __('Rechercher Extras', 'webfactor'),
+                'not_found' => __('Pas de Extra trouvé', 'webfactor'),
+                'not_found_in_trash' => __('Pas de Extra trouvé dans la corbeille', 'webfactor')
             ),
+
             'public' => true,
-            'publicly_queryable' => true, // dont allow to see on front end
+            'publicly_queryable' => false, // dont allow to see on front end
             'exclude_from_search' => true, // dont show in search
             'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
             'has_archive' => true,
@@ -314,22 +228,23 @@ function create_post_types() {
     );
 
 
+
     register_post_type(
-        'projet', // Register Custom Post Type
+        'rencontre', // Register Custom Post Type
         array(
             'labels' => array(
-                'name' => __('Projets', 'webfactor'), // Rename these to suit
-                'singular_name' => __('Projet', 'webfactor'),
+                'name' => __('Rencontres', 'webfactor'), // Rename these to suit
+                'singular_name' => __('Rencontre', 'webfactor'),
                 'add_new' => __('Ajouter', 'webfactor'),
-                'add_new_item' => __('Ajouter Projet', 'webfactor'),
+                'add_new_item' => __('Ajouter Rencontre', 'webfactor'),
                 'edit' => __('Modifier', 'webfactor'),
-                'edit_item' => __('Modifier Projet', 'webfactor'),
-                'new_item' => __('Ajouter Projet', 'webfactor'),
-                'view' => __('Afficher Projet', 'webfactor'),
-                'view_item' => __('Afficher Projet', 'webfactor'),
-                'search_items' => __('Rechercher Projets', 'webfactor'),
-                'not_found' => __('Pas de Projet trouvé', 'webfactor'),
-                'not_found_in_trash' => __('Pas de Projet trouvé dans la corbeille', 'webfactor')
+                'edit_item' => __('Modifier Rencontre', 'webfactor'),
+                'new_item' => __('Ajouter Rencontre', 'webfactor'),
+                'view' => __('Afficher Rencontre', 'webfactor'),
+                'view_item' => __('Afficher Rencontre', 'webfactor'),
+                'search_items' => __('Rechercher Rencontres', 'webfactor'),
+                'not_found' => __('Pas de Rencontre trouvé', 'webfactor'),
+                'not_found_in_trash' => __('Pas de Rencontre trouvé dans la corbeille', 'webfactor')
             ),
 
             'public' => true,
@@ -341,8 +256,7 @@ function create_post_types() {
                 'title',
                 'editor',
                 'excerpt',
-                'thumbnail',
-                'author'
+                'thumbnail'
             ), // Go to Dashboard Custom HTML5 Blank post for supports
             'can_export' => true, // Allows export in Tools > Export
             'taxonomies' => array(
@@ -352,7 +266,8 @@ function create_post_types() {
         )
     );
 
-    $prog_cat = array(
+
+    $cat_labels = array(
         'name'                       => 'Catégories',
         'singular_name'              => 'Catégorie',
         'menu_name'                  => 'Catégorie',
@@ -369,8 +284,8 @@ function create_post_types() {
         'choose_from_most_used'      => 'Choisir parmi les categories les plus utilisées',
     );
 
-    $args_prog_cat = array(
-        'labels'                     => $prog_cat,
+    $cat_args = array(
+        'labels'                     => $cat_labels,
         'hierarchical'               => true,
         'public'                     => true,
         'show_ui'                    => true,
@@ -378,207 +293,7 @@ function create_post_types() {
         'show_in_nav_menus'          => true,
         'show_tagcloud'              => false,
     );
-    register_taxonomy('prog_category', array('programmation', 'concert'), $args_prog_cat);
-
-
-    $prog_year = array(
-        'name'                       => 'Editions',
-        'singular_name'              => 'Edition',
-        'menu_name'                  => 'Editions',
-        'all_items'                  => 'Toutes les Editions',
-        'parent_item'                => 'Edition parente',
-        'parent_item_colon'          => 'Edition parente:',
-        'new_item_name'              => 'Nom de la nouvelle édition',
-        'add_new_item'               => 'Ajouter une édition',
-        'edit_item'                  => 'Modifier édition',
-        'update_item'                => 'Mettre à jour l\'édition',
-        'separate_items_with_commas' => 'Séparer les éditions avec des virgules',
-        'search_items'               => 'Chercher dans les éditions',
-        'add_or_remove_items'        => 'Ajouter ou supprimer des éditions',
-        'choose_from_most_used'      => 'Choisir parmi les éditions les plus utilisées',
-    );
-    $args_prog_year = array(
-        'labels'                     => $prog_year,
-        'hierarchical'               => true,
-        'public'                     => true,
-        'show_ui'                    => true,
-        'show_admin_column'          => true,
-        'show_in_nav_menus'          => true,
-        'show_tagcloud'              => false,
-    );
-    register_taxonomy('prog_cat', array('programmation', 'concert'), $args_prog_year);
-
-
-
-    $year_cat = array(
-        'name'                       => 'Année de création',
-        'singular_name'              => 'Année de création',
-        'menu_name'                  => 'Année de création',
-        'all_items'                  => 'Toutes les Année de création',
-        'parent_item'                => 'Année de création parente',
-        'parent_item_colon'          => 'Année de création parente:',
-        'new_item_name'              => 'Nom de la nouvelle année de création',
-        'add_new_item'               => 'Ajouter une année de création',
-        'edit_item'                  => 'Modifier année de création',
-        'update_item'                => 'Mettre à jur la année de création',
-        'separate_items_with_commas' => 'Separer les année de créations avec des virgules',
-        'search_items'               => 'Chercher dans les année de créations',
-        'add_or_remove_items'        => 'Ajouter ou supprimer des année de créations',
-        'choose_from_most_used'      => 'Choisir parmi les année de créations les plus utilisées',
-    );
-
-    $args_year_cat = array(
-        'labels'                     => $year_cat,
-        'hierarchical'               => true,
-        'public'                     => true,
-        'show_ui'                    => true,
-        'show_admin_column'          => true,
-        'show_in_nav_menus'          => true,
-        'show_tagcloud'              => false,
-    );
-    register_taxonomy('year_creation', array('projet'), $args_year_cat);
-
-
-
-    $esthetic_cat = array(
-        'name'                       => 'Esthétiques',
-        'singular_name'              => 'Esthétique',
-        'menu_name'                  => 'Esthétique',
-        'all_items'                  => 'Toutes les Esthétiques',
-        'parent_item'                => 'Esthétique parente',
-        'parent_item_colon'          => 'Esthétique parente:',
-        'new_item_name'              => 'Nom de la nouvelle esthétique',
-        'add_new_item'               => 'Ajouter une esthétique',
-        'edit_item'                  => 'Modifier esthétique',
-        'update_item'                => 'Mettre à jur la esthétique',
-        'separate_items_with_commas' => 'Separer les esthétiques avec des virgules',
-        'search_items'               => 'Chercher dans les esthétiques',
-        'add_or_remove_items'        => 'Ajouter ou supprimer des esthétiques',
-        'choose_from_most_used'      => 'Choisir parmi les esthétiques les plus utilisées',
-    );
-
-    $args_esthetic_cat = array(
-        'labels'                     => $esthetic_cat,
-        'hierarchical'               => true,
-        'public'                     => true,
-        'show_ui'                    => true,
-        'show_admin_column'          => true,
-        'show_in_nav_menus'          => true,
-        'show_tagcloud'              => false,
-    );
-    register_taxonomy('esthet_category', array('projet'), $args_esthetic_cat);
-
-
-    $numberpeople_cat = array(
-        'name'                       => 'Effectif du projets',
-        'singular_name'              => 'Effectif du projet',
-        'menu_name'                  => 'Effectif du projet',
-        'all_items'                  => 'Toutes les Effectif du projets',
-        'parent_item'                => 'Effectif du projet parente',
-        'parent_item_colon'          => 'Effectif du projet parente:',
-        'new_item_name'              => 'Nom de la nouvelle effectif du projet',
-        'add_new_item'               => 'Ajouter une effectif du projet',
-        'edit_item'                  => 'Modifier effectif du projet',
-        'update_item'                => 'Mettre à jur la effectif du projet',
-        'separate_items_with_commas' => 'Separer les effectif du projets avec des virgules',
-        'search_items'               => 'Chercher dans les effectif du projets',
-        'add_or_remove_items'        => 'Ajouter ou supprimer des effectif du projets',
-        'choose_from_most_used'      => 'Choisir parmi les effectif du projets les plus utilisées',
-    );
-
-    $args_numberpeople_cat = array(
-        'labels'                     => $numberpeople_cat,
-        'hierarchical'               => true,
-        'public'                     => true,
-        'show_ui'                    => true,
-        'show_admin_column'          => true,
-        'show_in_nav_menus'          => true,
-        'show_tagcloud'              => false,
-    );
-    register_taxonomy('number_people', array('projet'), $args_numberpeople_cat);
-
-    $format_cat = array(
-        'name'                       => 'Formats',
-        'singular_name'              => 'Format',
-        'menu_name'                  => 'Format',
-        'all_items'                  => 'Toutes les Formats',
-        'parent_item'                => 'Format parente',
-        'parent_item_colon'          => 'Format parente:',
-        'new_item_name'              => 'Nom de la nouvelle format',
-        'add_new_item'               => 'Ajouter une format',
-        'edit_item'                  => 'Modifier format',
-        'update_item'                => 'Mettre à jur la format',
-        'separate_items_with_commas' => 'Separer les formats avec des virgules',
-        'search_items'               => 'Chercher dans les formats',
-        'add_or_remove_items'        => 'Ajouter ou supprimer des formats',
-        'choose_from_most_used'      => 'Choisir parmi les formats les plus utilisées',
-    );
-
-    $args_format_cat = array(
-        'labels'                     => $format_cat,
-        'hierarchical'               => true,
-        'public'                     => true,
-        'show_ui'                    => true,
-        'show_admin_column'          => true,
-        'show_in_nav_menus'          => true,
-        'show_tagcloud'              => false,
-    );
-    register_taxonomy('format_cat', array('projet'), $args_format_cat);
-
-    $technique_cat = array(
-        'name'                       => 'Technique',
-        'singular_name'              => 'Technique',
-        'menu_name'                  => 'Technique',
-        'all_items'                  => 'Toutes les Techniques',
-        'parent_item'                => 'Technique parente',
-        'parent_item_colon'          => 'Technique parente:',
-        'new_item_name'              => 'Nom de la nouvelle technique',
-        'add_new_item'               => 'Ajouter une technique',
-        'edit_item'                  => 'Modifier technique',
-        'update_item'                => 'Mettre à jur la technique',
-        'separate_items_with_commas' => 'Separer les techniques avec des virgules',
-        'search_items'               => 'Chercher dans les techniques',
-        'add_or_remove_items'        => 'Ajouter ou supprimer des techniques',
-        'choose_from_most_used'      => 'Choisir parmi les techniques les plus utilisées',
-    );
-
-    $args_technique_cat = array(
-        'labels'                     => $technique_cat,
-        'hierarchical'               => true,
-        'public'                     => true,
-        'show_ui'                    => true,
-        'show_admin_column'          => true,
-        'show_in_nav_menus'          => true,
-        'show_tagcloud'              => false,
-    );
-    register_taxonomy('technique_cat', array('projet'), $args_technique_cat);
-
-
-    $public_cat = array(
-        'name'                       => 'Public',
-        'singular_name'              => 'Public',
-        'menu_name'                  => 'Public',
-        'all_items'                  => 'Toutes les Publics',
-        'parent_item'                => 'Public parente',
-        'parent_item_colon'          => 'Public parente:',
-        'new_item_name'              => 'Nom de la nouvelle public',
-        'add_new_item'               => 'Ajouter une public',
-        'edit_item'                  => 'Modifier public',
-        'update_item'                => 'Mettre à jur la public',
-        'separate_items_with_commas' => 'Separer les publics avec des virgules',
-        'search_items'               => 'Chercher dans les publics',
-        'add_or_remove_items'        => 'Ajouter ou supprimer des publics',
-        'choose_from_most_used'      => 'Choisir parmi les publics les plus utilisées',
-    );
-
-    $args_public_cat = array(
-        'labels'                     => $public_cat,
-        'hierarchical'               => true,
-        'public'                     => true,
-        'show_ui'                    => true,
-        'show_admin_column'          => true,
-        'show_in_nav_menus'          => true,
-        'show_tagcloud'              => false,
-    );
-    register_taxonomy('public_cat', array('projet'), $args_public_cat);
+    register_taxonomy('concert_category', array('concert'), $cat_args);
+    register_taxonomy('extra_category', array('extra'), $cat_args);
+    register_taxonomy('rencontre_category', array('rencontre'), $cat_args);
 }
