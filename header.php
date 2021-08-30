@@ -20,7 +20,11 @@
             <div class="header_inner">
                 <a href="<?php echo  site_url(); ?>" id="branding">Forum Jazz</a>
                 <nav>
-                    <?php wp_nav_menu(array('theme_location'  => 'header-menu')); ?>
+
+                    <ul>
+                        <?php chilly_nav('primary-navigation'); ?>
+                    </ul>
+
                 </nav>
             </div>
         </div>

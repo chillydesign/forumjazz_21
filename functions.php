@@ -119,6 +119,40 @@ function html5blank_header_scripts() {
     }
 }
 
+add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
+function register_html5_menu() {
+    register_nav_menus(array( // Using array to specify more menus if needed
+        'primary-navigation' => __('Primary Menu', 'webfactor'), // Main Navigation
+        'footer-navigation' => __('Footer Menu', 'webfactor'), // Footer Navigation
+        'social-navigation' => __('Social Menu', 'webfactor'), // Social Navigation
+    ));
+}
+
+function chilly_nav($menu) {
+    wp_nav_menu(
+        array(
+            'theme_location'  => $menu,
+            'menu'            => '',
+            'container'       => '',
+            'container_class' => 'menu-{menu slug}-container',
+            'container_id'    => '',
+            'menu_class'      => '',
+            'menu_id'         => '',
+            'echo'            => true,
+            'fallback_cb'     => 'wp_page_menu',
+            'before'          => '',
+            'after'           => '',
+            'link_before'     => '',
+            'link_after'      => '',
+            'items_wrap'      => '%3$s',
+            'depth'           => 0,
+            'walker'          => ''
+        )
+    );
+}
+
+
+
 
 // add_action('wp_footer', 'blankslate_footer');
 function blankslate_footer() {
@@ -195,12 +229,12 @@ function blankslate_image_insert_override($sizes) {
 add_action('widgets_init', 'blankslate_widgets_init');
 function blankslate_widgets_init() {
     register_sidebar(array(
-        'name' => esc_html__('Sidebar Widget Area', 'blankslate'),
-        'id' => 'primary-widget-area',
-        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-        'after_widget' => '</li>',
-        'before_title' => '<h3 class="widget-title">',
-        'after_title' => '</h3>',
+        'name' => esc_html__('Footer Widget Area', 'blankslate'),
+        'id' => 'footer-widget-area',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '<h4 class="widget-title">',
+        'after_title' => '</h4>',
     ));
 }
 add_action('wp_head', 'blankslate_pingback_header');

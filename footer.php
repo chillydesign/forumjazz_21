@@ -5,32 +5,22 @@
             <div class="column">
                 <h4>Liens utiles</h4>
                 <ul>
-                    <li>A propos </li>
-                    <li>Programme / Timeline - Concerts </li>
-                    <li>Rencontres </li>
-                    <li>Extras </li>
-                    <li>Billetterie </li>
-                    <li>Participants</li>
+                    <?php chilly_nav('footer-navigation'); ?>
+
                 </ul>
             </div>
             <div class="column">
-                <h4>Contact</h4>
-                <p>
-                    JAZZ(s)RA, Plateforme des acteurs du jazz <br>
-                    en Auvergne-Rhône-Alpes <br>
-                    www.jazzsra.fr <br>
-                    communication@jazzsra.fr <br>
-                    +33 (0)4 72 73 77 61
-                </p>
+
+
+                <?php dynamic_sidebar('footer-widget-area') ?>
+
+
+
             </div>
             <div class="column">
                 <h4>Suivez-nous</h4>
                 <ul>
-                    <li>Facebook</li>
-                    <li>Twitter</li>
-                    <li>Instagram</li>
-                    <li>Youtube</li>
-
+                    <?php chilly_nav('social-navigation'); ?>
                 </ul>
             </div>
         </div>
