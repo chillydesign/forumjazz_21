@@ -85,19 +85,20 @@ a {
   }
 
   &:hover {
-    color: $brand_color_hover;
+    color: darken($brand_color, 20);
   }
 
   &.button {
     color: $font_color;
+    background-color: $blue;
     display: inline-block;
-    padding: 15px 60px;
+    padding: 10px 50px;
     text-align: center;
     text-decoration: none;
-    font-size: #{$font_size * 1.2};
+    font-size: $font_size;
     margin: 0 0 20px;
     font-weight: bold;
-    background-color: $light_grey;
+    border-radius: 400px;
   }
 
   &.button_primary {

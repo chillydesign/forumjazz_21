@@ -1,15 +1,24 @@
-$light_grey: #efefef;
-$medium_grey: #b4b4b4;
-$dark_grey: #444;
+$yellow: #ffff00;
+$pink: #f0047f;
+$orange: #fe7d23;
+$blue: #019abe;
 
-$yellow: #ffed00;
-$black: #141312;
+$brand_color: $orange;
 
-$primary_color: $yellow;
-$brand_color: $yellow;
-$brand_color_hover: darken($yellow, 30);
 
-$font_stack: "Messina Sans",
+
+$black: scale-color($brand_color, $lightness: -90%, $saturation: -93%);
+$dark_grey: scale-color($brand_color, $lightness: -60%, $saturation: -93%);
+$medium_grey: scale-color($brand_color, $lightness: 0%, $saturation: -88%);
+$light_grey: scale-color($brand_color, $lightness: 74%, $saturation: -88%);
+
+$white: scale-color($brand_color, $lightness: 93%, $saturation: -88%);
+
+$font_color:$black;
+
+
+
+$font_stack: "Dosis",
 Roboto,
 -apple-system,
 BlinkMacSystemFont,
@@ -23,7 +32,7 @@ sans-serif,
 
 
 $font_size: 1.65em;
-$font_color: #222;
+
 
 $border_radius: 10px;
 
@@ -32,7 +41,10 @@ $transition_time: 0.3s;
 $mobile_width: 768px;
 $tablet_width: 992px;
 
-
+$padding: 20px;
+$half_padding: #{$padding * 0.5};
+$negative_padding: #{$padding * -1};
+$negative_half_padding: #{$padding * -0.5};
 
 @keyframes spin {
   from {

@@ -1,0 +1,22 @@
+footer {
+    background-color: $dark_grey;
+    color: white;
+    padding: 30px 0 0;
+
+    p {
+        padding: 0;
+    }
+
+    p,
+    li {
+        color: $light_grey;
+    }
+
+
+    #copyright_container {
+        background-color: darken($dark_grey, 10);
+        padding: $padding 0;
+        margin-top: $padding;
+        border-top: 2px solid $white;
+    }
+}

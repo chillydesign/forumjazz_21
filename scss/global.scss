@@ -2,6 +2,8 @@
 @import "./reset";
 
 @import "./typography";
+@import "./header";
+@import "./footer";
 
 
 
@@ -31,25 +33,34 @@ article {
     justify-content: space-between;
     align-items: top;
     flex-direction: column;
+    margin: 0;
 
     &.columns_reversed {
         flex-direction: row-reverse;
-        margin-bottom: 100px;
     }
 
     @media (min-width: $mobile_width) {
         flex-wrap: nowrap;
         flex-direction: row;
+
     }
 }
 
 .column {
     flex: 1 auto 0;
     width: 100%;
-    padding: 0 5px;
+    padding: 0;
 
     @media (min-width: $mobile_width) {
-        padding: 0 20px;
+        padding: 0 $padding;
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            padding-right: 0;
+        }
     }
 
     &.large_column,
@@ -85,4 +96,194 @@ article {
     }
 
 
+}
+
+
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
+
+
+section {
+    padding: 80px 0;
+}
+
+#welcome_section {
+    background-color: $black;
+    color: $white;
+    min-height: 700px;
+    position: relative;
+    overflow: hidden;
+
+
+    .welcome_text {
+        padding-left: 300px;
+        position: relative;
+        z-index: 2;
+
+        p {
+            max-width: 600px;
+        }
+    }
+
+    ul.welcome_buttons {
+        padding: 0 0 0 600px;
+        margin: 0;
+        position: relative;
+        z-index: 2;
+
+        li {
+
+            margin: 0 0 $padding;
+            background-color: $yellow;
+            position: relative;
+            padding: 0;
+
+            a {
+                display: block;
+                color: $black;
+                text-decoration: none;
+                padding: $padding 60px;
+
+                &:hover {
+                    background-color: transparentize($black, 0.8);
+                }
+
+                strong {
+                    display: block;
+                    font-size: 1.5em;
+                    text-transform: uppercase;
+                }
+
+                span {
+                    display: block;
+                }
+            }
+
+            &:nth-child(1) {
+                right: 60px;
+            }
+
+            &:nth-child(2) {
+                right: 30px;
+                background-color: $orange;
+            }
+
+            &:nth-child(3) {
+                right: 0px;
+                background-color: $pink;
+            }
+        }
+    }
+
+    #truck2 {
+        width: 600px;
+        height: 700px;
+        position: absolute;
+        bottom: 0;
+        left: 30px;
+    }
+}
+
+
+#path14,
+#path16,
+#path18 {
+
+    stroke: #ec008c !important;
+    stroke-width: 70px;
+    fill: none !important;
+    stroke-dasharray: 50000;
+    stroke-dashoffset: 50000;
+    animation: growdash 13s linear infinite;
+}
+
+#path16 {
+    stroke: #f68332 !important;
+    animation-delay: 2s;
+}
+
+#path18 {
+    stroke: #fff200 !important;
+    animation-delay: 4s;
+}
+
+@keyframes growdash {
+    0% {
+        stroke-dashoffset: 50000;
+    }
+
+    80% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: 50000;
+    }
+}
+
+
+$con_ren_padding: 40px;
+$con_ren_height: 60px;
+
+#concerts_and_rencontres {
+    background-color: $light_grey;
+    padding-bottom: 0;
+    padding-top: 0;
+
+    .concert_recontre_thing {
+        position: relative;
+        padding-top: $con_ren_height;
+
+        h3 {
+            font-size: 1.8em;
+            padding: 0 $con_ren_padding;
+            position: absolute;
+            top: 0;
+            height: $con_ren_height;
+            line-height: $con_ren_height;
+            width: 100%;
+            left: 0;
+            background: transparentize($yellow, 0.5);
+        }
+
+        .button {
+            margin: 0 $padding $padding 0;
+        }
+    }
+
+    .concert_recontre_text {
+        padding: 30px $con_ren_padding 0;
+    }
+
+    #concerts_thing {
+        .button {
+            background-color: $yellow;
+        }
+    }
+
+    #recontres_thing {
+        h3 {
+            background: transparentize($blue, 0.5);
+        }
+
+        .h3_offset {
+            display: inline-block;
+            margin-left: $con_ren_padding;
+        }
+
+        .button {
+            background-color: $blue;
+        }
+    }
 }

@@ -1,0 +1,160 @@
+header#header {
+    background: $yellow;
+    position: relative;
+    padding: 0;
+
+    .header_inner {
+
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        padding: 0;
+    }
+
+    a#branding {
+        flex: 1 auto;
+        display: block;
+
+        background: url('../images/logo.svg') no-repeat left center;
+        background-size: contain;
+        width: 300px;
+        height: 50px;
+        text-indent: -9999px;
+    }
+
+
+
+    nav {
+        flex: 1 auto;
+        text-align: left;
+        display: block;
+        position: relative;
+        z-index: 10;
+        background-color: $dark_grey;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 100%;
+        z-index: 100;
+        transform: translateX(-260px);
+        transition: all 0.3s;
+        box-shadow: 0 10px 20px transparentize($medium_grey, 0.2);
+
+        &.menu_visible {
+            transform: translateX(0);
+        }
+
+
+        @media (min-width: $mobile_width) {
+            box-shadow: 0 0 0;
+            transform: translateX(0);
+            text-align: right;
+            background-color: transparent;
+            width: auto;
+            height: auto;
+            position: static;
+        }
+
+
+        ul {
+
+
+
+
+
+            @media (min-width: $mobile_width) {}
+
+            li {
+                display: block;
+                margin: 0;
+                padding: 0;
+
+                @media (min-width: $mobile_width) {
+                    display: inline-block;
+                    padding: 0 $half_padding;
+                }
+
+
+
+                a {
+                    display: block;
+
+                    font-weight: bold;
+                    text-transform: lowercase;
+                    position: relative;
+                    padding: 10px $padding;
+                    text-decoration: none;
+
+                    @media (min-width: $mobile_width) {
+                        display: inline-block;
+                        padding: $padding $half_padding;
+
+                    }
+
+                    &:after {
+                        @media (min-width: $mobile_width) {
+                            content: '';
+                            height: 2px;
+                            border-bottom: 2px dotted $dark_grey;
+                            width: 0%;
+                            position: absolute;
+                            bottom: -5px;
+                            left: 50%;
+                            transition: all 0.3s;
+                            opacity: 0;
+                        }
+                    }
+
+                    &:link,
+                    &:active,
+                    &:visited,
+                    &:hover {
+                        color: $font_color;
+
+                        @media (min-width: $mobile_width) {}
+
+
+                    }
+
+
+
+
+
+                }
+            }
+
+
+
+        }
+    }
+
+
+
+
+
+}
+
+
+
+a#menu_button {
+    display: block;
+    background: url('../img/menu.svg') no-repeat center center;
+    background-size: 30px;
+    text-indent: -9999px;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 9999;
+
+    @media (min-width: $mobile_width) {
+        display: none;
+    }
+}
+
+
+
+
+//  header
