@@ -1,0 +1,88 @@
+@import "./variables";
+@import "./reset";
+
+@import "./typography";
+
+
+
+@media (min-width: $mobile_width) {}
+
+@media (min-width: $tablet_width) {}
+
+@media (min-width: 1200px) {}
+
+body {
+    font: normal 62.5% $font_stack;
+    background: white;
+    position: relative;
+    color: $font_color;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+article {
+    position: relative;
+}
+
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: top;
+    flex-direction: column;
+
+    &.columns_reversed {
+        flex-direction: row-reverse;
+        margin-bottom: 100px;
+    }
+
+    @media (min-width: $mobile_width) {
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+}
+
+.column {
+    flex: 1 auto 0;
+    width: 100%;
+    padding: 0 5px;
+
+    @media (min-width: $mobile_width) {
+        padding: 0 20px;
+    }
+
+    &.large_column,
+    &.large_column {
+        @media (min-width: $mobile_width) {
+            width: 60%;
+        }
+    }
+
+    &.small_column,
+    &.column_small {
+        @media (min-width: $mobile_width) {
+            width: 40%;
+        }
+    }
+}
+
+
+.hide_on_mobile {
+    display: none;
+}
+
+
+
+@media (min-width: $mobile_width) {
+    .show_on_mobile {
+        display: none;
+
+    }
+
+    .hide_on_mobile {
+        display: block;
+    }
+
+
+}

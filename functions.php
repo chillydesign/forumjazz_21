@@ -14,11 +14,23 @@ function blankslate_setup() {
     register_nav_menus(array('main-menu' => esc_html__('Main Menu', 'blankslate')));
 }
 
+function wf_version() {
+    return '0.0.1';
+}
 
 add_action('wp_enqueue_scripts', 'blankslate_enqueue');
 function blankslate_enqueue() {
-    wp_enqueue_style('blankslate-style', get_stylesheet_uri());
+
+
+    $tdu = get_template_directory_uri();
     wp_enqueue_script('jquery');
+
+
+
+    wp_register_style('wf_style', $tdu . '/css/global.css', array(), wf_version(), 'all');
+    wp_enqueue_style('wf_style'); // Enqueue it!
+
+
 }
 add_action('wp_footer', 'blankslate_footer');
 function blankslate_footer() {

@@ -1,0 +1,28 @@
+{
+  "name": "forumjazz_21",
+  "version": "1.0.0",
+  "description": "Wordpress Theme for Forum Jazz 2021",
+  "main": "index.php",
+  "scripts": {
+    "test": "say hello"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-watch": "^5.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chillydesign/forumjazz_21.git"
+  },
+  "keywords": [
+    "wordpress"
+  ],
+  "author": "Webfactor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chillydesign/forumjazz_21/issues"
+  },
+  "homepage": "https://github.com/chillydesign/forumjazz_21#readme"
+}
