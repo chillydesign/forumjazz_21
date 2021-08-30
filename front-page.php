@@ -15,9 +15,9 @@
                     </div>
 
                     <ul class="welcome_buttons">
-                        <li><a href="#"><strong> CONCERTS & SHOWCASES</strong><span>Ouverts au public & aux professionnels dans la limite des places disponibles.</span></a></li>
-                        <li><a href="#"><strong>RENCONTRES</strong><span>Uniquement accessible aux professionnels et étudiants sur inscription.</span></a></li>
-                        <li><a href="#"><strong>EXTRAS</strong><span>
+                        <li><a href="#"><strong> Concerts & showcases</strong><span>Ouverts au public & aux professionnels dans la limite des places disponibles.</span></a></li>
+                        <li><a href="#"><strong>Rencontres</strong><span>Uniquement accessible aux professionnels et étudiants sur inscription.</span></a></li>
+                        <li><a href="#"><strong>Extras</strong><span>
                                     Expositions, masterclass & autres évènements autour du forum.</span></a></li>
                     </ul>
 
@@ -51,44 +51,42 @@
                 <div class="concert_recontre_thing" id="concerts_thing">
 
                     <h3>GRAND PUBLIC / PROFESSIONNELS / JEUNE PUBLIC</h3>
-                    <div class="columns">
+                    <div class="columns ">
                         <div class="column">
                             <div class="concert_recontre_text">
-                                <h2> CONCERTS & SHOWCASES</h2>
+                                <h2> Concerts & Showcases</h2>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur odit, quidem nam eligendi placeat fuga mollitia voluptas et magnam similique sapiente eveniet deleniti necessitatibus temporibus natus ipsum.</p>
 
-                                <a href="#" class="button">Programmation</a>
-                                <a href="#" class="button">Résonance & Extras </a>
-                                <a href="#" class="button">Jeune public</a>
-                                <a href="#" class="button">Billiterie</a>
+                                <a href="#" class="button button_yellow">Programmation</a>
+                                <a href="#" class="button button_yellow">Résonance & Extras </a>
+                                <a href="#" class="button button_yellow">Jeune public</a>
+                                <a href="#" class="button button_yellow">Billiterie</a>
                             </div>
                         </div>
                         <div class="column">
-                            <div style="width:100%;height:400px;background:#666">IMAGE</div>
+                            <div class="conc_rec_image"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="concert_recontre_thing" id="recontres_thing">
 
-                    <div class="columns">
-                        <div class="column">
-                            <div style="width:100%;height:400px;background:#666">IMAGE</div>
+                    <div class="columns columns_reversed">
 
-                        </div>
                         <div class="column">
                             <div class="concert_recontre_text">
                                 <h3>
-                                    <div class="columns">
-                                        <div class="column"></div>
+                                    <div class="columns columns_reversed">
+
                                         <div class="column">
                                             <span class="h3_offset">
                                                 PROFESSIONNELS / ETUDIANTS
                                             </span>
                                         </div>
+                                        <div class="column"></div>
                                     </div>
                                 </h3>
-                                <h2>RENCONTRES</h2>
+                                <h2>Rencontres</h2>
 
 
                                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente reiciendis ipsa deserunt officiis est possimus ea id blanditiis beatae illum, at iusto nulla, libero quo fuga quasi quos ipsum dolor.</p>
@@ -99,6 +97,10 @@
                                 <a href="#" class="button">Pass pro forum</a>
 
                             </div>
+                        </div>
+                        <div class="column">
+                            <div class="conc_rec_image"></div>
+
                         </div>
                     </div>
                 </div>

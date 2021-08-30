@@ -37,6 +37,9 @@ article {
 
     &.columns_reversed {
         flex-direction: row-reverse;
+
+
+
     }
 
     @media (min-width: $mobile_width) {
@@ -118,6 +121,10 @@ section {
     padding: 80px 0;
 }
 
+
+
+
+
 #welcome_section {
     background-color: $black;
     color: $white;
@@ -127,9 +134,17 @@ section {
 
 
     .welcome_text {
-        padding-left: 300px;
+
         position: relative;
         z-index: 2;
+
+        @media (min-width: $mobile_width) {
+            padding-left: 300px;
+        }
+
+        h1 {
+            font-size: 6em;
+        }
 
         p {
             max-width: 600px;
@@ -137,26 +152,31 @@ section {
     }
 
     ul.welcome_buttons {
-        padding: 0 0 0 600px;
+
         margin: 0;
         position: relative;
         z-index: 2;
 
+        @media (min-width: $mobile_width) {
+            padding: 0 0 0 600px;
+        }
+
         li {
 
             margin: 0 0 $padding;
-            background-color: $yellow;
             position: relative;
             padding: 0;
 
             a {
+                background-color: $yellow;
                 display: block;
                 color: $black;
                 text-decoration: none;
                 padding: $padding 60px;
 
-                &:hover {
-                    background-color: transparentize($black, 0.8);
+                &:hover,
+                &:focus {
+                    transform: scale(1.07);
                 }
 
                 strong {
@@ -176,22 +196,35 @@ section {
 
             &:nth-child(2) {
                 right: 30px;
-                background-color: $orange;
+
+                a {
+                    background-color: $orange;
+                }
             }
 
             &:nth-child(3) {
                 right: 0px;
-                background-color: $pink;
+
+                a {
+                    background-color: $pink;
+                }
             }
         }
     }
 
     #truck2 {
-        width: 600px;
-        height: 700px;
-        position: absolute;
-        bottom: 0;
-        left: 30px;
+        width: 100%;
+        height: 400px;
+
+
+        @media (min-width: $mobile_width) {
+            position: absolute;
+            bottom: 0;
+            left: 30px;
+            width: 600px;
+            height: 700px;
+
+        }
     }
 }
 
@@ -241,9 +274,13 @@ $con_ren_height: 60px;
     padding-bottom: 0;
     padding-top: 0;
 
+
+    .column {
+        padding: 0 !important;
+    }
+
     .concert_recontre_thing {
         position: relative;
-        padding-top: $con_ren_height;
 
         h3 {
             font-size: 1.8em;
@@ -257,29 +294,42 @@ $con_ren_height: 60px;
             background: transparentize($yellow, 0.5);
         }
 
+        img {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+
         .button {
             margin: 0 $padding $padding 0;
         }
     }
 
     .concert_recontre_text {
-        padding: 30px $con_ren_padding 0;
+        padding: #{$con_ren_height + $con_ren_padding} $con_ren_padding 0;
     }
 
-    #concerts_thing {
-        .button {
-            background-color: $yellow;
-        }
+
+    .conc_rec_image {
+        background: url('https://images.ctfassets.net/bdyhigkzupmv/6lySzcy7qcIN1tf81Qkus/5b5ac73daeaf61f9057c0b0dd8447a31/hero-guitar-outro.jpg') no-repeat center center;
+        background-size: cover;
+        width: 100%;
+        height: 500px;
     }
+
+    #concerts_thing {}
 
     #recontres_thing {
         h3 {
             background: transparentize($blue, 0.5);
         }
 
-        .h3_offset {
-            display: inline-block;
-            margin-left: $con_ren_padding;
+        @media (min-width: $mobile_width) {
+            .h3_offset {
+                display: inline-block;
+                margin-left: $con_ren_padding;
+            }
         }
 
         .button {

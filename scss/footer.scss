@@ -2,21 +2,30 @@ footer {
     background-color: $dark_grey;
     color: white;
     padding: 30px 0 0;
-
-    p {
-        padding: 0;
-    }
+    border-top: 2px solid $white;
 
     p,
     li {
         color: $light_grey;
     }
 
+    ul,
+    p {
+        margin-bottom: 30px;
+    }
+
 
     #copyright_container {
         background-color: darken($dark_grey, 10);
         padding: $padding 0;
-        margin-top: $padding;
+        margin-top: 0;
         border-top: 2px solid $white;
+        text-align: center;
+
+        p {
+            margin: 0;
+            padding: 0;
+
+        }
     }
 }

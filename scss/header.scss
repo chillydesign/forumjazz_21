@@ -72,7 +72,7 @@ header#header {
 
                 @media (min-width: $mobile_width) {
                     display: inline-block;
-                    padding: 0 $half_padding;
+                    padding: 0;
                 }
 
 
@@ -85,6 +85,7 @@ header#header {
                     position: relative;
                     padding: 10px $padding;
                     text-decoration: none;
+                    color: white;
 
                     @media (min-width: $mobile_width) {
                         display: inline-block;
@@ -92,30 +93,28 @@ header#header {
 
                     }
 
-                    &:after {
-                        @media (min-width: $mobile_width) {
-                            content: '';
-                            height: 2px;
-                            border-bottom: 2px dotted $dark_grey;
-                            width: 0%;
-                            position: absolute;
-                            bottom: -5px;
-                            left: 50%;
-                            transition: all 0.3s;
-                            opacity: 0;
-                        }
-                    }
-
-                    &:link,
-                    &:active,
-                    &:visited,
                     &:hover {
-                        color: $font_color;
+                        background-color: darken($medium_grey, 10);
+                    }
 
-                        @media (min-width: $mobile_width) {}
+                    @media (min-width: $mobile_width) {
+
+                        &:hover {
+                            background-color: darken($yellow, 10);
+                        }
+
+
+                        &:link,
+                        &:active,
+                        &:visited,
+                        &:hover {
+                            color: $font_color;
+                        }
 
 
                     }
+
+
 
 
 

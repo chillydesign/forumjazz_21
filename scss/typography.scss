@@ -15,14 +15,10 @@ h6 {
 
 h1,
 h2 {
-  font-size: 3em;
+  font-size: 5em;
   padding: 0 0 30px;
-  font-weight: normal;
+  font-weight: bold;
 
-  @media (min-width: $mobile_width) {}
-}
-
-.home h2 {
   @media (min-width: $mobile_width) {}
 }
 
@@ -99,11 +95,21 @@ a {
     margin: 0 0 20px;
     font-weight: bold;
     border-radius: 400px;
+    box-shadow: 0 3px 6px transparentize($medium_grey, 0.88);
+
+    &:hover,
+    &:focus {
+      transform: scale(1.07);
+      box-shadow: 0 10px 20px transparentize($medium_grey, 0.7);
+    }
   }
 
   &.button_primary {
     background-color: $brand_color;
-    color: black;
+  }
+
+  &.button_yellow {
+    background-color: $yellow;
   }
 }
 

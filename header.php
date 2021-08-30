@@ -29,4 +29,4 @@
 
     </header>
 
-    <main id="content" role="main">
+    <main id="main" role="main">
