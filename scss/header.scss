@@ -39,10 +39,10 @@ header#header {
         z-index: 100;
         transform: translateX(-260px);
         transition: all 0.3s;
-        box-shadow: 0 10px 20px transparentize($medium_grey, 0.2);
 
         &.menu_visible {
             transform: translateX(0);
+            box-shadow: 0 0 2000px 1000px rgba(0, 0, 0, 0.8);
         }
 
 

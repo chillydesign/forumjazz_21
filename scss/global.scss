@@ -137,9 +137,10 @@ section {
 
         position: relative;
         z-index: 2;
+        padding: 0 $padding;
 
         @media (min-width: $mobile_width) {
-            padding-left: 300px;
+            padding: 0 0 0 300px;
         }
 
         h1 {
@@ -156,9 +157,10 @@ section {
         margin: 0;
         position: relative;
         z-index: 2;
+        padding: 0 $padding;
 
         @media (min-width: $mobile_width) {
-            padding: 0 0 0 600px;
+            padding: 0 100px 0 650px;
         }
 
         li {
@@ -173,7 +175,7 @@ section {
                 color: $black;
                 text-decoration: none;
                 padding: $padding 60px;
-                border-radius: 3px;
+                border-radius: 3px 23px 3px 23px;
 
                 &:hover,
                 &:focus {
@@ -192,11 +194,15 @@ section {
             }
 
             &:nth-child(1) {
-                right: 60px;
+                @media (min-width: $mobile_width) {
+                    right: 60px;
+                }
             }
 
             &:nth-child(2) {
-                right: 30px;
+                @media (min-width: $mobile_width) {
+                    right: 30px;
+                }
 
                 a {
                     background-color: $orange;
@@ -204,7 +210,9 @@ section {
             }
 
             &:nth-child(3) {
-                right: 0px;
+                @media (min-width: $mobile_width) {
+                    right: 0px;
+                }
 
                 a {
                     background-color: $pink;

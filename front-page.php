@@ -11,24 +11,19 @@
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
             <section id="welcome_section">
-                <div class="container">
 
-
-                    <div class="welcome_text">
-                        <?php echo $welcome_text; ?>
-                    </div>
-
-                    <ul class="welcome_buttons">
-                        <li><a href="#"><strong> Concerts & showcases</strong><span>Ouverts au public & aux professionnels dans la limite des places disponibles.</span></a></li>
-                        <li><a href="#"><strong>Rencontres</strong><span>Uniquement accessible aux professionnels et étudiants sur inscription.</span></a></li>
-                        <li><a href="#"><strong>Extras</strong><span>
-                                    Expositions, masterclass & autres évènements autour du forum.</span></a></li>
-                    </ul>
-
-
-
-                    <?php include('img/truck.svg'); ?>
+                <div class="welcome_text">
+                    <?php echo $welcome_text; ?>
                 </div>
+
+                <ul class="welcome_buttons">
+                    <li><a href="#"><strong> Concerts & showcases</strong><span>Ouverts au public & aux professionnels dans la limite des places disponibles.</span></a></li>
+                    <li><a href="#"><strong>Rencontres</strong><span>Uniquement accessible aux professionnels et étudiants sur inscription.</span></a></li>
+                    <li><a href="#"><strong>Extras</strong><span>
+                                Expositions, masterclass & autres évènements autour du forum.</span></a></li>
+                </ul>
+
+                <?php include('img/truck.svg'); ?>
             </section>
 
 
