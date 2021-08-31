@@ -119,6 +119,17 @@ article {
 
 section {
     padding: 80px 0;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s;
+
+    &.visible,
+    &.always_visible {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
 }
 
 
@@ -144,7 +155,10 @@ section {
         }
 
         h1 {
-            font-size: 6em;
+            font-size: 9.6em;
+            transform: skewY(-5deg);
+            display: inline-block;
+            margin: -30px 0 -20px;
         }
 
         p {
@@ -168,6 +182,8 @@ section {
             margin: 0 0 $padding;
             position: relative;
             padding: 0;
+            animation: bloopIn 1s forwards ease-in-out;
+            opacity: 0;
 
             a {
                 background-color: $yellow;
@@ -194,27 +210,39 @@ section {
             }
 
             &:nth-child(1) {
+                animation-delay: 0.6s;
+
+                a {}
+
                 @media (min-width: $mobile_width) {
                     right: 60px;
                 }
             }
 
             &:nth-child(2) {
+
+                animation-delay: 0.9s;
+
                 @media (min-width: $mobile_width) {
                     right: 30px;
                 }
 
                 a {
+
                     background-color: $orange;
                 }
             }
 
             &:nth-child(3) {
+
+                animation-delay: 1.1s;
+
                 @media (min-width: $mobile_width) {
                     right: 0px;
                 }
 
                 a {
+
                     background-color: $pink;
                 }
             }
@@ -260,20 +288,13 @@ section {
     animation-delay: 4s;
 }
 
-@keyframes growdash {
-    0% {
-        stroke-dashoffset: 50000;
-    }
 
-    80% {
-        stroke-dashoffset: 0;
-    }
 
-    100% {
-        stroke-dashoffset: 50000;
-    }
+
+#who_are_we {
+    background: url('../img/swoosh.svg') no-repeat top left;
+    background-size: cover;
 }
-
 
 $con_ren_padding: 40px;
 $con_ren_height: 60px;

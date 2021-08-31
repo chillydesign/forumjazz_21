@@ -35,6 +35,31 @@
 
 
 
+        var $sections = $('section');
+        $sections.removeClass('visible');
+        setInvisibleSections($window, $sections);
+        $window.on('scroll', function (e) {
+            setInvisibleSections($window, $sections);
+        })
+
+        function setInvisibleSections($window, $sections) {
+            let $scrollPos = 0;
+            let $windowHeight = $window.height()
+            $scrollPos = $window.scrollTop() + ($windowHeight * 0.65);
+            for (let i = 0; i < $sections.length; i++) {
+                const $section = $sections[i];
+                if ($section.offsetTop < $scrollPos) {
+                    $($section).addClass('visible');
+                } else {
+                    $($section).removeClass('visible');
+                }
+            }
+        }
+
+        // $('#services_section').addClass('always_visible');
+
+
+
     });
 
 })(jQuery, this);

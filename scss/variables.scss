@@ -56,9 +56,38 @@ $negative_half_padding: #{$padding * -0.5};
   }
 }
 
+@keyframes bloopIn {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg) translateX(20px) translateY(30px);
+
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(0deg) translateX(0px) translateY(0px);
+  }
+}
+
 @mixin linear-gradient($direction, $color-stops...) {
   background: nth(nth($color-stops, 1), 1);
   background: -webkit-linear-gradient(legacy-direction($direction),
       $color-stops);
   background: linear-gradient($direction, $color-stops);
+}
+
+
+
+@keyframes growdash {
+  0% {
+    stroke-dashoffset: 50000;
+  }
+
+  80% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: 50000;
+  }
 }

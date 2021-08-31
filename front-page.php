@@ -5,12 +5,13 @@
 
         <?php $welcome_text =  get_field('welcome_text'); ?>
         <?php $who_we_are =  get_field('who_we_are'); ?>
+        <?php $who_we_are_video =  get_field('who_we_are_video'); ?>
         <?php $concerts_box =  get_field('concerts_box'); ?>
         <?php $rencontres_box =  get_field('rencontres_box'); ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-            <section id="welcome_section">
+            <section id="welcome_section" class="always_visible">
 
                 <div class="welcome_text">
                     <?php echo $welcome_text; ?>
@@ -33,7 +34,8 @@
                     <h2>Qui sommes nous</h2>
                     <div class="columns">
                         <div class="column">
-                            <iframe height="315" src="https://www.youtube-nocookie.com/embed/aHwzzSYhHrs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <?php echo $who_we_are_video; ?>
+
                         </div>
                         <div class="column">
                             <?php echo $who_we_are; ?>
