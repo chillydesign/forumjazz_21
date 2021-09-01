@@ -25,6 +25,7 @@
                 </ul>
 
                 <?php include('img/truck.svg'); ?>
+                <div id="jazz_canvas"></div>
             </section>
 
 

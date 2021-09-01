@@ -85,9 +85,18 @@ function blankslate_enqueue() {
     // remove gutenberg css
     wp_dequeue_style('wp-block-library');
 
+    $gkey = 'AIzaSyAxQfqRqtPLAW4BolFMCxTiv9y--R8CXdU';
+    wp_register_script('wf_google_maps', '//maps.google.com/maps/api/js?key=' . $gkey, array(), '', true); // Custom scripts
+    wp_enqueue_script('wf_google_maps'); // Enqueue it!
 
-    wp_register_script('scripts', $tdu . '/js/scripts.js', array(), '0.0.1', true);
+
+    wp_register_script('scripts', $tdu . '/js/scripts.js', array(), wf_version(), true);
     wp_enqueue_script('scripts'); // Enqueue it!
+
+    wp_register_script('vector', $tdu . '/js/vector.js', array(), wf_version(), true);
+    wp_enqueue_script('vector'); // Enqueue it!
+    wp_register_script('canvas2', $tdu . '/js/canvas2.js', array(), wf_version(), true);
+    wp_enqueue_script('canvas2'); // Enqueue it!
 
 
 
@@ -203,7 +212,7 @@ if (!function_exists('blankslate_wp_body_open')) {
 }
 add_action('wp_body_open', 'blankslate_skip_link', 5);
 function blankslate_skip_link() {
-    echo '<a href="#content" class="skip-link screen-reader-text">' . esc_html__('Skip to the content', 'blankslate') . '</a>';
+    echo '<a href="#main" class="skip-link screen-reader-text">' . esc_html__('Skip to the content', 'blankslate') . '</a>';
 }
 add_filter('the_content_more_link', 'blankslate_read_more_link');
 function blankslate_read_more_link() {
@@ -295,7 +304,7 @@ function create_post_types() {
             ),
 
             'public' => true,
-            'publicly_queryable' => false, // dont allow to see on front end
+            'publicly_queryable' => true, // dont allow to see on front end
             'exclude_from_search' => true, // dont show in search
             'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
             'has_archive' => true,
@@ -372,7 +381,7 @@ function create_post_types() {
             ),
 
             'public' => true,
-            'publicly_queryable' => false, // dont allow to see on front end
+            'publicly_queryable' => true, // dont allow to see on front end
             'exclude_from_search' => true, // dont show in search
             'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
             'has_archive' => true,
@@ -462,4 +471,29 @@ function create_post_types() {
     register_taxonomy('extra_category', array('extra'), $cat_args);
     register_taxonomy('rencontre_category', array('rencontre'), $cat_args);
     register_taxonomy('partenaire_category', array('partenaire'), $cat_args);
+}
+
+
+
+function month_of($date) {
+    // %A <br> %d.%m.%Y
+    $nice_date =  strftime('%h', strtotime(($date)));
+    return $nice_date;
+}
+
+function day_of($date) {
+
+    $nice_date =  strftime('%d', strtotime(($date)));
+    return $nice_date;
+}
+
+
+function youtube_id_from_url($url) {
+
+    $a = explode('?v=', $url);
+    $b = $a[1];
+    $c = explode('&', $b);
+    $d = $c[0];
+    $id = $d;
+    return $id;
 }

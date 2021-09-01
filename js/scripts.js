@@ -60,8 +60,82 @@
 
 
 
+
+        // MAP
+        // MAP
+
+        if (map_locations) {
+
+            var map_options = {
+                zoom: 15,
+                mapTypeControl: true,
+                scrollwheel: false,
+                draggable: true,
+                navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL },
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+            };
+
+            var map_container = $('#map_container');
+            map_container.css({
+                width: '100%',
+                //height: 560
+            })
+
+            var map = new google.maps.Map(map_container.get(0), map_options);
+            var map_bounds = new google.maps.LatLngBounds();
+            var map_infowindow = new google.maps.InfoWindow({ content: '...' });
+            var map_markers = [];
+
+            for (var i = 0; i < map_locations.length; i++) {
+                var map_location = map_locations[i];
+                if (map_location != null) {
+                    addPointToMap(map, map_location, map_bounds, map_infowindow, map_markers);
+                }
+            }
+
+            if (map_locations.length > 1) {
+                map.fitBounds(map_bounds);
+                google.maps.event.trigger(map, 'resize');
+            } else {
+                const center = map_bounds.getCenter();
+                map.setCenter(center);
+            }
+
+
+
+
+
+        }
+
+        // MAP
+        // MAP
+
+
     });
 
 })(jQuery, this);
 
 
+
+
+function addPointToMap(map, location, bounds, infowindow, markers) {
+    var latitude = location[0];
+    var longitude = location[1];
+    if (typeof latitude != 'undefined' && typeof longitude != 'undefined') {
+        var latlng = new google.maps.LatLng(latitude, longitude);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: latlng,
+            title: 'title',
+            url: 'url',
+            id: 'id',
+        });
+        // marker.addListener('click', function () {
+        //     infowindow.setContent('<a class="map_link" href="' + this.url + '">' + this.title + '</a>');
+        //     infowindow.open(map, this);
+        // });
+        markers.push(marker);
+        bounds.extend(latlng);
+    }
+
+};

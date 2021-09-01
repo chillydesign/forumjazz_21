@@ -46,6 +46,18 @@ $half_padding: #{$padding * 0.5};
 $negative_padding: #{$padding * -1};
 $negative_half_padding: #{$padding * -0.5};
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
 @keyframes spin {
   from {
     transform: rotate(0deg);

@@ -1,8 +1,14 @@
 header#header {
     background: $yellow;
     position: relative;
+    z-index: 30;
+    height: 50px;
     padding: 0;
     border-bottom: 5px double $black;
+
+    @media (min-width: $mobile_width) {
+        height: auto;
+    }
 
     .header_inner {
 
@@ -18,13 +24,13 @@ header#header {
         display: block;
         background: url('../img/logo.png') no-repeat left center;
         background-size: contain;
-        width: 300px;
+        width: 150px;
         height: 120px;
         text-indent: -9999px;
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 30;
+        z-index: 100;
     }
 
 
@@ -41,13 +47,14 @@ header#header {
         left: 0;
         width: 200px;
         height: 100%;
-        z-index: 100;
+        z-index: 90;
         transform: translateX(-260px);
         transition: all 0.3s;
 
         &.menu_visible {
             transform: translateX(0);
             box-shadow: 0 0 2000px 1000px rgba(0, 0, 0, 0.8);
+            z-index: 110;
         }
 
 
