@@ -102,6 +102,11 @@ a {
       transform: scale(1.07);
       box-shadow: 0 10px 20px transparentize($medium_grey, 0.7);
     }
+
+    &.button_block {
+      display: block;
+      border-radius: 5px;
+    }
   }
 
   &.button_large {
@@ -116,6 +121,8 @@ a {
   &.button_yellow {
     background-color: $yellow;
   }
+
+
 }
 
 strong,

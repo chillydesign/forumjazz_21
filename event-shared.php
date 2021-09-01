@@ -44,22 +44,17 @@
 
                         </p>
                         <?php echo $line_up; ?>
-
-
                     </div>
                 </div>
 
-
                 <?php echo $texte_de_presentation; ?>
 
-
                 <div class="social_links">
-
                     <?php foreach ($socials as $social) : ?>
-                        <a title="<?php echo $social; ?>" class="<?php echo $social; ?>" href="<?php echo $$social; ?>" target="_blank"><?php echo $social; ?></a>
+                        <a class="<?php echo $social; ?>" href="<?php echo $$social; ?>" target="_blank"><span><?php echo $social; ?></span>
+                        </a>
                     <?php endforeach; ?>
                 </div>
-
 
                 <?php if ($location) : ?>
                     <?php $location_title = $location->post_title; ?>
@@ -89,7 +84,9 @@
                     <iframe style="width: 100%" width="560" height="549" src="https://www.youtube.com/embed/<?php echo $youtube_id; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen></iframe>
                 <?php endif; ?>
 
-
+                <?php if ($ticketing) : ?>
+                    <a class="button button_block button_large" href="<?php echo $ticketing; ?>">Tickets</a>
+                <?php endif; ?>
 
 
             </div>
