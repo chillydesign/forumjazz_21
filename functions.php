@@ -284,7 +284,8 @@ add_action('init', 'create_post_types'); // Add our Slide Type
 // Create 1 Custom Post type for a Demo, called HTML5-Blank
 function create_post_types() {
 
-
+    $concert_slug = 'concert';
+    $concert_slug_plural = 'concerts';
     register_post_type(
         'concert', // Register Custom Post Type
         array(
@@ -302,7 +303,22 @@ function create_post_types() {
                 'not_found' => __('Pas de Concert trouvé', 'webfactor'),
                 'not_found_in_trash' => __('Pas de Concert trouvé dans la corbeille', 'webfactor')
             ),
-
+            'map_meta_cap' => true,
+            'capability_type' => $concert_slug,
+            'capabilities' => array(
+                'create_posts' => 'create_' . $concert_slug_plural,
+                'delete_others_posts' => 'delete_others_' . $concert_slug_plural,
+                'delete_posts' => 'delete_' . $concert_slug_plural,
+                'delete_private_posts' => 'delete_private_' . $concert_slug_plural,
+                'delete_published_posts' => 'delete_published_' . $concert_slug_plural,
+                'edit_posts' => 'edit_' . $concert_slug_plural,
+                'edit_others_posts' => 'edit_others_' . $concert_slug_plural,
+                'edit_private_posts' => 'edit_private_' . $concert_slug_plural,
+                'edit_published_posts' => 'edit_published_' . $concert_slug_plural,
+                'publish_posts' => 'publish_' . $concert_slug_plural,
+                'read_private_posts' => 'read_private_' . $concert_slug_plural,
+                'read' => 'read',
+            ),
             'public' => true,
             'publicly_queryable' => true, // dont allow to see on front end
             'exclude_from_search' => true, // dont show in search
@@ -322,6 +338,9 @@ function create_post_types() {
         )
     );
 
+
+    $extra_slug = 'extra';
+    $extra_slug_plural = 'extras';
 
     register_post_type(
         'extra', // Register Custom Post Type
@@ -340,7 +359,22 @@ function create_post_types() {
                 'not_found' => __('Pas de Extra trouvé', 'webfactor'),
                 'not_found_in_trash' => __('Pas de Extra trouvé dans la corbeille', 'webfactor')
             ),
-
+            'map_meta_cap' => true,
+            'capability_type' => $extra_slug,
+            'capabilities' => array(
+                'create_posts' => 'create_' . $extra_slug_plural,
+                'delete_others_posts' => 'delete_others_' . $extra_slug_plural,
+                'delete_posts' => 'delete_' . $extra_slug_plural,
+                'delete_private_posts' => 'delete_private_' . $extra_slug_plural,
+                'delete_published_posts' => 'delete_published_' . $extra_slug_plural,
+                'edit_posts' => 'edit_' . $extra_slug_plural,
+                'edit_others_posts' => 'edit_others_' . $extra_slug_plural,
+                'edit_private_posts' => 'edit_private_' . $extra_slug_plural,
+                'edit_published_posts' => 'edit_published_' . $extra_slug_plural,
+                'publish_posts' => 'publish_' . $extra_slug_plural,
+                'read_private_posts' => 'read_private_' . $extra_slug_plural,
+                'read' => 'read',
+            ),
             'public' => true,
             'publicly_queryable' => true, // dont allow to see on front end
             'exclude_from_search' => true, // dont show in search
@@ -360,7 +394,8 @@ function create_post_types() {
         )
     );
 
-
+    $recontre_slug = 'rencontre';
+    $recontre_slug_plural = 'rencontres';
 
     register_post_type(
         'rencontre', // Register Custom Post Type
@@ -379,7 +414,22 @@ function create_post_types() {
                 'not_found' => __('Pas de Rencontre trouvé', 'webfactor'),
                 'not_found_in_trash' => __('Pas de Rencontre trouvé dans la corbeille', 'webfactor')
             ),
-
+            'map_meta_cap' => true,
+            'capability_type' => $recontre_slug,
+            'capabilities' => array(
+                'create_posts' => 'create_' . $recontre_slug_plural,
+                'delete_others_posts' => 'delete_others_' . $recontre_slug_plural,
+                'delete_posts' => 'delete_' . $recontre_slug_plural,
+                'delete_private_posts' => 'delete_private_' . $recontre_slug_plural,
+                'delete_published_posts' => 'delete_published_' . $recontre_slug_plural,
+                'edit_posts' => 'edit_' . $recontre_slug_plural,
+                'edit_others_posts' => 'edit_others_' . $recontre_slug_plural,
+                'edit_private_posts' => 'edit_private_' . $recontre_slug_plural,
+                'edit_published_posts' => 'edit_published_' . $recontre_slug_plural,
+                'publish_posts' => 'publish_' . $recontre_slug_plural,
+                'read_private_posts' => 'read_private_' . $recontre_slug_plural,
+                'read' => 'read',
+            ),
             'public' => true,
             'publicly_queryable' => true, // dont allow to see on front end
             'exclude_from_search' => true, // dont show in search

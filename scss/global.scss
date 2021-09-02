@@ -141,6 +141,10 @@ section {
     &.white {
         background-color: $white;
     }
+
+    &.orange {
+        background-color: lighten($orange, 10);
+    }
 }
 
 
@@ -152,10 +156,17 @@ header#page_header {
 
     &.background_image {
         padding: 120px 0;
+        box-shadow: 0 -20px 40px transparentize($black, 0.8) inset;
 
         h1 {
             color: $white;
-            text-shadow: 0 0 40px transparentize($font_color, 0.2);
+            text-shadow: 0 0 30px transparentize($font_color, 0.3), 0 0 40px transparentize($font_color, 0.3);
+            text-align: center;
+
+            @media (min-width: $mobile_width) {
+                text-align: left;
+            }
+
         }
     }
 }
@@ -178,6 +189,10 @@ header#page_header {
         padding: 0 $padding;
 
         @media (min-width: $mobile_width) {
+            padding: 0 0 0 100px;
+        }
+
+        @media (min-width: $tablet_width) {
             padding: 0 0 0 300px;
         }
 
@@ -187,6 +202,11 @@ header#page_header {
             transform: skewY(-5deg);
             display: inline-block;
             margin: -30px 0 0px;
+            text-align: center;
+
+            @media (min-width: $mobile_width) {
+                text-align: left;
+            }
         }
 
         p {
@@ -198,10 +218,14 @@ header#page_header {
 
         margin: 0;
         position: relative;
-        z-index: 2;
+        z-index: 20;
         padding: 0 $padding;
 
         @media (min-width: $mobile_width) {
+            padding: 0 100px;
+        }
+
+        @media (min-width: $tablet_width) {
             padding: 0 100px 0 650px;
         }
 
@@ -284,15 +308,15 @@ header#page_header {
 
 
 
+        @media (min-width: $mobile_width) {}
 
-        @media (min-width: $mobile_width) {
+        @media (min-width: $tablet_width) {
             position: absolute;
             bottom: 0;
             left: 30px;
             width: 600px;
             height: 700px;
             z-index: 2;
-
         }
     }
 }
@@ -493,15 +517,25 @@ $con_ren_height: 60px;
 
 .day {
     font-size: 3.3em;
-    padding: 5px 0;
+    padding: 5px 0 10px 0;
 }
 
 .event_time_container {
     background-color: lighten($light_grey, 5);
     padding: 5px 5px 5px 10px;
+    width: 100%;
 
     p {
         padding: 0;
+    }
+
+    .lineup {
+        font-size: 90%;
+        margin-top: 5px;
+    }
+
+    .time {
+        font-size: 1.2em;
     }
 }
 

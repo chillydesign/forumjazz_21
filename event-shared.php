@@ -1,6 +1,7 @@
 <?php $website = get_field('website'); ?>
 <?php $texte_de_presentation = get_field('texte_de_presentation'); ?>
 <?php $date = get_field('date'); ?>
+
 <?php $month = month_of($date); ?>
 <?php $day = day_of($date); ?>
 <?php $time = get_field('time'); ?>
@@ -27,23 +28,22 @@
         <div class="columns">
             <div class="column">
 
-
-
                 <div class="event_datetime_container">
-                    <div class="event_date_container">
-                        <div class="month"><?php echo $month; ?></div>
-                        <div class="day"><?php echo $day; ?></div>
-                    </div>
+                    <?php if ($date) : ?>
+                        <div class="event_date_container">
+                            <div class="month"><?php echo $month; ?></div>
+                            <div class="day"><?php echo $day; ?></div>
+                        </div>
+                    <?php endif; ?>
                     <div class="event_time_container">
 
                         <p>
-                            <?php echo $time; ?>
+                            <span class="time"><?php echo $time; ?></span>
                             <?php if ($ticketing) : ?>
                                 | <a href="<?php echo $ticketing; ?>">Tickets</a>
                             <?php endif; ?>
-
                         </p>
-                        <?php echo $line_up; ?>
+                        <div class="lineup"> <?php echo $line_up; ?></div>
                     </div>
                 </div>
 

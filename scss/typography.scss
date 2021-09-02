@@ -120,6 +120,7 @@ a {
   &.button_large {
     font-size: #{$font_size * 1.2};
     padding: 15px 60px;
+    text-transform: uppercase;
   }
 
   &.button_primary {

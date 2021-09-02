@@ -41,14 +41,14 @@ header#header {
         display: block;
         position: relative;
         z-index: 10;
-        background-color: $dark_grey;
+        background-color: $light_grey;
         position: fixed;
         top: 0;
         left: 0;
-        width: 200px;
+        width: 300px;
         height: 100%;
         z-index: 90;
-        transform: translateX(-260px);
+        transform: translateX(-360px);
         transition: all 0.3s;
 
         &.menu_visible {
@@ -99,7 +99,16 @@ header#header {
                     position: relative;
                     padding: 10px $padding;
                     text-decoration: none;
-                    color: white;
+                    color: $font_color;
+
+                    &:link,
+                    &:active,
+                    &:visited,
+                    &:hover {
+                        color: $font_color;
+                    }
+
+
 
                     @media (min-width: $mobile_width) {
                         display: inline-block;
@@ -108,7 +117,7 @@ header#header {
                     }
 
                     &:hover {
-                        background-color: darken($medium_grey, 10);
+                        background-color: darken($light_grey, 15);
                     }
 
                     @media (min-width: $mobile_width) {
@@ -118,16 +127,8 @@ header#header {
                         }
 
 
-                        &:link,
-                        &:active,
-                        &:visited,
-                        &:hover {
-                            color: $font_color;
-                        }
-
 
                     }
-
 
 
 
