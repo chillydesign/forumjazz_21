@@ -51,22 +51,24 @@
 
                 <div class="social_links">
                     <?php foreach ($socials as $social) : ?>
-                        <a class="<?php echo $social; ?>" href="<?php echo $$social; ?>" target="_blank"><span><?php echo $social; ?></span>
-                        </a>
+                        <?php if ($$social) : ?>
+                            <a class="<?php echo $social; ?>" href="<?php echo $$social; ?>" target="_blank"><span><?php echo $social; ?></span>
+                            </a>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
 
                 <?php if ($location) : ?>
                     <?php $location_title = $location->post_title; ?>
                     <?php $location_address = get_field('address', $location->ID); ?>
-                    <?php $location_position = get_field('position', $location->ID); ?>
-                    <h3> <?php echo  $location_title; ?></h3>
-
-                    <?php if ($location_position) : ?>
+                    <?php $partenaire_json  = partenaire_to_map_json($location); ?>
+                    <h3> Lieu: <?php echo $location_title; ?></h3>
+                    <?php if ($partenaire_json) : ?>
                         <div id="map_container"></div>
                         <script>
                             const map_locations = [
-                                [<?php echo $location_position; ?>]
+
+                                <?php echo json_encode($partenaire_json); ?>
                             ];
                         </script>
                     <?php endif; ?>

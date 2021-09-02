@@ -56,9 +56,6 @@
             }
         }
 
-        // $('#services_section').addClass('always_visible');
-
-
 
 
         // MAP
@@ -76,11 +73,6 @@
             };
 
             var map_container = $('#map_container');
-            map_container.css({
-                width: '100%',
-                //height: 560
-            })
-
             var map = new google.maps.Map(map_container.get(0), map_options);
             var map_bounds = new google.maps.LatLngBounds();
             var map_infowindow = new google.maps.InfoWindow({ content: '...' });
@@ -119,21 +111,20 @@
 
 
 function addPointToMap(map, location, bounds, infowindow, markers) {
-    var latitude = location[0];
-    var longitude = location[1];
-    if (typeof latitude != 'undefined' && typeof longitude != 'undefined') {
-        var latlng = new google.maps.LatLng(latitude, longitude);
+
+    if (typeof location.lat != 'undefined' && typeof location.lng != 'undefined') {
+        var latlng = new google.maps.LatLng(location.lat, location.lng);
         var marker = new google.maps.Marker({
             map: map,
             position: latlng,
-            title: 'title',
-            url: 'url',
-            id: 'id',
+            title: location.title,
+            url: location.url,
+            id: location.id,
         });
-        // marker.addListener('click', function () {
-        //     infowindow.setContent('<a class="map_link" href="' + this.url + '">' + this.title + '</a>');
-        //     infowindow.open(map, this);
-        // });
+        marker.addListener('click', function () {
+            infowindow.setContent('<a class="map_link" href="' + this.url + '">' + this.title + '</a>');
+            infowindow.open(map, this);
+        });
         markers.push(marker);
         bounds.extend(latlng);
     }

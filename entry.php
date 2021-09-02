@@ -1,5 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <section>
+    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <header>
             <?php if (is_singular()) {
                 echo '<h1 class="entry-title" itemprop="headline">';
@@ -21,5 +20,4 @@
         <?php if (is_singular()) {
             get_template_part('entry-footer');
         } ?>
-    </section>
-</article>
+    </article>

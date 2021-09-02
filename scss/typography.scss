@@ -13,10 +13,17 @@ h6 {
   }
 }
 
-h1,
-h2 {
+h1 {
   font-size: 5em;
   padding: 0 0 30px;
+  font-weight: bold;
+
+  @media (min-width: $mobile_width) {}
+}
+
+h2 {
+  font-size: 3.3em;
+  padding: 0 0 $padding;
   font-weight: bold;
 
   @media (min-width: $mobile_width) {}
@@ -25,7 +32,7 @@ h2 {
 h3 {
   font-size: 2.5em;
   padding: 0 0 20px;
-  font-weight: bold;
+  font-weight: normal;
 
   @media (min-width: $mobile_width) {
     font-size: 3em;
@@ -96,6 +103,7 @@ a {
     font-weight: bold;
     border-radius: 400px;
     box-shadow: 0 3px 6px transparentize($medium_grey, 0.88);
+    text-shadow: 0 1px 0px rgba(255, 255, 255, 0.5);
 
     &:hover,
     &:focus {
@@ -124,6 +132,24 @@ a {
 
 
 }
+
+
+ul {
+  padding: 0 0 $padding $padding;
+
+  li {
+    list-style: disc;
+  }
+}
+
+ol {
+  padding: 0 0 $padding $padding;
+
+  li {
+    list-style: decimal
+  }
+}
+
 
 strong,
 b {

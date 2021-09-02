@@ -342,7 +342,7 @@ function create_post_types() {
             ),
 
             'public' => true,
-            'publicly_queryable' => false, // dont allow to see on front end
+            'publicly_queryable' => true, // dont allow to see on front end
             'exclude_from_search' => true, // dont show in search
             'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
             'has_archive' => true,
@@ -421,7 +421,7 @@ function create_post_types() {
             ),
 
             'public' => true,
-            'publicly_queryable' => false, // dont allow to see on front end
+            'publicly_queryable' => true, // dont allow to see on front end
             'exclude_from_search' => true, // dont show in search
             'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
             'has_archive' => true,
@@ -496,4 +496,32 @@ function youtube_id_from_url($url) {
     $d = $c[0];
     $id = $d;
     return $id;
+}
+
+
+function partenaire_to_map_json($partenaire) {
+    $position = get_field('position', $partenaire->ID);
+    if ($position) {
+        $latlng = explode(',', $position);
+        $title = $partenaire->post_title;
+        $obj = new stdClass();
+        $obj->lat = $latlng[0];
+        $obj->lng = $latlng[1];
+        $obj->title = $title;
+        $obj->id = $partenaire->ID;
+        $obj->url = $partenaire->guid;
+        return ($obj);
+    }
+    return null;
+}
+
+function thumbnail_of_post_url($post_id,  $size = 'large') {
+
+    $image_id = get_post_thumbnail_id($post_id);
+    $image_url = wp_get_attachment_image_src($image_id, $size);
+    if ($image_url) {
+        $image = $image_url[0];
+        return $image;
+    }
+    return false;
 }

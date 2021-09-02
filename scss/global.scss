@@ -15,7 +15,7 @@
 
 body {
     font: normal 62.5% $font_stack;
-    background: white;
+    background: $white;
     position: relative;
     color: $font_color;
     text-rendering: optimizeLegibility;
@@ -117,8 +117,10 @@ article {
 
 
 
+$section_padding: 80px;
+
 section {
-    padding: 80px 0;
+    padding: $section_padding 0;
 
     opacity: 0;
     transform: translateY(20px);
@@ -130,8 +132,33 @@ section {
         transform: translateY(0px);
     }
 
+
+
+    &.grey {
+        background-color: $light_grey
+    }
+
+    &.white {
+        background-color: $white;
+    }
 }
 
+
+header#page_header {
+    padding: $section_padding 0 0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &.background_image {
+        padding: 120px 0;
+
+        h1 {
+            color: $white;
+            text-shadow: 0 0 40px transparentize($font_color, 0.2);
+        }
+    }
+}
 
 
 
@@ -179,6 +206,7 @@ section {
         }
 
         li {
+            list-style: none;
 
             margin: 0 0 $padding;
             position: relative;
@@ -339,6 +367,10 @@ section {
 #who_are_we {
     background: url('../img/swoosh.svg') no-repeat top left;
     background-size: cover;
+
+    h2 {
+        font-size: 5em;
+    }
 }
 
 $con_ren_padding: 40px;
@@ -418,7 +450,11 @@ $con_ren_height: 60px;
 #map_container {
     height: 400px;
     background-color: $light_grey;
-    margin: 0 0 $padding;
+    margin: 0;
+
+    &.map_container_large {
+        height: 600px;
+    }
 }
 
 // EVENTS
@@ -441,25 +477,29 @@ $con_ren_height: 60px;
     background-color: $light_grey;
     text-align: center;
     text-transform: uppercase;
-    margin: 0 5px 0 0;
+    margin: 0;
     width: 80px;
+    min-width: 80px;
 
 }
 
 .month {
     font-size: 1.5em;
     font-weight: bold;
-    padding: 5px 0;
+    padding: 8px 0;
     letter-spacing: 2px;
     background-color: darken($light_grey, 10);
 }
 
 .day {
-    font-size: 2.6em;
+    font-size: 3.3em;
     padding: 5px 0;
 }
 
 .event_time_container {
+    background-color: lighten($light_grey, 5);
+    padding: 5px 5px 5px 10px;
+
     p {
         padding: 0;
     }
@@ -470,7 +510,7 @@ $con_ren_height: 60px;
     margin: 5px 0 30px;
 
     a {
-        $social_size: 30px;
+        $social_size: 35px;
         display: inline-block;
         height: $social_size;
         width: $social_size;
