@@ -1,5 +1,39 @@
 <?php get_header(); ?>
 
+<?php
+$dates =  array(
+    array('date' => '2021-09-11', 'concerts' => array()),
+    array('date' => '2021-11-24', 'concerts' => array()),
+    array('date' => '2021-11-25', 'concerts' => array()),
+    array('date' => '2021-11-26', 'concerts' => array()),
+);
+
+$concerts  = get_posts(array(
+    'post_type' => 'concert',
+    'posts_per_page' => -1
+));
+
+foreach ($concerts as $concert) {
+    $concert_date = get_field('date',  $concert->ID);
+    $date_index = array_search($concert_date, array_column($dates, 'date'));
+    if (is_int($date_index)) {
+        $concert->location = get_field('location', $concert->ID);
+        if ($concert->location) {
+            $concert->location_name = $concert->location->post_title;
+            array_push($dates[$date_index]['concerts'], $concert);
+        }
+    }
+}
+
+// for some reason this doesnt work with a normal foreach loop
+for ($d = 0; $d < sizeof($dates); $d++) {
+    usort($dates[$d]['concerts'], "sort_by_location_name");
+}
+
+
+
+
+?>
 
 <header id="page_header">
     <div class="container">
@@ -7,6 +41,41 @@
     </div>
 </header>
 
+
+<section>
+
+
+    <div class="container">
+        <div id="concert_grid">
+            <div class="columns">
+                <?php foreach ($dates as $date) : ?>
+                    <div class="column">
+
+                        <h2><?php echo $date['date']; ?></h2>
+
+                        <?php $cur_location = false; ?>
+                        <?php foreach ($date['concerts'] as $concert) : ?>
+                            <div class="concerts">
+                                <?php if ($concert->location_name && $cur_location != $concert->location_name) : ?>
+                                    <h3> <?php echo ($concert->location_name); ?> </h3>
+                                <?php endif; ?>
+                                <h4>
+                                    <a href="<?php echo $concert->guid; ?>">
+                                        <?php echo ($concert->post_title); ?>
+                                    </a>
+                                </h4>
+                            </div>
+                            <?php $cur_location = $concert->location_name; ?>
+                        <?php endforeach; ?>
+                    </div>
+
+                <?php endforeach; ?>
+
+
+            </div>
+        </div>
+    </div>
+</section>
 
 
 <section>

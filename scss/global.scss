@@ -643,6 +643,39 @@ $con_ren_height: 60px;
 
 
 
+#concert_grid {
+    text-align: center;
+
+    h2 {
+        font-size: 3em;
+        margin: 0;
+        padding: 0;
+
+    }
+
+    h3 {
+        background-color: $dark_grey;
+        color: white;
+        margin: 25px 0 5px;
+        padding: 10px;
+        font-size: 2.5em;
+
+    }
+
+    h4 {
+        font-size: 1.5em;
+        padding: 0;
+        margin: 0;
+
+        a {
+            display: block;
+            padding: 20px;
+            background-color: $light_grey;
+            margin: 0 0 5px;
+        }
+    }
+}
+
 
 // EVENTS
 // EVENTS

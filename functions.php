@@ -685,6 +685,12 @@ function generate_date_box($date) {
 }
 
 
+function sort_by_location_name($a, $b) {
+    return strcmp($a->location_name, $b->location_name);
+}
+
+
+
 add_action('pre_get_posts', 'my_change_sort_order');
 function my_change_sort_order($query) {
     if ($query->is_main_query()) :
