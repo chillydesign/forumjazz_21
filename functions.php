@@ -92,11 +92,10 @@ function blankslate_enqueue() {
 
     wp_register_script('scripts', $tdu . '/js/scripts.js', array(), wf_version(), true);
     wp_enqueue_script('scripts'); // Enqueue it!
-
     wp_register_script('vector', $tdu . '/js/vector.js', array(), wf_version(), true);
     wp_enqueue_script('vector'); // Enqueue it!
-    wp_register_script('canvas2', $tdu . '/js/canvas2.js', array(), wf_version(), true);
-    wp_enqueue_script('canvas2'); // Enqueue it!
+    wp_register_script('canvas', $tdu . '/js/canvas.js', array(), wf_version(), true);
+    wp_enqueue_script('canvas'); // Enqueue it!
 
 
 
@@ -538,6 +537,17 @@ function day_of($date) {
 }
 
 
+function chilly_get_name($obj) {
+    return ($obj->name);
+}
+
+function  cat_names_from_categories($categories) {
+    if (!is_array($categories)) {
+        return null;
+    }
+    return  implode(', ',  array_map('chilly_get_name', $categories));
+}
+
 function youtube_id_from_url($url) {
 
     $a = explode('?v=', $url);
@@ -575,3 +585,53 @@ function thumbnail_of_post_url($post_id,  $size = 'large') {
     }
     return false;
 }
+
+add_action("login_head", "login_background_image");
+function login_background_image() {
+    $tdu = get_template_directory_uri();
+    echo '<style type="text/css">
+    body.login { 
+        background-image: url( "' . $tdu . '/img/admin_background.jpg") !important;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        box-shadow: 0 0 0 2000px rgba(0,0,0,0.5) inset
+    }
+    body.login  #login a {
+        color: white !important;
+    </style>';
+}
+
+
+function generate_date_box($date) {
+    $month = month_of($date);
+    $day = day_of($date);
+
+    echo   '<div class="event_date_container">
+            <div class="month">' . $month . '</div>
+            <div class="day">' . $day . '</div>
+        </div>';
+}
+
+
+add_action('pre_get_posts', 'my_change_sort_order');
+function my_change_sort_order($query) {
+    if ($query->is_main_query()) :
+        if (is_post_type_archive(array('concert', 'extra', 'recontre'))) :
+            $current_date = date('Ymd');
+            $query->set('order', 'ASC');
+            $query->set('orderby', 'meta_value_num');
+            $query->set('meta_key', 'date');
+            $query->set('meta_query', array(
+                array(
+                    'key' => 'date',
+                    'value' => $current_date,
+                    'compare' => '>'
+                ),
+            ));
+        endif;
+    endif;
+};
+
+
+?>

@@ -92,7 +92,7 @@ a {
   }
 
   &.button {
-    color: $font_color;
+    color: $white;
     background-color: $blue;
     display: inline-block;
     padding: 10px 50px;
@@ -103,7 +103,8 @@ a {
     font-weight: bold;
     border-radius: 400px;
     box-shadow: 0 3px 6px transparentize($medium_grey, 0.88);
-    text-shadow: 0 1px 0px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 1px 0px transparentize($font_color, 0.3);
+
 
     &:hover,
     &:focus {
@@ -125,10 +126,14 @@ a {
 
   &.button_primary {
     background-color: $brand_color;
+    color: $font_color;
+    text-shadow: 0 1px 0px transparentize($white, 0.3);
   }
 
   &.button_yellow {
     background-color: $yellow;
+    color: $font_color;
+    text-shadow: 0 1px 0px transparentize($white, 0.3);
   }
 
 

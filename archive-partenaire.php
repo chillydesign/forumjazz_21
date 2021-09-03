@@ -1,6 +1,9 @@
 <?php get_header(); ?>
 <?php
-$partenaires = get_posts(array('post_type' => 'partenaire'));
+$partenaires = get_posts(array(
+    'post_type' => 'partenaire',
+    'posts_per_page' => -1
+));
 $locations = [];
 foreach ($partenaires as $partenaire) {
     $partenaire_json  = partenaire_to_map_json($partenaire);

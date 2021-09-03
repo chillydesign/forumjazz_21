@@ -7,12 +7,12 @@ $brand_color: $orange;
 
 
 
-$black: scale-color($brand_color, $lightness: -90%, $saturation: -93%);
+$black: scale-color($brand_color, $lightness: -93%, $saturation: -93%);
 $dark_grey: scale-color($brand_color, $lightness: -60%, $saturation: -93%);
 $medium_grey: scale-color($brand_color, $lightness: 0%, $saturation: -88%);
 $light_grey: scale-color($brand_color, $lightness: 74%, $saturation: -88%);
 
-$white: scale-color($brand_color, $lightness: 98%, $saturation: -88%);
+$white: scale-color($brand_color, $lightness: 98.5%, $saturation: -88%);
 
 $font_color:$black;
 
