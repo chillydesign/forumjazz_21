@@ -505,7 +505,8 @@ function create_post_types() {
     );
 
 
-
+    $partner_slug = 'partenaire';
+    $partner_slug_plural = 'partenaires';
     register_post_type(
         'partenaire', // Register Custom Post Type
         array(
@@ -523,7 +524,22 @@ function create_post_types() {
                 'not_found' => __('Pas de Partenaire trouvé', 'webfactor'),
                 'not_found_in_trash' => __('Pas de Partenaire trouvé dans la corbeille', 'webfactor')
             ),
-
+            'map_meta_cap' => true,
+            'capability_type' => $partner_slug,
+            'capabilities' => array(
+                'create_posts' => 'create_' . $partner_slug_plural,
+                'delete_others_posts' => 'delete_others_' . $partner_slug_plural,
+                'delete_posts' => 'delete_' . $partner_slug_plural,
+                'delete_private_posts' => 'delete_private_' . $partner_slug_plural,
+                'delete_published_posts' => 'delete_published_' . $partner_slug_plural,
+                'edit_posts' => 'edit_' . $partner_slug_plural,
+                'edit_others_posts' => 'edit_others_' . $partner_slug_plural,
+                'edit_private_posts' => 'edit_private_' . $partner_slug_plural,
+                'edit_published_posts' => 'edit_published_' . $partner_slug_plural,
+                'publish_posts' => 'publish_' . $partner_slug_plural,
+                'read_private_posts' => 'read_private_' . $partner_slug_plural,
+                'read' => 'read',
+            ),
             'public' => true,
             'publicly_queryable' => true, // dont allow to see on front end
             'exclude_from_search' => true, // dont show in search
