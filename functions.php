@@ -699,6 +699,7 @@ function my_change_sort_order($query) {
             $query->set('order', 'ASC');
             $query->set('orderby', 'meta_value_num');
             $query->set('meta_key', 'date');
+            $query->set('posts_per_page', -1);
             $query->set('meta_query', array(
                 array(
                     'key' => 'date',
