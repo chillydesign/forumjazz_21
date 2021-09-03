@@ -2,7 +2,6 @@
 
 <?php
 $dates =  array(
-    array('date' => '2021-09-11', 'concerts' => array()),
     array('date' => '2021-11-24', 'concerts' => array()),
     array('date' => '2021-11-25', 'concerts' => array()),
     array('date' => '2021-11-26', 'concerts' => array()),
