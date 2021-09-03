@@ -55,14 +55,14 @@
                 <?php if ($location) : ?>
                     <?php $location_title = $location->post_title; ?>
                     <?php $location_address = get_field('address', $location->ID); ?>
-                    <?php $partenaire_json  = partenaire_to_map_json($location); ?>
+                    <?php $lieu_json  = lieu_to_map_json($location); ?>
                     <h3> Lieu: <?php echo $location_title; ?></h3>
-                    <?php if ($partenaire_json) : ?>
+                    <?php if ($lieu_json) : ?>
                         <div id="map_container"></div>
                         <script>
                             const map_locations = [
 
-                                <?php echo json_encode($partenaire_json); ?>
+                                <?php echo json_encode($lieu_json); ?>
                             ];
                         </script>
                     <?php endif; ?>

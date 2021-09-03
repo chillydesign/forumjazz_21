@@ -450,6 +450,61 @@ function create_post_types() {
 
 
 
+    $location_slug = 'lieu';
+    $location_slug_plural = 'lieux';
+    register_post_type(
+        'lieu', // Register Custom Post Type
+        array(
+            'labels' => array(
+                'name' => __('Lieux', 'webfactor'), // Rename these to suit
+                'singular_name' => __('Lieu', 'webfactor'),
+                'add_new' => __('Ajouter', 'webfactor'),
+                'add_new_item' => __('Ajouter Lieu', 'webfactor'),
+                'edit' => __('Modifier', 'webfactor'),
+                'edit_item' => __('Modifier Lieu', 'webfactor'),
+                'new_item' => __('Ajouter Lieu', 'webfactor'),
+                'view' => __('Afficher Lieu', 'webfactor'),
+                'view_item' => __('Afficher Lieu', 'webfactor'),
+                'search_items' => __('Rechercher Lieux', 'webfactor'),
+                'not_found' => __('Pas de Lieu trouvé', 'webfactor'),
+                'not_found_in_trash' => __('Pas de Lieu trouvé dans la corbeille', 'webfactor')
+            ),
+            'map_meta_cap' => true,
+            'capability_type' => $location_slug,
+            'capabilities' => array(
+                'create_posts' => 'create_' . $location_slug_plural,
+                'delete_others_posts' => 'delete_others_' . $location_slug_plural,
+                'delete_posts' => 'delete_' . $location_slug_plural,
+                'delete_private_posts' => 'delete_private_' . $location_slug_plural,
+                'delete_published_posts' => 'delete_published_' . $location_slug_plural,
+                'edit_posts' => 'edit_' . $location_slug_plural,
+                'edit_others_posts' => 'edit_others_' . $location_slug_plural,
+                'edit_private_posts' => 'edit_private_' . $location_slug_plural,
+                'edit_published_posts' => 'edit_published_' . $location_slug_plural,
+                'publish_posts' => 'publish_' . $location_slug_plural,
+                'read_private_posts' => 'read_private_' . $location_slug_plural,
+                'read' => 'read',
+            ),
+            'public' => true,
+            'publicly_queryable' => true, // dont allow to see on front end
+            'exclude_from_search' => true, // dont show in search
+            'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+            'has_archive' => true,
+            'supports' => array(
+                'title',
+                'editor',
+                'excerpt',
+                'thumbnail'
+            ), // Go to Dashboard Custom HTML5 Blank post for supports
+            'can_export' => true, // Allows export in Tools > Export
+            'taxonomies' => array(
+                //    'post_tag',
+                //    'category'
+            ) // Add Category and Post Tags support
+        )
+    );
+
+
 
     register_post_type(
         'partenaire', // Register Custom Post Type
@@ -559,17 +614,17 @@ function youtube_id_from_url($url) {
 }
 
 
-function partenaire_to_map_json($partenaire) {
-    $position = get_field('position', $partenaire->ID);
+function lieu_to_map_json($lieu) {
+    $position = get_field('position', $lieu->ID);
     if ($position) {
         $latlng = explode(',', $position);
-        $title = $partenaire->post_title;
+        $title = $lieu->post_title;
         $obj = new stdClass();
         $obj->lat = $latlng[0];
         $obj->lng = $latlng[1];
         $obj->title = $title;
-        $obj->id = $partenaire->ID;
-        $obj->url = $partenaire->guid;
+        $obj->id = $lieu->ID;
+        $obj->url = $lieu->guid;
         return ($obj);
     }
     return null;
