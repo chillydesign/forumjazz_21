@@ -5,6 +5,7 @@ $dates =  array(
     array('date' => '2021-11-24', 'concerts' => array()),
     array('date' => '2021-11-25', 'concerts' => array()),
     array('date' => '2021-11-26', 'concerts' => array()),
+    array('date' => '2021-11-27', 'concerts' => array()),
 );
 
 $concerts  = get_posts(array(
