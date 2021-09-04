@@ -671,17 +671,18 @@ $con_ren_height: 60px;
         font-size: $font_size;
         padding: 0;
         margin: 0;
+        background: no-repeat center center $light_grey;
+        background-size: cover;
 
 
         a {
             margin: 0 0 5px;
             display: block;
             text-decoration: none;
-            min-height: 120px;
+            min-height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: $light_grey;
             position: relative;
 
             span {

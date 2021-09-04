@@ -18,6 +18,7 @@ foreach ($concerts as $concert) {
     $date_index = array_search($concert_date, array_column($dates, 'date'));
     if (is_int($date_index)) {
         $concert->location = get_field('location', $concert->ID);
+        $concert->image = thumbnail_of_post_url($concert->ID, 'medium');
         if ($concert->location) {
             $concert->location_name = $concert->location->post_title;
             array_push($dates[$date_index]['concerts'], $concert);
@@ -59,7 +60,7 @@ for ($d = 0; $d < sizeof($dates); $d++) {
                                 <?php if ($concert->location_name && $cur_location != $concert->location_name) : ?>
                                     <h3> <?php echo ($concert->location_name); ?> </h3>
                                 <?php endif; ?>
-                                <h4>
+                                <h4 style="background-image:url('<?php echo $concert->image; ?>')">
                                     <a href="<?php echo $concert->guid; ?>">
                                         <span> <?php echo ($concert->post_title); ?></span>
                                     </a>
