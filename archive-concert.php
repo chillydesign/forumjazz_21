@@ -2,10 +2,10 @@
 
 <?php
 $dates =  array(
-    array('date' => '2021-11-24', 'concerts' => array()),
-    array('date' => '2021-11-25', 'concerts' => array()),
-    array('date' => '2021-11-26', 'concerts' => array()),
-    array('date' => '2021-11-27', 'concerts' => array()),
+    array('date' => '2021-11-24', 'nice_date' =>  'Wednesday 24', 'concerts' => array()),
+    array('date' => '2021-11-25', 'nice_date' =>  'Thursday 25', 'concerts' => array()),
+    array('date' => '2021-11-26', 'nice_date' =>  'Friday 26', 'concerts' => array()),
+    array('date' => '2021-11-27', 'nice_date' =>  'Saturday 27', 'concerts' => array()),
 );
 
 $concerts  = get_posts(array(
@@ -51,7 +51,7 @@ for ($d = 0; $d < sizeof($dates); $d++) {
                 <?php foreach ($dates as $date) : ?>
                     <div class="column">
 
-                        <h2><?php echo $date['date']; ?></h2>
+                        <h2><?php echo $date['nice_date']; ?></h2>
 
                         <?php $cur_location = false; ?>
                         <?php foreach ($date['concerts'] as $concert) : ?>
@@ -61,7 +61,7 @@ for ($d = 0; $d < sizeof($dates); $d++) {
                                 <?php endif; ?>
                                 <h4>
                                     <a href="<?php echo $concert->guid; ?>">
-                                        <?php echo ($concert->post_title); ?>
+                                        <span> <?php echo ($concert->post_title); ?></span>
                                     </a>
                                 </h4>
                             </div>

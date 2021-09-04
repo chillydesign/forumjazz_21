@@ -651,9 +651,10 @@ $con_ren_height: 60px;
         font-size: 3em;
         margin: 0;
         position: sticky;
-        top: 10px;
+        top: 0px;
         background: white;
-        padding: 10px;
+        padding: 20px 10px;
+        z-index: 100;
 
     }
 
@@ -662,20 +663,38 @@ $con_ren_height: 60px;
         color: white;
         margin: 25px 0 5px;
         padding: 10px;
-        font-size: 2.5em;
+        font-size: 2em;
 
     }
 
     h4 {
-        font-size: 1.5em;
+        font-size: $font_size;
         padding: 0;
         margin: 0;
 
+
         a {
-            display: block;
-            padding: 20px;
-            background-color: $light_grey;
             margin: 0 0 5px;
+            display: block;
+            text-decoration: none;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $light_grey;
+            position: relative;
+
+            span {
+                padding: 5px;
+                display: inline-block;
+                background-color: transparentize($font_color, 0.5);
+                color: $white;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                text-align: left;
+
+            }
         }
     }
 }
