@@ -91,32 +91,7 @@ a {
     color: darken($brand_color, 20);
   }
 
-  &.button {
-    color: $white;
-    background-color: $blue;
-    display: inline-block;
-    padding: 10px 50px;
-    text-align: center;
-    text-decoration: none;
-    font-size: $font_size;
-    margin: 0 0 20px;
-    font-weight: bold;
-    border-radius: 400px;
-    box-shadow: 0 3px 6px transparentize($medium_grey, 0.88);
-    text-shadow: 0 1px 0px transparentize($font_color, 0.3);
 
-
-    &:hover,
-    &:focus {
-      transform: scale(1.07);
-      box-shadow: 0 10px 20px transparentize($medium_grey, 0.7);
-    }
-
-    &.button_block {
-      display: block;
-      border-radius: 5px;
-    }
-  }
 
   &.button_large {
     font-size: #{$font_size * 1.2};
@@ -139,6 +114,35 @@ a {
 
 }
 
+
+a.button,
+button,
+.woocommerce button.button {
+  color: $white;
+  background-color: $blue;
+  display: inline-block;
+  padding: 10px 50px;
+  text-align: center;
+  text-decoration: none;
+  font-size: $font_size;
+  margin: 0 0 20px;
+  font-weight: bold;
+  border-radius: 400px;
+  box-shadow: 0 3px 6px transparentize($medium_grey, 0.88);
+  text-shadow: 0 1px 0px transparentize($font_color, 0.3);
+
+
+  &:hover,
+  &:focus {
+    transform: scale(1.07);
+    box-shadow: 0 10px 20px transparentize($medium_grey, 0.7);
+  }
+
+  &.button_block {
+    display: block;
+    border-radius: 5px;
+  }
+}
 
 ul {
   padding: 0 0 $padding $padding;
@@ -191,6 +195,9 @@ table {
 }
 
 select {
+  font-size: $font_size;
+  padding: 10px;
+
   &:focus {
     box-shadow: 0 0 10px $brand_color;
   }

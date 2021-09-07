@@ -61,7 +61,7 @@
         // MAP
         // MAP
 
-        if (map_locations) {
+        if (typeof map_locations !== "undefined") {
 
             var map_options = {
                 zoom: 15,
