@@ -15,9 +15,11 @@ $concerts  = get_posts(array(
 
 foreach ($concerts as $concert) {
     $concert_date = get_field('date',  $concert->ID);
+
     $date_index = array_search($concert_date, array_column($dates, 'date'));
     if (is_int($date_index)) {
         $concert->location = get_field('location', $concert->ID);
+        $concert->time = get_field('time',  $concert->ID);
         $concert->image = thumbnail_of_post_url($concert->ID, 'medium');
         if ($concert->location) {
             $concert->location_name = $concert->location->post_title;
@@ -62,7 +64,7 @@ for ($d = 0; $d < sizeof($dates); $d++) {
                                 <?php endif; ?>
                                 <h4 style="background-image:url('<?php echo $concert->image; ?>')">
                                     <a href="<?php echo $concert->guid; ?>">
-                                        <span> <?php echo ($concert->post_title); ?></span>
+                                        <span> <?php echo $concert->post_title . ' - ' . $concert->time; ?></span>
                                     </a>
                                 </h4>
                             </div>
