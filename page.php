@@ -13,9 +13,13 @@
             </header>
             <div class="entry-content" itemprop="mainContentOfPage">
 
-                <?php
-                // the_content(); 
-                ?>
+
+                <div class="container">
+                    <?php // required for woocommerce 
+                    ?>
+                    <?php the_content();   ?>
+                </div>
+
 
                 <?php include('section-loop.php'); ?>
 

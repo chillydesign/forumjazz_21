@@ -711,5 +711,108 @@ function my_change_sort_order($query) {
     endif;
 };
 
+// WOOCOMMERCE
+// WOOCOMMERCE
+// WOOCOMMERCE
+
+/**
+ * Remove password strength check.
+ */
+function iconic_remove_password_strength() {
+    wp_dequeue_script('wc-password-strength-meter');
+}
+add_action('wp_print_scripts', 'iconic_remove_password_strength', 10);
+
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_fields');
+
+// REMOVE EXTRA FIELDS FROM CHECKOUT
+function custom_override_checkout_fields($fields) {
+    unset($fields['billing']['billing_company']);
+    unset($fields['billing']['billing_phone']);
+    unset($fields['order']['order_comments']);
+
+    return $fields;
+}
+add_filter('woocommerce_enable_order_notes_field', '__return_false', 9999);
+add_action('woocommerce_after_order_notes', 'chilly_custom_checkout_field');
+
+
+/**
+ * ADD CUSTOM FIELDS TO CHECKOUT
+ */
+
+function chilly_custom_checkout_field($checkout) {
+
+    echo '<div id="my_custom_checkout_field"><br><br><h3>' . __('Structure') . '</h3>';
+    woocommerce_form_field('structure_name', array(
+        'type'          => 'text',
+        'class'         => array('my-field-class form-row-wide'),
+        'label'         => __('Structure'),
+        'required'  => true,
+        'placeholder'   => __('Structure'),
+    ), $checkout->get_value('structure_name'));
+
+
+    woocommerce_form_field('structure_position', array(
+        'type'          => 'text',
+        'class'         => array('my-field-class form-row-wide'),
+        'label'         => __('Position'),
+        'required'  => true,
+        'placeholder'   => __('Position'),
+    ), $checkout->get_value('structure_position'));
+
+    echo '</div>';
+}
+
+
+
+
+add_action('woocommerce_checkout_update_order_meta', 'my_custom_checkout_field_update_order_meta');
+
+function my_custom_checkout_field_update_order_meta($order_id) {
+    if (!empty($_POST['structure_name'])) {
+        update_post_meta($order_id, 'structure_name', sanitize_text_field($_POST['structure_name']));
+    }
+    if (!empty($_POST['structure_position'])) {
+        update_post_meta($order_id, 'structure_position', sanitize_text_field($_POST['structure_position']));
+    }
+}
+
+
+/**
+ * Display field value on the order edit page
+ */
+add_action('woocommerce_admin_order_data_after_billing_address', 'my_custom_checkout_field_display_admin_order_meta', 10, 1);
+
+function my_custom_checkout_field_display_admin_order_meta($order) {
+    echo '<p><strong>' . __('Structure') . ':</strong> ' . get_post_meta($order->id, 'structure_name', true) . '</p>';
+    echo '<p><strong>' . __('Position') . ':</strong> ' . get_post_meta($order->id, 'structure_position', true) . '</p>';
+}
+
+
+add_action('woocommerce_checkout_process', 'chilly_custom_checkout_field_process');
+
+function chilly_custom_checkout_field_process() {
+    // Check if set, if its not set add an error.
+    if (!$_POST['structure_position']) {
+        wc_add_notice(__('Please enter something into structure_position.'), 'error');
+    }
+    if (!$_POST['structure_name']) {
+        wc_add_notice(__('Please enter something into structure_name.'), 'error');
+    }
+}
+
+// make customers participant user role by default
+function my_new_customer_data($new_customer_data) {
+    $new_customer_data['role'] = 'participant';
+    return $new_customer_data;
+}
+add_filter('woocommerce_new_customer_data', 'my_new_customer_data');
+
+
+
+add_filter('woocommerce_prevent_admin_access', '__return_false');
+// add_filter('woocommerce_disable_admin_bar', '__return_false');
+
 
 ?>
