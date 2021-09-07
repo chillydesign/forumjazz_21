@@ -659,7 +659,7 @@ $con_ren_height: 60px;
     }
 
     h3 {
-        background-color: $dark_grey;
+        background-color: $blue;
         color: white;
         margin: 25px 0 5px;
         padding: 10px;
@@ -812,7 +812,7 @@ td.actions,
 #add_payment_method .wc-proceed-to-checkout a.checkout-button,
 .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
 .woocommerce-checkout .wc-proceed-to-checkout a.checkout-button {
-    background-color: $brand_color;
+    background-color: $blue;
     font-size: $font_size;
 }
 

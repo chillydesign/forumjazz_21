@@ -2,10 +2,10 @@
 
 <?php
 $dates =  array(
-    array('date' => '2021-11-24', 'nice_date' =>  'Wednesday 24', 'concerts' => array()),
-    array('date' => '2021-11-25', 'nice_date' =>  'Thursday 25', 'concerts' => array()),
-    array('date' => '2021-11-26', 'nice_date' =>  'Friday 26', 'concerts' => array()),
-    array('date' => '2021-11-27', 'nice_date' =>  'Saturday 27', 'concerts' => array()),
+    array('date' => '2021-11-24', 'nice_date' =>  'Mercredi 24', 'concerts' => array()),
+    array('date' => '2021-11-25', 'nice_date' =>  'Jeudi 25', 'concerts' => array()),
+    array('date' => '2021-11-26', 'nice_date' =>  'Vendredi 26', 'concerts' => array()),
+    array('date' => '2021-11-27', 'nice_date' =>  'Samedi 27', 'concerts' => array()),
 );
 
 $concerts  = get_posts(array(
