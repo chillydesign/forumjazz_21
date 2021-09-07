@@ -1,23 +1,37 @@
-<?php $title =  get_sub_field('title_nav'); ?>
+<?php $categorie = get_sub_field('categorie'); ?>
+<?php $title = $categorie->name; ?>
+<?php $partenaires  = get_posts(array(
+    'post_type' => 'partenaire',
+    'posts_per_page' => -1,
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'partenaire_category',
+            'field'    => 'slug',
+            'terms'    => $categorie->slug,
+        ),
+    ),
+));
+
+?>
 
 <section class="section  section_partners">
 
     <div class="container">
-        <h2><?php echo get_sub_field('title'); ?></h2>
+        <h2><?php echo $title; ?></h2>
         <div class="partners">
-            <?php while (have_rows('partners')) : the_row(); ?>
+            <?php foreach ($partenaires as $partenaire) : ?>
                 <div class="partner">
-                    <a href="<?php echo get_sub_field('lien'); ?>" target="_blank">
-                        <div class="partner_picture" style="background-image:url('<?php echo get_sub_field('photo')['sizes']['medium']; ?>')"></div>
-                        <?php $description = get_sub_field('description'); ?>
-                        <?php if ($description) : ?>
-                            <div class="partner_description">
-                                <p><?php echo $description; ?></p>
-                            </div>
-                        <?php endif; ?>
+                    <?php $lien = get_field('lien', $partenaire->ID); ?>
+                    <?php $description =  get_the_content(null, false, $partenaire->ID); ?>
+                    <?php $image =  thumbnail_of_post_url($partenaire->ID, 'medium'); ?>
+                    <a href="<?php echo  $lien; ?>" target="_blank">
+                        <div class="partner_picture" style="background-image:url('<?php echo $image; ?>')"></div>
+                        <div class="partner_description">
+                            <p><?php echo $description; ?></p>
+                        </div>
                     </a>
                 </div>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
         </div>
 
     </div><!--  END OF CONTAINER -->
