@@ -741,25 +741,30 @@ add_action('woocommerce_after_order_notes', 'chilly_custom_checkout_field');
  * ADD CUSTOM FIELDS TO CHECKOUT
  */
 
+
+function chilly_extra_woocommerce_fields() {
+    return array(
+        array('structure_name', 'Structure'),
+        array('structure_position', 'Position'),
+        array('structure_telephone', 'Phone')
+    );
+}
+
 function chilly_custom_checkout_field($checkout) {
 
     echo '<div id="my_custom_checkout_field"><br><br><h3>' . __('Structure') . '</h3>';
-    woocommerce_form_field('structure_name', array(
-        'type'          => 'text',
-        'class'         => array('my-field-class form-row-wide'),
-        'label'         => __('Structure'),
-        'required'  => true,
-        'placeholder'   => __('Structure'),
-    ), $checkout->get_value('structure_name'));
+    $fields  = chilly_extra_woocommerce_fields();
+    foreach ($fields   as $field) {
+        woocommerce_form_field($field[0], array(
+            'type'          => 'text',
+            'class'         => array('my-field-class form-row-wide'),
+            'label'         => __($field[1]),
+            'required'  => true,
+            'placeholder'   => __($field[1]),
+        ), $checkout->get_value($field[0]));
+    }
 
 
-    woocommerce_form_field('structure_position', array(
-        'type'          => 'text',
-        'class'         => array('my-field-class form-row-wide'),
-        'label'         => __('Position'),
-        'required'  => true,
-        'placeholder'   => __('Position'),
-    ), $checkout->get_value('structure_position'));
 
     echo '</div>';
 }
@@ -767,14 +772,18 @@ function chilly_custom_checkout_field($checkout) {
 
 
 
-add_action('woocommerce_checkout_update_order_meta', 'my_custom_checkout_field_update_order_meta');
+add_action('woocommerce_checkout_update_order_meta', 'chilly_add_custom_user_meta');
 
-function my_custom_checkout_field_update_order_meta($order_id) {
-    if (!empty($_POST['structure_name'])) {
-        update_post_meta($order_id, 'structure_name', sanitize_text_field($_POST['structure_name']));
-    }
-    if (!empty($_POST['structure_position'])) {
-        update_post_meta($order_id, 'structure_position', sanitize_text_field($_POST['structure_position']));
+function chilly_add_custom_user_meta($order_id) {
+    $order = wc_get_order($order_id);
+    $user_id = $order->get_user_id();
+    if ($user_id) {
+        $fields  = chilly_extra_woocommerce_fields();
+        foreach ($fields as $field) {
+            if (!empty($_POST[$field[0]])) {
+                update_user_meta($user_id, $field[0], $_POST[$field[0]]);
+            }
+        }
     }
 }
 
@@ -785,20 +794,22 @@ function my_custom_checkout_field_update_order_meta($order_id) {
 add_action('woocommerce_admin_order_data_after_billing_address', 'my_custom_checkout_field_display_admin_order_meta', 10, 1);
 
 function my_custom_checkout_field_display_admin_order_meta($order) {
-    echo '<p><strong>' . __('Structure') . ':</strong> ' . get_post_meta($order->id, 'structure_name', true) . '</p>';
-    echo '<p><strong>' . __('Position') . ':</strong> ' . get_post_meta($order->id, 'structure_position', true) . '</p>';
+    $user_id = $order->get_user_id();
+    $fields  = chilly_extra_woocommerce_fields();
+    foreach ($fields   as $field) {
+        echo '<p><strong>' . __($field[1]) . ':</strong> ' . get_user_meta($user_id, $field[0], true) . '</p>';
+    }
 }
-
 
 add_action('woocommerce_checkout_process', 'chilly_custom_checkout_field_process');
 
 function chilly_custom_checkout_field_process() {
     // Check if set, if its not set add an error.
-    if (!$_POST['structure_position']) {
-        wc_add_notice(__('Please enter something into structure_position.'), 'error');
-    }
-    if (!$_POST['structure_name']) {
-        wc_add_notice(__('Please enter something into structure_name.'), 'error');
+    $fields  = chilly_extra_woocommerce_fields();
+    foreach ($fields   as $field) {
+        if (!$_POST[$field[0]]) {
+            wc_add_notice(__('Please enter something into ' . $field[1]), 'error');
+        }
     }
 }
 
