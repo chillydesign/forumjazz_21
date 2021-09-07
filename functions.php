@@ -85,6 +85,12 @@ function blankslate_enqueue() {
     // remove gutenberg css
     wp_dequeue_style('wp-block-library');
 
+
+
+    wp_register_script('map_cluster', '//unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js', array(), '', true); // Custom scripts
+    wp_enqueue_script('map_cluster'); // Enqueue it!
+
+
     $gkey = 'AIzaSyAxQfqRqtPLAW4BolFMCxTiv9y--R8CXdU';
     wp_register_script('wf_google_maps', '//maps.google.com/maps/api/js?key=' . $gkey, array(), '', true); // Custom scripts
     wp_enqueue_script('wf_google_maps'); // Enqueue it!
@@ -808,7 +814,7 @@ function chilly_custom_checkout_field_process() {
     $fields  = chilly_extra_woocommerce_fields();
     foreach ($fields   as $field) {
         if (!$_POST[$field[0]]) {
-            wc_add_notice(__('Please enter something into ' . $field[1]), 'error');
+            wc_add_notice(__($field[1] . ' est obligatoire'), 'error');
         }
     }
 }

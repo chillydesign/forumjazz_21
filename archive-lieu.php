@@ -19,6 +19,7 @@ foreach ($lieux as $lieu) {
 <div id="map_container" class="map_container_large"></div>
 <script>
     const map_locations = <?php echo  json_encode($location_objects); ?>;
+    const theme_directory = '<?php echo get_template_directory_uri(); ?>';
 </script>
 
 </div>

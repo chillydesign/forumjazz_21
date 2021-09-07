@@ -65,6 +65,7 @@
 
                                 <?php echo json_encode($lieu_json); ?>
                             ];
+                            const theme_directory = '<?php echo get_template_directory_uri(); ?>';
                         </script>
                     <?php endif; ?>
                     <?php if ($location_address) : ?>
