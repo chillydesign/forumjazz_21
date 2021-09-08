@@ -18,9 +18,9 @@
                 </div>
 
                 <ul class="welcome_buttons">
-                    <li><a href="#"><strong> Concerts & showcases</strong><span>Ouverts au public & aux professionnels dans la limite des places disponibles.</span></a></li>
-                    <li><a href="#"><strong>Rencontres</strong><span>Uniquement accessible aux professionnels et étudiants sur inscription.</span></a></li>
-                    <li><a href="#"><strong>Extras</strong><span>
+                    <li><a href="<?php echo get_home_url();?>/concerts"><strong> Concerts</strong><span>Ouverts au public & aux professionnels dans la limite des places disponibles.</span></a></li>
+                    <li><a href="<?php echo get_home_url();?>/forum"><strong>Rencontres & showcases</strong><span>Uniquement accessible aux professionnels et étudiants sur inscription.</span></a></li>
+                    <li><a href="<?php echo get_home_url();?>/extras"><strong>Extras</strong><span>
                                 Expositions, masterclass & autres évènements autour du forum.</span></a></li>
                 </ul>
 
@@ -51,21 +51,7 @@
 
             <section id="concerts_and_rencontres">
 
-                <div class="concert_recontre_thing" id="concerts_thing">
 
-                    <h3>GRAND PUBLIC / PROFESSIONNELS / JEUNE PUBLIC</h3>
-                    <div class="columns ">
-                        <div class="column">
-                            <div class="concert_recontre_text">
-                                <?php echo $concerts_box; ?>
-
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="conc_rec_image"></div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="concert_recontre_thing" id="recontres_thing">
 
@@ -97,7 +83,22 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="concert_recontre_thing" id="concerts_thing">
 
+                    <h3>GRAND PUBLIC / PROFESSIONNELS / JEUNE PUBLIC</h3>
+                    <div class="columns ">
+                        <div class="column">
+                            <div class="concert_recontre_text">
+                                <?php echo $concerts_box; ?>
+
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="conc_rec_image"></div>
+                        </div>
+                    </div>
+                </div>
 
 
 
