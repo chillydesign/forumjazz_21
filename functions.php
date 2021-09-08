@@ -758,7 +758,7 @@ function chilly_extra_woocommerce_fields() {
 
 function chilly_custom_checkout_field($checkout) {
 
-    echo '<div id="my_custom_checkout_field"><br><br><h3>' . __('Structure') . '</h3>';
+    echo '<div id="my_custom_checkout_field"><br><br><h3>' . __('Vos informations personnelles') . '</h3>';
     $fields  = chilly_extra_woocommerce_fields();
     foreach ($fields   as $field) {
         woocommerce_form_field($field[0], array(
@@ -770,11 +770,12 @@ function chilly_custom_checkout_field($checkout) {
         ), $checkout->get_value($field[0]));
     }
 
+    // add image upload
+    echo '<p class="form-row my-field-class form-row-wide validate-required" id="structure_image_field" data-priority=""><label for="structure_image" class="">Image&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="file" class="input-text " name="structure_image" id="structure_image" placeholder="Structure"  value=""  /></span></p> ';
 
 
     echo '</div>';
 }
-
 
 
 
@@ -789,6 +790,33 @@ function chilly_add_custom_user_meta($order_id) {
             if (!empty($_POST[$field[0]])) {
                 update_user_meta($user_id, $field[0], $_POST[$field[0]]);
             }
+        }
+
+        // // // add image
+        if (!function_exists('wp_handle_upload')) {
+            require_once(ABSPATH . 'wp-admin/includes/file.php');
+        }
+
+        $movefile = wp_handle_upload($_FILES['structure_image']);
+        // If move was successful, insert WordPress attachment
+        if ($movefile && !isset($movefile['error'])) {
+            $wp_upload_dir = wp_upload_dir();
+            $attachment = array(
+                'guid' => $wp_upload_dir['url'] . '/' . basename($movefile['file']),
+                'post_mime_type' => $movefile['type'],
+                // 'post_title' => preg_replace('/\.[^.]+$/',  "", basename($movefile['file'])),
+                'post_title' => 'image from woocommerce form',
+                'post_content' => "",
+                'post_status' => 'inherit'
+            );
+            $attach_id = wp_insert_attachment($attachment, $movefile['file']);
+            if ($attach_id) {
+                update_user_meta($user_id, 'structure_image',  $attach_id);
+            } else {
+                update_user_meta($user_id, 'structure_image',  'noattachid');
+            }
+        } else {
+            update_user_meta($user_id, 'structure_image',  'movefileerror');
         }
     }
 }
