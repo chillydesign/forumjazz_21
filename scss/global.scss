@@ -150,27 +150,29 @@ section {
 
 header#page_header {
     padding: $section_padding 0 0;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: url('../img/squiggles.png') no-repeat center right;
+    background-size: 300px;
     background-color: $black;
     margin: 0 0 40px;
 
     h1 {
         color: $white;
+
+        @media (min-width: $mobile_width) {
+            text-align: left;
+        }
     }
 
     &.background_image {
-        padding: 120px 0;
         box-shadow: 0 -20px 40px transparentize($black, 0.8) inset;
+        background-position: center center;
+        background-size: cover;
 
         h1 {
             text-shadow: 0 0 30px transparentize($font_color, 0.3), 0 0 40px transparentize($font_color, 0.3);
             text-align: center;
 
-            @media (min-width: $mobile_width) {
-                text-align: left;
-            }
+
 
         }
     }
