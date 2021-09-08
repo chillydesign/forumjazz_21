@@ -128,7 +128,6 @@ h5 a,
 a.button,
 button,
 .woocommerce button.button {
-  text-decoration: underline;
   border: 0;
   transition: all 0.3s;
   color: $white;
@@ -145,7 +144,8 @@ button,
   text-shadow: 0 1px 0px transparentize($font_color, 0.3);
 
 
-  &:visited {
+  &:visited,
+  &:link {
     color: white;
   }
 
