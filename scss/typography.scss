@@ -105,7 +105,9 @@ a {
     color: $font_color;
     text-shadow: 0 1px 0px transparentize($white, 0.3);
 
-    &:visited {
+    &:visited,
+    &:link,
+    &:active {
       color: $font_color;
     }
   }
@@ -115,7 +117,9 @@ a {
     color: $font_color;
     text-shadow: 0 1px 0px transparentize($white, 0.3);
 
-    &:visited {
+    &:visited,
+    &:link,
+    &:active {
       color: $font_color;
     }
   }
