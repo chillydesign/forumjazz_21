@@ -44,12 +44,12 @@
 
             <div class="container">
 
-
+                <?php $site_url = site_url(); ?>
                 <form id="search_concerts_form">
                     <div class="button_group">
-                        <a href="#" class="button">Programmation</a>
-                        <a href="#" class="button">Intervenants</a>
-                        <a href="#" class="button">Participants</a>
+                        <a href="<?php echo $site_url; ?>/forum" class="button">Programmation</a>
+                        <a href="<?php echo $site_url; ?>/intervenants" class="button">Intervenants</a>
+                        <a href="<?php echo $site_url; ?>/participants" class="button">Participants</a>
                     </div>
                     <input type="text" id="search_concerts" placeholder="rechercher ..." />
                 </form>
