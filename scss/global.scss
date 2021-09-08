@@ -432,8 +432,10 @@ $con_ren_height: 60px;
             padding: 0;
         }
 
-        .button {
+        .button,
+        h6 a {
             margin: 0 $padding $padding 0;
+
         }
     }
 

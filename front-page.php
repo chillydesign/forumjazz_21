@@ -42,7 +42,7 @@
                             <?php echo $who_we_are; ?>
 
 
-                            <a href="#" class="button">A propos du forum jazz</a>
+
                         </div>
                     </div>
                 </div>
@@ -58,10 +58,7 @@
                         <div class="column">
                             <div class="concert_recontre_text">
                                 <?php echo $concerts_box; ?>
-                                <a href="#" class="button button_yellow">Programmation</a>
-                                <a href="#" class="button button_yellow">Résonance & Extras </a>
-                                <a href="#" class="button button_yellow">Jeune public</a>
-                                <a href="#" class="button  button_large button_yellow">Billiterie</a>
+
                             </div>
                         </div>
                         <div class="column">
@@ -91,10 +88,7 @@
 
                                 <?php echo $rencontres_box; ?>
 
-                                <a href="#" class="button">Programmation</a>
-                                <a href="#" class="button">Intervenants </a>
-                                <a href="#" class="button">Participants</a>
-                                <a href="#" class="button button_large">Pass pro forum</a>
+
 
                             </div>
                         </div>

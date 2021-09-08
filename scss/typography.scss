@@ -1,9 +1,7 @@
 h1,
 h2,
 h3,
-h4,
-h5,
-h6 {
+h4 {
 
   line-height: 120%;
   word-break: break-word;
@@ -45,9 +43,12 @@ h4 {
   text-transform: uppercase;
 }
 
-h5 {
-  font-size: 2em;
-  font-family: $font_stack;
+h5,
+h6 {
+  font-size: 1em;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
 }
 
 
@@ -103,21 +104,33 @@ a {
     background-color: $brand_color;
     color: $font_color;
     text-shadow: 0 1px 0px transparentize($white, 0.3);
+
+    &:visited {
+      color: $font_color;
+    }
   }
 
   &.button_yellow {
     background-color: $yellow;
     color: $font_color;
     text-shadow: 0 1px 0px transparentize($white, 0.3);
+
+    &:visited {
+      color: $font_color;
+    }
   }
 
 
 }
 
-
+h6 a,
+h5 a,
 a.button,
 button,
 .woocommerce button.button {
+  text-decoration: underline;
+  border: 0;
+  transition: all 0.3s;
   color: $white;
   background-color: $blue;
   display: inline-block;
@@ -131,6 +144,10 @@ button,
   box-shadow: 0 3px 6px transparentize($medium_grey, 0.88);
   text-shadow: 0 1px 0px transparentize($font_color, 0.3);
 
+
+  &:visited {
+    color: white;
+  }
 
   &:hover,
   &:focus {
@@ -243,35 +260,6 @@ cite {
   font-size: #{$font_size * 0.8};
 }
 
-h6 a,
-a h6 {
-  font-size: 21px;
-  background: $yellow;
-  padding: 20px 40px;
-  color: black !important;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  line-height: 1.1;
-
-  @media (min-width: $mobile_width) {
-    display: inline-block;
-  }
-
-  &:link,
-  &:active,
-  &:visited {
-    color: white;
-  }
-
-  &:hover {
-    color: white;
-    background: darken($yellow, 10);
-  }
-}
 
 iframe {
   width: 100%;
