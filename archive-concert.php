@@ -61,21 +61,27 @@ for ($d = 0; $d < sizeof($dates); $d++) {
                     <div class="column">
 
                         <h2><?php echo $date['nice_date']; ?></h2>
+                        <div>
+                            <?php $cur_location = false; ?>
+                            <?php foreach ($date['concerts'] as $concert) : ?>
+                                <?php if ($concert->location_name && $cur_location != $concert->location_name) : ?>
+                        </div>
+                        <!--END OF concert_location_box -->
+                        <div class="concert_location_box">
+                            <h3 class="concert_h3"> <?php echo ($concert->location_name); ?> </h3>
+                        <?php endif; ?>
+                        <div class="concert_box" data-search="<?php echo $concert->search; ?>">
+                            <h4 style="background-image:url('<?php echo $concert->image; ?>')">
+                                <a href="<?php echo $concert->guid; ?>">
+                                    <span> <?php echo $concert->post_title . ' - ' . $concert->time; ?></span>
+                                </a>
+                            </h4>
+                        </div>
 
-                        <?php $cur_location = false; ?>
-                        <?php foreach ($date['concerts'] as $concert) : ?>
-                            <?php if ($concert->location_name && $cur_location != $concert->location_name) : ?>
-                                <h3> <?php echo ($concert->location_name); ?> </h3>
-                            <?php endif; ?>
-                            <div class="concert_box" data-search="<?php echo $concert->search; ?>">
-                                <h4 style="background-image:url('<?php echo $concert->image; ?>')">
-                                    <a href="<?php echo $concert->guid; ?>">
-                                        <span> <?php echo $concert->post_title . ' - ' . $concert->time; ?></span>
-                                    </a>
-                                </h4>
-                            </div>
-                            <?php $cur_location = $concert->location_name; ?>
-                        <?php endforeach; ?>
+
+                        <?php $cur_location = $concert->location_name; ?>
+                    <?php endforeach; ?>
+                        </div>
                     </div>
 
                 <?php endforeach; ?>

@@ -94,7 +94,6 @@
                         </div>
                         <div class="column">
                             <div class="conc_rec_image"></div>
-
                         </div>
                     </div>
                 </div>

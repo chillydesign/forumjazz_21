@@ -62,6 +62,7 @@
 
         let $search_concerts = $('#search_concerts');
         let $concert_boxes = $('.concert_box');
+        let $concert_location_boxes = $('.concert_location_box');
         $search_concerts.on('keyup', function (e) {
             let search_terms = e.target.value.split(' ').filter(t => t != '');
 
@@ -85,7 +86,20 @@
                 } else {
                     $this.removeClass('hidden');
                 }
-            })
+            });
+
+            $concert_location_boxes.each(function () {
+                let $this = $(this);
+                let cbc = $this.find('.concert_box').length;
+                let hbc = $this.find('.concert_box.hidden').length;
+                if (cbc === hbc) {
+                    $this.addClass('hidden')
+                } else {
+                    $this.removeClass('hidden');
+                }
+            });
+
+
 
         })
         // concert search
