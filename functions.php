@@ -873,6 +873,11 @@ function processDatesForConcertGrid($dates, $concerts) {
             if ($concert->location) {
                 $concert->location_name = $concert->location->post_title;
                 $concert->search = sanitize_title($concert->location_name . ' ' . $concert->post_title);
+            } else if ($concert->post_type == 'rencontre') {
+                $concert->location_name = ' Rencontres';
+            }
+
+            if (isset($concert->location_name)) {
                 array_push($dates[$date_index]['concerts'], $concert);
             }
         }
