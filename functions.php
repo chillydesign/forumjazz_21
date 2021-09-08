@@ -860,4 +860,29 @@ add_filter('woocommerce_prevent_admin_access', '__return_false');
 // add_filter('woocommerce_disable_admin_bar', '__return_false');
 
 
+function processDatesForConcertGrid($dates, $concerts) {
+    foreach ($concerts as $concert) {
+        $concert_date = get_field('date',  $concert->ID);
+
+        $date_index = array_search($concert_date, array_column($dates, 'date'));
+        if (is_int($date_index)) {
+            $concert->location = get_field('location', $concert->ID);
+            $concert->time = get_field('time',  $concert->ID);
+            $concert->image = thumbnail_of_post_url($concert->ID, 'medium');
+
+            if ($concert->location) {
+                $concert->location_name = $concert->location->post_title;
+                $concert->search = sanitize_title($concert->location_name . ' ' . $concert->post_title);
+                array_push($dates[$date_index]['concerts'], $concert);
+            }
+        }
+    }
+
+    // for some reason this doesnt work with a normal foreach loop
+    for ($d = 0; $d < sizeof($dates); $d++) {
+        usort($dates[$d]['concerts'], "sort_by_location_name");
+    }
+    return $dates;
+}
+
 ?>

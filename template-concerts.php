@@ -21,28 +21,8 @@
                 )
             )
         ));
+        $processed_dates =  processDatesForConcertGrid($dates, $concerts);
 
-        foreach ($concerts as $concert) {
-            $concert_date = get_field('date',  $concert->ID);
-
-            $date_index = array_search($concert_date, array_column($dates, 'date'));
-            if (is_int($date_index)) {
-                $concert->location = get_field('location', $concert->ID);
-                $concert->time = get_field('time',  $concert->ID);
-                $concert->image = thumbnail_of_post_url($concert->ID, 'medium');
-
-                if ($concert->location) {
-                    $concert->location_name = $concert->location->post_title;
-                    $concert->search = sanitize_title($concert->location_name . ' ' . $concert->post_title);
-                    array_push($dates[$date_index]['concerts'], $concert);
-                }
-            }
-        }
-
-        // for some reason this doesnt work with a normal foreach loop
-        for ($d = 0; $d < sizeof($dates); $d++) {
-            usort($dates[$d]['concerts'], "sort_by_location_name");
-        }
 
 
 
@@ -66,7 +46,7 @@
                 </form>
                 <div id="concert_grid">
                     <div class="columns">
-                        <?php foreach ($dates as $date) : ?>
+                        <?php foreach ($processed_dates as $date) : ?>
                             <div class="column">
 
                                 <h2><?php echo $date['nice_date']; ?></h2>
