@@ -153,13 +153,18 @@ header#page_header {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: $black;
+    margin: 0 0 40px;
+
+    h1 {
+        color: $white;
+    }
 
     &.background_image {
         padding: 120px 0;
         box-shadow: 0 -20px 40px transparentize($black, 0.8) inset;
 
         h1 {
-            color: $white;
             text-shadow: 0 0 30px transparentize($font_color, 0.3), 0 0 40px transparentize($font_color, 0.3);
             text-align: center;
 
