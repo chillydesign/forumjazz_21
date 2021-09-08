@@ -1,3 +1,4 @@
+<?php /* Template Name: Forum Template */  ?>
 <?php get_header(); ?>
 
 <?php
