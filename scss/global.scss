@@ -653,11 +653,28 @@ $con_ren_height: 60px;
 
 
 
-#search_concerts {
-    width: 100%;
-    padding: 20px;
-    margin: 0 0 10px;
-    border: 25px solid $light_grey;
+
+
+#search_concerts_form {
+    background-color: lighten($light_grey, 5);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+
+    .button_group {
+        margin: 0;
+
+        a {
+            background-color: $orange;
+        }
+    }
+
+    input {
+        width: 200px
+    }
 }
 
 #concert_grid {
@@ -703,7 +720,6 @@ $con_ren_height: 60px;
         margin: 0 0 5px;
         padding: 10px;
         font-size: 1.6em;
-
     }
 
     h4 {
@@ -712,7 +728,7 @@ $con_ren_height: 60px;
         margin: 0;
         background: no-repeat center center $light_grey;
         background-size: cover;
-
+        border-radius: 5px;
 
         a {
             margin: 0 0 5px;

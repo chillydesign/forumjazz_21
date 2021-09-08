@@ -41,9 +41,15 @@
 
             <div class="container">
 
-                <form>
+                <form id="search_concerts_form">
+                    <div class="button_group">
+                        <a href="#" class="button">Programmation</a>
+                        <a href="#" class="button">Sélection jeune public</a>
+                        <a href="#" class="button">Jeune public</a>
+                    </div>
                     <input type="text" id="search_concerts" placeholder="rechercher ..." />
                 </form>
+
                 <div id="concert_grid">
                     <div class="columns">
                         <?php foreach ($processed_dates as $date) : ?>
