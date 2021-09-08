@@ -16,7 +16,7 @@ $concerts  = get_posts(array(
             'taxonomy' => 'concert_category',
             'field'    => 'slug',
             'terms' => 'showcase',
-            'operator' => 'NOT EXISTS'
+            'operator' => 'NOT IN'
         )
     )
 ));
