@@ -11,7 +11,14 @@ $dates =  array(
 $concerts  = get_posts(array(
     'post_type' => 'concert',
     'posts_per_page' => -1,
-    'category__not_in' => array(3), // dont show showcase category
+    'tax_query'      => array(
+        array(
+            'taxonomy' => 'concert_category',
+            'field'    => 'slug',
+            'terms' => 'showcase',
+            'operator' => 'NOT EXISTS'
+        )
+    )
 ));
 
 foreach ($concerts as $concert) {
