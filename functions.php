@@ -875,6 +875,7 @@ function processDatesForConcertGrid($dates, $concerts) {
                 $concert->search = sanitize_title($concert->location_name . ' ' . $concert->post_title);
             } else if ($concert->post_type == 'rencontre') {
                 $concert->location_name = ' Rencontres';
+                $concert->search = sanitize_title($concert->post_title);
             }
 
             if (isset($concert->location_name)) {
