@@ -645,9 +645,28 @@ $con_ren_height: 60px;
 
 
 
+
+#search_concerts {
+    width: 100%;
+    padding: 20px;
+    margin: -20px 0 10px;
+}
+
 #concert_grid {
     text-align: center;
     position: relative;
+
+    .concert_box {
+        transition: all 0.3s;
+
+        &.hidden {
+            opacity: 0.2;
+            // display: none;
+            transform: scale(0.8);
+
+
+        }
+    }
 
     h2 {
         font-size: 3em;
@@ -657,15 +676,16 @@ $con_ren_height: 60px;
         background: white;
         padding: 20px 10px;
         z-index: 100;
+        margin-bottom: -20px;
 
     }
 
     h3 {
         background-color: $blue;
         color: white;
-        margin: 25px 0 5px;
+        margin: 55px 0 5px;
         padding: 10px;
-        font-size: 2em;
+        font-size: 1.6em;
 
     }
 

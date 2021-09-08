@@ -57,12 +57,45 @@
         }
 
 
+        // concert search
+        // concert search
+
+        let $search_concerts = $('#search_concerts');
+        let $concert_boxes = $('.concert_box');
+        $search_concerts.on('keyup', function (e) {
+            let search_terms = e.target.value.split(' ').filter(t => t != '');
+
+            $concert_boxes.each(function () {
+                let $this = $(this);
+                let should_hide = true;
+                if (search_terms.length > 0) {
+                    let box_terms = $this.data('search').split('-');
+                    search_terms.forEach(st => {
+                        box_terms.forEach(bt => {
+                            if (bt.includes(st)) {
+                                should_hide = false;
+                            }
+                        })
+                    })
+                } else {
+                    should_hide = false;
+                }
+                if (should_hide) {
+                    $this.addClass('hidden');
+                } else {
+                    $this.removeClass('hidden');
+                }
+            })
+
+        })
+        // concert search
+        // concert search
+
+
 
         // MAP
         // MAP
-
         if (typeof map_locations !== "undefined") {
-
             var map_options = {
                 zoom: 15,
                 mapTypeControl: true,
@@ -97,12 +130,7 @@
                 imagePath:
                     theme_directory + '/img/m',
             });
-
-
-
-
         }
-
         // MAP
         // MAP
 

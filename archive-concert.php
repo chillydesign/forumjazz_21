@@ -21,8 +21,10 @@ foreach ($concerts as $concert) {
         $concert->location = get_field('location', $concert->ID);
         $concert->time = get_field('time',  $concert->ID);
         $concert->image = thumbnail_of_post_url($concert->ID, 'medium');
+
         if ($concert->location) {
             $concert->location_name = $concert->location->post_title;
+            $concert->search = sanitize_title($concert->location_name . ' ' . $concert->post_title);
             array_push($dates[$date_index]['concerts'], $concert);
         }
     }
@@ -49,6 +51,10 @@ for ($d = 0; $d < sizeof($dates); $d++) {
 
 
     <div class="container">
+
+
+        <input type="text" id="search_concerts" placeholder="rechercher ..." />
+
         <div id="concert_grid">
             <div class="columns">
                 <?php foreach ($dates as $date) : ?>
@@ -58,10 +64,10 @@ for ($d = 0; $d < sizeof($dates); $d++) {
 
                         <?php $cur_location = false; ?>
                         <?php foreach ($date['concerts'] as $concert) : ?>
-                            <div class="concerts">
-                                <?php if ($concert->location_name && $cur_location != $concert->location_name) : ?>
-                                    <h3> <?php echo ($concert->location_name); ?> </h3>
-                                <?php endif; ?>
+                            <?php if ($concert->location_name && $cur_location != $concert->location_name) : ?>
+                                <h3> <?php echo ($concert->location_name); ?> </h3>
+                            <?php endif; ?>
+                            <div class="concert_box" data-search="<?php echo $concert->search; ?>">
                                 <h4 style="background-image:url('<?php echo $concert->image; ?>')">
                                     <a href="<?php echo $concert->guid; ?>">
                                         <span> <?php echo $concert->post_title . ' - ' . $concert->time; ?></span>
