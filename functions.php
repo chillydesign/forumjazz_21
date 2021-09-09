@@ -779,7 +779,7 @@ function chilly_custom_checkout_field($checkout) {
     }
 
     // add image upload
-    echo '<p class="form-row my-field-class form-row-wide validate-required" id="structure_image_field" data-priority=""><label for="structure_image" class="">Image&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="file" class="input-text " name="structure_image" id="structure_image" placeholder="Structure"  value=""  /></span></p><script>const wordpress_ajax_url = "' .  admin_url('admin-ajax.php') . '"</script> ';
+    echo '<p class="form-row my-field-class form-row-wide validate-required" id="structure_image_field" data-priority=""><label for="structure_image" class="">Image&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="hidden" name="structure_image_id" id="structure_image_id" /><input type="file" class="input-text " name="structure_image" id="structure_image" placeholder="Structure"  value=""  /></span></p><script>const wordpress_ajax_url = "' .  admin_url('admin-ajax.php') . '"</script> ';
 
 
     echo '</div>';
@@ -813,7 +813,7 @@ function wdm_upload_image_action_callback() {
         if (!function_exists('wp_handle_upload'))
             require_once(ABSPATH . 'wp-admin/includes/file.php');
 
-        $uploadedfile = $_FILES[$structure_image];
+        $uploadedfile = $_FILES['structure_image'];
         $upload_overrides = array(
             'test_form' => false,
             'test_size' => true,
@@ -837,54 +837,17 @@ function wdm_upload_image_action_callback() {
             $attach_id = wp_insert_attachment($attachment, $movefile['file']);
             // echo $filename;
             echo $attach_id;
+            wp_die();
         } else {
             // upload error 
-            var_dump($movefile['error']);
+            echo ($movefile['error']);
         }
     }
+    echo 'error';
 }
 
 
 
-add_action('woocommerce_checkout_posted_data', 'chilly_woocommerce_checkout_posted_data');
-
-function chilly_woocommerce_checkout_posted_data($data) {
-    // $f = ABSPATH . "/log.log";
-    // $myfile = fopen($f, "w") or die("Unable to open loglog!");
-    // $str = serialize($data);
-    // fwrite($myfile, $str);
-    // fclose($myfile);
-
-
-    // // // add image
-    if (!function_exists('wp_handle_upload')) {
-        require_once(ABSPATH . 'wp-admin/includes/file.php');
-    }
-
-    // $movefile = wp_handle_upload($_FILES['structure_image']);
-    // // If move was successful, insert WordPress attachment
-    // if ($movefile && !isset($movefile['error'])) {
-    //     $wp_upload_dir = wp_upload_dir();
-    //     $attachment = array(
-    //         'guid' => $wp_upload_dir['url'] . '/' . basename($movefile['file']),
-    //         'post_mime_type' => $movefile['type'],
-    //         // 'post_title' => preg_replace('/\.[^.]+$/',  "", basename($movefile['file'])),
-    //         'post_title' => 'image from woocommerce form',
-    //         'post_content' => "",
-    //         'post_status' => 'inherit'
-    //     );
-    //     $attach_id = wp_insert_attachment($attachment, $movefile['file']);
-    //     if ($attach_id) {
-    //         update_user_meta($user_id, 'structure_image',  $attach_id);
-    //     } else {
-    //         update_user_meta($user_id, 'structure_image',  'noattachid');
-    //     }
-    // } else {
-    //     update_user_meta($user_id, 'structure_image',  'movefileerror');
-    // }
-
-    return $data;
-}
 
 
 add_action('woocommerce_checkout_update_order_meta', 'chilly_add_custom_user_meta');
@@ -898,6 +861,8 @@ function chilly_add_custom_user_meta($order_id) {
                 update_user_meta($user_id, $field[0], $_POST[$field[0]]);
             }
         }
+
+        update_user_meta($user_id, 'structure_image',   $_POST['structure_image_id']);
     }
 }
 

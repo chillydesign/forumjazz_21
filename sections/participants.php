@@ -16,13 +16,22 @@
 
             <?php foreach ($participants as $participant) : ?>
 
-                <?php //$image =  get_field('image',  "user_" . $participant->ID); 
+                <?php
+                $image_id =  get_field('structure_image',  "user_" . $participant->ID);
+                if ($image_id) {
+                    $image = wp_get_attachment_image_src($image_id, 'medium')[0];
+                } else {
+                    $image = get_avatar_url($participant->user_email);
+                }
+                $structure =  get_field('structure_name',  "user_" . $participant->ID);
+                $position =  get_field('structure_position',  "user_" . $participant->ID);
+
                 ?>
-                <?php $structure =  get_field('structure_name',  "user_" . $participant->ID); ?>
-                <?php $position =  get_field('structure_position',  "user_" . $participant->ID); ?>
-                <?php $gravatar = get_avatar_url($participant->user_email); ?>
+
+
+
                 <div class="participant_container">
-                    <div class="participant_image" style="background-image: url('<?php echo $gravatar; ?>');">
+                    <div class="participant_image" style="background-image: url('<?php echo $image; ?>');">
                     </div>
                     <div class="participant_text">
                         <h3>

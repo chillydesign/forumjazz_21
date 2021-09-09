@@ -133,6 +133,10 @@
                     success: function (response) {
                         /*handle response */
                         console.log(response);
+                        $('#structure_image_id').val(response);
+                    },
+                    error: function (error) {
+                        console.log(error);
                     }
                 });
             }
