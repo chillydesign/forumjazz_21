@@ -835,6 +835,9 @@ function wdm_upload_image_action_callback() {
                 'post_status' => 'inherit'
             );
             $attach_id = wp_insert_attachment($attachment, $movefile['file']);
+            // add thumnbails
+            $attach_data = wp_generate_attachment_metadata($attach_id, $movefile['file']);
+            wp_update_attachment_metadata($attach_id,  $attach_data);
             // echo $filename;
             echo $attach_id;
             wp_die();
