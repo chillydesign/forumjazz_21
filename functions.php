@@ -829,7 +829,7 @@ function wdm_upload_image_action_callback() {
             $attachment = array(
                 'guid' => $wp_upload_dir['url'] . '/' . basename($movefile['file']),
                 'post_mime_type' => $movefile['type'],
-                // 'post_title' => preg_replace('/\.[^.]+$/',  "", basename($movefile['file'])),
+                // 'post_title' =>  sanitize_title(basename($movefile['file'])),
                 'post_title' => 'image from woocommerce form',
                 'post_content' => "",
                 'post_status' => 'inherit'
