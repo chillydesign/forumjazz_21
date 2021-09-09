@@ -846,6 +846,15 @@ ul.wc_payment_methods {
     line-height: 46px;
 }
 
+
+.woocommerce-message {
+    font-size: $font_size;
+
+    a.button {
+        background-color: $blue;
+    }
+}
+
 .woocommerce {
     p {
         input {
