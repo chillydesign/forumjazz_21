@@ -891,4 +891,32 @@ function processDatesForConcertGrid($dates, $concerts) {
     return $dates;
 }
 
+
+add_filter( 'cfw_get_billing_checkout_fields', 'remove_checkout_fields', 100 );
+
+function remove_checkout_fields( $fields ) {
+	unset( $fields['billing_company'] );
+	unset( $fields['billing_city'] );
+	unset( $fields['billing_postcode'] );
+	unset( $fields['billing_country'] );
+	unset( $fields['billing_state'] );
+	unset( $fields['billing_address_1'] );
+	unset( $fields['billing_address_2'] );
+	return $fields;
+}
+
+// Set billing address fields to not required
+add_filter( 'woocommerce_checkout_fields', 'unrequire_checkout_fields' );
+
+function unrequire_checkout_fields( $fields ) {
+	$fields['billing']['billing_company']['required']   = false;
+	$fields['billing']['billing_city']['required']      = false;
+	$fields['billing']['billing_postcode']['required']  = false;
+	$fields['billing']['billing_country']['required']   = false;
+	$fields['billing']['billing_state']['required']     = false;
+	$fields['billing']['billing_address_1']['required'] = false;
+	$fields['billing']['billing_address_2']['required'] = false;
+	return $fields;
+}  
+
 ?>
