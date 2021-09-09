@@ -16,14 +16,13 @@
 
             <?php foreach ($participants as $participant) : ?>
 
-                <?php $image =  get_field('image',  "user_" . $participant->ID); ?>
+                <?php //$image =  get_field('image',  "user_" . $participant->ID); 
+                ?>
                 <?php $structure =  get_field('structure_name',  "user_" . $participant->ID); ?>
                 <?php $position =  get_field('structure_position',  "user_" . $participant->ID); ?>
+                <?php $gravatar = get_avatar_url($participant->user_email); ?>
                 <div class="participant_container">
-                    <div class="participant_image">
-                        <?php if ($image) : ?>
-                            <!-- <img src="<?php echo $image['sizes']['medium']; ?>" alt="<?php echo ($participant->display_name); ?>" /> -->
-                        <?php endif; ?>
+                    <div class="participant_image" style="background-image: url('<?php echo $gravatar; ?>');">
                     </div>
                     <div class="participant_text">
                         <h3>
