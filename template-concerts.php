@@ -10,25 +10,14 @@
         );
 
 
-        if (isset($_GET['jeune_public'])) {
-            $tax_query = array(
-                array(
-                    'taxonomy' => 'concert_category',
-                    'field'    => 'slug',
-                    'terms' => 'jeune-public',
-                )
-            );
-        } else {
-            $tax_query = array(
-                array(
-                    'taxonomy' => 'concert_category',
-                    'field'    => 'slug',
-                    'terms' => 'showcase',
-                    'operator' => 'NOT IN'
-                )
-            );
-        }
-
+        $tax_query = array(
+            array(
+                'taxonomy' => 'concert_category',
+                'field'    => 'slug',
+                'terms' => 'showcase',
+                'operator' => 'NOT IN'
+            )
+        );
         $concerts  = get_posts(array(
             'post_type' => 'concert',
             'posts_per_page' => -1,
@@ -52,7 +41,7 @@
                 <form id="search_concerts_form">
                     <div class="button_group">
                         <a href="<?php echo $site_url; ?>/concerts" class="button">Programmation</a>
-                        <a href="<?php echo $site_url; ?>/concerts?jeune_public" class="button">Sélection jeune public</a>
+                        <a href="<?php echo $site_url; ?>/jeune-public" class="button">Sélection jeune public</a>
                         <a href="<?php echo $site_url; ?>/extras" class="button">Extras</a>
                     </div>
                     <input type="text" id="search_concerts" placeholder="rechercher ..." />

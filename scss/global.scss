@@ -677,50 +677,14 @@ $con_ren_height: 60px;
     }
 }
 
-#concert_grid {
-    text-align: center;
-    position: relative;
 
+.concert_location_box {
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
 
-    .hidden {
-        // opacity: 0.2;
-        display: none;
-        // transform: scale(0.8);
-
-
-    }
-
-
-    .concert_location_box {
-        margin-bottom: 40px;
-        margin-top: 20px;
-    }
-
-    .concert_box {
-        transition: all 0.3s;
-
-
-    }
-
-    h2 {
-        font-size: 3em;
-        margin: 0;
-        position: sticky;
-        top: 0px;
-        background: white;
-        padding: 20px 10px;
-        z-index: 100;
-        margin-bottom: -20px;
-
-    }
-
-    h3 {
-        background-color: $blue;
-        color: white;
-        margin: 0 0 5px;
-        padding: 10px;
-        font-size: 1.6em;
-    }
+.concert_box {
+    transition: all 0.3s;
 
     h4 {
         font-size: $font_size;
@@ -753,6 +717,58 @@ $con_ren_height: 60px;
             }
         }
     }
+}
+
+
+
+
+#concert_grid {
+    text-align: center;
+    position: relative;
+
+
+    .hidden {
+        // opacity: 0.2;
+        display: none;
+        // transform: scale(0.8)
+    }
+
+    &.jeune_concert_grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .concert_location_box {
+            flex: 1 auto;
+            width: calc(33% - 20px);
+            min-width: calc(33% - 20px);
+            max-width: calc(33% - 20px);
+            margin: 10px;
+        }
+    }
+
+
+
+    h2 {
+        font-size: 3em;
+        margin: 0;
+        position: sticky;
+        top: 0px;
+        background: white;
+        padding: 20px 10px;
+        z-index: 100;
+        margin-bottom: -20px;
+
+    }
+
+    h3 {
+        background-color: $blue;
+        color: white;
+        margin: 0 0 5px;
+        padding: 10px;
+        font-size: 1.6em;
+    }
+
 }
 
 
