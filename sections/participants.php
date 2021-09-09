@@ -30,7 +30,9 @@
                             <?php echo ($participant->first_name); ?>
                             <?php echo ($participant->last_name); ?>
                         </h3>
-                        <p> <strong><?php echo $structure; ?></strong> &nbsp; <?php echo $position; ?></p>
+                        <p> <strong><?php echo $structure; ?></strong> <br>
+                            <em><?php echo $position; ?></em>
+                        </p>
                     </div>
 
 
