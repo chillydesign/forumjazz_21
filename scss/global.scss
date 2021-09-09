@@ -856,6 +856,34 @@ ul.wc_payment_methods {
 }
 
 
+nav.woocommerce-MyAccount-navigation {
+    ul {
+        li {
+            list-style: none;
+
+            padding: 9px;
+            background: #f1f1f1;
+            margin: 0 0 3px;
+
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+
+.woocommerce ul.order_details {
+    padding: $padding;
+
+    background-color: $light_grey;
+
+    li {
+        font-size: $font_size;
+    }
+}
+
+
 .woocommerce {
     p {
         input {
