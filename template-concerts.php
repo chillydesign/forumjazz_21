@@ -9,23 +9,32 @@
             array('date' => '2021-11-27', 'nice_date' =>  'Samedi 27', 'concerts' => array()),
         );
 
-        $concerts  = get_posts(array(
-            'post_type' => 'concert',
-            'posts_per_page' => -1,
-            'tax_query'      => array(
+
+        if (isset($_GET['jeune_public'])) {
+            $tax_query = array(
+                array(
+                    'taxonomy' => 'concert_category',
+                    'field'    => 'slug',
+                    'terms' => 'jeune-public',
+                )
+            );
+        } else {
+            $tax_query = array(
                 array(
                     'taxonomy' => 'concert_category',
                     'field'    => 'slug',
                     'terms' => 'showcase',
                     'operator' => 'NOT IN'
                 )
-            )
+            );
+        }
+
+        $concerts  = get_posts(array(
+            'post_type' => 'concert',
+            'posts_per_page' => -1,
+            'tax_query'      =>  $tax_query
         ));
         $processed_dates =  processDatesForConcertGrid($dates, $concerts);
-
-
-
-
 
         ?>
 
@@ -38,14 +47,13 @@
 
         <section>
 
-
             <div class="container">
-
+                <?php $site_url = site_url(); ?>
                 <form id="search_concerts_form">
                     <div class="button_group">
-                        <a href="#" class="button">Programmation</a>
-                        <a href="#" class="button">Sélection jeune public</a>
-                        <a href="#" class="button">Jeune public</a>
+                        <a href="<?php echo $site_url; ?>/concerts" class="button">Programmation</a>
+                        <a href="<?php echo $site_url; ?>/concerts?jeune_public" class="button">Sélection jeune public</a>
+                        <a href="<?php echo $site_url; ?>/extras" class="button">Extras</a>
                     </div>
                     <input type="text" id="search_concerts" placeholder="rechercher ..." />
                 </form>
