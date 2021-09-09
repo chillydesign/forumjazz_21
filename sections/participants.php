@@ -17,10 +17,16 @@
             <?php foreach ($participants as $participant) : ?>
 
                 <?php
+                $image = null;
                 $image_id =  get_field('structure_image',  "user_" . $participant->ID);
                 if ($image_id) {
-                    $image = wp_get_attachment_image_src($image_id, 'medium')[0];
-                } else {
+                    $image_src = wp_get_attachment_image_src($image_id, 'medium');
+                    var_dump($image_src);
+                    if ($image_src) {
+                        $image = $image_src[0];
+                    }
+                }
+                if (!$image) {
                     $image = get_avatar_url($participant->user_email);
                 }
                 $structure =  get_field('structure_name',  "user_" . $participant->ID);
