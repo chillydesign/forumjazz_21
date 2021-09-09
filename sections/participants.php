@@ -19,7 +19,7 @@
                 <?php
                 $image_id =  get_field('structure_image',  "user_" . $participant->ID);
                 if ($image_id) {
-                    $image = wp_get_attachment_image_src($image_id, 'medium')[0];
+                    $image = wp_get_attachment_image_src($image_id)[0];
                 } else {
                     $image = get_avatar_url($participant->user_email);
                 }
