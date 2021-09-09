@@ -19,7 +19,7 @@
 
                 <ul class="welcome_buttons">
                     <li><a href="<?php echo get_home_url();?>/concerts"><strong> Concerts</strong><span>Ouverts au public & aux professionnels dans la limite des places disponibles.</span></a></li>
-                    <li><a href="<?php echo get_home_url();?>/forum"><strong>Rencontres & showcases</strong><span>Uniquement accessible aux professionnels et étudiants sur inscription.</span></a></li>
+                    <li><a href="<?php echo get_home_url();?>/rencontres"><strong>Rencontres & showcases</strong><span>Uniquement accessible aux professionnels et étudiants sur inscription.</span></a></li>
                     <li><a href="<?php echo get_home_url();?>/extras"><strong>Extras</strong><span>
                                 Expositions, masterclass & autres évènements autour du forum.</span></a></li>
                 </ul>
