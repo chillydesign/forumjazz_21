@@ -897,9 +897,43 @@ td.actions,
     width: calc(33% - 20px);
     min-width: calc(33% - 20px);
     max-width: calc(33% - 20px);
-    padding: $padding;
     background-color: $light_grey;
     margin: 10px;
+    display: flex;
+    border-radius: 5px;
+    flex-wrap: wrap;
+
+    .participant_image {
+        width: 100px;
+        background-color: darken($light_grey, 10);
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        position: relative;
+        overflow: hidden;
+
+        &:before,
+        &:after {
+            content: '';
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            top: 20px;
+            left: 20px;
+            background-color: darken($light_grey, 15);
+            position: absolute;
+        }
+
+        &:after {
+            width: 120px;
+            height: 150px;
+            top: 85px;
+            left: -10px;
+        }
+    }
+
+    .participant_text {
+        padding: 10px;
+    }
 
     h3 {
         padding: 0 0 5px;
