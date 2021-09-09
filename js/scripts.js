@@ -107,6 +107,40 @@
 
 
 
+        $("#structure_image").change(function () {
+            let formdata = new FormData();
+            var file;
+            var len = this.files.length;
+            if (len > 0) {
+                file = this.files[0];
+                if (formdata) {
+                    formdata.append("structure_image", file);
+                    formdata.append('action', 'wdm_upload_image_action');
+                }
+
+            }
+            else {
+                formdata = false;
+            }
+
+            if (formdata) {
+                $.ajax({
+                    type: 'POST',
+                    url: wordpress_ajax_url,
+                    data: formdata,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        /*handle response */
+                        console.log(response);
+                    }
+                });
+            }
+        });
+
+
+
+
         // MAP
         // MAP
         if (typeof map_locations !== "undefined") {

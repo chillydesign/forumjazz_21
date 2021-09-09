@@ -779,22 +779,81 @@ function chilly_custom_checkout_field($checkout) {
     }
 
     // add image upload
-    echo '<p class="form-row my-field-class form-row-wide validate-required" id="structure_image_field" data-priority=""><label for="structure_image" class="">Image&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="file" class="input-text " name="structure_image" id="structure_image" placeholder="Structure"  value=""  /></span></p> ';
+    echo '<p class="form-row my-field-class form-row-wide validate-required" id="structure_image_field" data-priority=""><label for="structure_image" class="">Image&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="file" class="input-text " name="structure_image" id="structure_image" placeholder="Structure"  value=""  /></span></p><script>const wordpress_ajax_url = "' .  admin_url('admin-ajax.php') . '"</script> ';
 
 
     echo '</div>';
 }
 
 
+add_action('wp_ajax_wdm_upload_image_action', 'wdm_upload_image_action_callback');
+add_action('wp_ajax_nopriv_wdm_upload_image_action', 'wdm_upload_image_action_callback');
+function wdm_upload_image_action_callback() {
+    if (!empty($_FILES)) {
+        //Check if there are any errors in the upload.
+        if ($_FILES['structure_image']['error'] > 0) {
+            die('An error occurred when uploading.');
+        }
+
+        /* validate the file type */
+
+        // check if a file with the same name exists
+        if (file_exists('upload/' . $_FILES['structure_image']['name'])) {
+            die('File name exists.');
+        }
+
+        //get file path
+        $filename = $_FILES['structure_image']['name'];
+        $type = $_FILES['structure_image']['type'];
+        $tmp_name = $_FILES['structure_image']['tmp_name'];
+        $error = $_FILES['structure_image']['error'];
+        $size = $_FILES['structure_image']['size'];
+
+        //Upload Files to WordPress Uploads Folder
+        if (!function_exists('wp_handle_upload'))
+            require_once(ABSPATH . 'wp-admin/includes/file.php');
+
+        $uploadedfile = $_FILES[$structure_image];
+        $upload_overrides = array(
+            'test_form' => false,
+            'test_size' => true,
+            'test_upload' => true,
+        );
+
+        $movefile = wp_handle_upload($uploadedfile, $upload_overrides);
+
+
+        if ($movefile && !isset($movefile['error'])) {
+            //file is uploaded successfully
+            $wp_upload_dir = wp_upload_dir();
+            $attachment = array(
+                'guid' => $wp_upload_dir['url'] . '/' . basename($movefile['file']),
+                'post_mime_type' => $movefile['type'],
+                // 'post_title' => preg_replace('/\.[^.]+$/',  "", basename($movefile['file'])),
+                'post_title' => 'image from woocommerce form',
+                'post_content' => "",
+                'post_status' => 'inherit'
+            );
+            $attach_id = wp_insert_attachment($attachment, $movefile['file']);
+            // echo $filename;
+            echo $attach_id;
+        } else {
+            // upload error 
+            var_dump($movefile['error']);
+        }
+    }
+}
+
+
 
 add_action('woocommerce_checkout_posted_data', 'chilly_woocommerce_checkout_posted_data');
 
-function chilly_woocommerce_checkout_posted_data() {
-    $f = ABSPATH . "/log.log";
-    $myfile = fopen($f, "w") or die("Unable to open loglog!");
-    $str = serialize($_FILES);
-    fwrite($myfile, $str);
-    fclose($myfile);
+function chilly_woocommerce_checkout_posted_data($data) {
+    // $f = ABSPATH . "/log.log";
+    // $myfile = fopen($f, "w") or die("Unable to open loglog!");
+    // $str = serialize($data);
+    // fwrite($myfile, $str);
+    // fclose($myfile);
 
 
     // // // add image
@@ -823,6 +882,8 @@ function chilly_woocommerce_checkout_posted_data() {
     // } else {
     //     update_user_meta($user_id, 'structure_image',  'movefileerror');
     // }
+
+    return $data;
 }
 
 
