@@ -6,6 +6,7 @@
             'post_type' => 'extra',
             'posts_per_page' => -1,
         ));
+        $concerts = processConcerts($concerts);
 
         ?>
 

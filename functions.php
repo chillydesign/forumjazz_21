@@ -905,23 +905,38 @@ add_filter('woocommerce_prevent_admin_access', '__return_false');
 // add_filter('woocommerce_disable_admin_bar', '__return_false');
 
 
+
+function processConcerts($concerts) {
+    foreach ($concerts as $concert) {
+        processConcert($concert);
+    }
+    return $concerts;
+}
+
+function processConcert($concert) {
+    $concert->location = get_field('location', $concert->ID);
+    $concert->time = get_field('time',  $concert->ID);
+    $concert->image = thumbnail_of_post_url($concert->ID, 'medium');
+    $concert->search = sanitize_title($concert->post_title);
+
+    if ($concert->location) {
+        $concert->location_name = $concert->location->post_title;
+        $concert->search = sanitize_title($concert->location_name . ' ' . $concert->post_title);
+    } else if ($concert->post_type == 'rencontre') {
+        $concert->location_name = ' Rencontres';
+    }
+
+    return $concert;
+}
+
 function processDatesForConcertGrid($dates, $concerts) {
     foreach ($concerts as $concert) {
         $concert_date = get_field('date',  $concert->ID);
 
         $date_index = array_search($concert_date, array_column($dates, 'date'));
         if (is_int($date_index)) {
-            $concert->location = get_field('location', $concert->ID);
-            $concert->time = get_field('time',  $concert->ID);
-            $concert->image = thumbnail_of_post_url($concert->ID, 'medium');
 
-            if ($concert->location) {
-                $concert->location_name = $concert->location->post_title;
-                $concert->search = sanitize_title($concert->location_name . ' ' . $concert->post_title);
-            } else if ($concert->post_type == 'rencontre') {
-                $concert->location_name = ' Rencontres';
-                $concert->search = sanitize_title($concert->post_title);
-            }
+            $concert = processConcert($concert);
 
             if (isset($concert->location_name)) {
                 array_push($dates[$date_index]['concerts'], $concert);

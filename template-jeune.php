@@ -14,6 +14,7 @@
                 )
             )
         ));
+        $concerts = processConcerts($concerts);
 
 
         ?>
