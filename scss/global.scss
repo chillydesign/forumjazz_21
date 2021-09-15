@@ -1088,6 +1088,13 @@ body .woocommerce input.button {
         }
     }
 
+    .woocommerce-Price-currencySymbol {
+        font-size: 80%;
+        color: $medium_grey;
+        position: relative;
+        top: -13px;
+    }
+
     .product.woocommerce.add_to_cart_inline {
         border: 0 !important;
         padding: 0 !important;
@@ -1102,6 +1109,10 @@ body .woocommerce input.button {
 
         a.button {
             display: block;
+
+            &:hover {
+                color: white;
+            }
         }
     }
 
