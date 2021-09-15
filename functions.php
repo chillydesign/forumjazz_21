@@ -924,7 +924,11 @@ function processConcerts($concerts) {
 function processConcert($concert) {
     $concert->location = get_field('location', $concert->ID);
     $concert->time = get_field('time',  $concert->ID);
-    $concert->image = thumbnail_of_post_url($concert->ID, 'medium');
+    // $concert->image = thumbnail_of_post_url($concert->ID, 'medium');
+    $image =  get_field('image',  $concert->ID);
+    if ($image) {
+        $concert->image = $image['sizes']['medium'];
+    }
     $concert->search = sanitize_title($concert->post_title);
 
     if ($concert->location) {

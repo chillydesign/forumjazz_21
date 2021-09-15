@@ -3,7 +3,9 @@
 <?php $date = get_field('date'); ?>
 <?php $time = get_field('time'); ?>
 <?php $location = get_field('location'); ?>
-<?php $image = thumbnail_of_post_url(get_the_ID(), 'large'); ?>
+<?php // $image = thumbnail_of_post_url(get_the_ID(), 'large'); 
+?>
+<?php $image = get_field('image'); ?>
 <?php $ticketing = get_field('ticketing'); ?>
 <?php $line_up = get_field('line_up'); ?>
 <?php $video_clip = get_field('video_clip'); ?>
@@ -78,7 +80,7 @@
             <div class="column">
 
                 <?php if ($image) : ?>
-                    <img src="<?php echo $image; ?>" alt="<?php echo get_the_title(); ?>" />
+                    <img src="<?php echo $image['sizes']['medium']; ?>" alt="<?php echo get_the_title(); ?>" />
                 <?php endif; ?>
 
                 <?php if ($video_clip) :; ?>
