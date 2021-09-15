@@ -979,7 +979,7 @@ body .woocommerce input.button {
     margin: 10px;
     display: flex;
     border-radius: 5px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 
     .participant_image {
         width: 100px;
