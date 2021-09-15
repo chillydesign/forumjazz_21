@@ -10,6 +10,8 @@
 
 
     <div class="container">
+        <?php get_template_part('tabs_forum', null, array('hide_search' => true)); ?>
+
 
         <div class="participant_containers">
 
