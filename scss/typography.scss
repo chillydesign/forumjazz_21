@@ -130,6 +130,7 @@ a {
 h6 a,
 h5 a,
 a.button,
+input.button,
 button,
 .woocommerce button.button {
   border: 0;
@@ -208,6 +209,26 @@ ol {
   }
 }
 
+.alert {
+  padding: $padding;
+  margin: 0 0 $padding;
+  border: 1px solid $blue;
+  background: lighten($blue, 30);
+  border-radius: 5px;
+
+  &.alert_success {
+    background-color: lighten($green, 30);
+    color: $green;
+    border-color: $green;
+  }
+
+  &.alert_problem {
+    background-color: lighten($red, 30);
+    color: $red;
+    border-color: $red;
+  }
+}
+
 
 strong,
 b {
@@ -251,10 +272,21 @@ select {
   }
 }
 
+
+.field {
+  margin: 0 0 $padding;
+}
+
 input {
   font-family: $font_stack;
   padding: 10px;
   font-size: $font_size;
+}
+
+label {
+  font-size: $font_size;
+  padding: 4px;
+  display: block;
 }
 
 label.inline_label {

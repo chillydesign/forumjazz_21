@@ -598,6 +598,61 @@ function create_post_types() {
     register_taxonomy('extra_category', array('extra'), $cat_args);
     register_taxonomy('rencontre_category', array('rencontre'), $cat_args);
     register_taxonomy('partenaire_category', array('partenaire'), $cat_args);
+
+
+    $prix_slug = 'prix';
+    $prix_slug_plural = 'prixes';
+    register_post_type(
+        'prix', // Register Custom Post Type
+        array(
+            'labels' => array(
+                'name' => __('Prixes', 'webfactor'), // Rename these to suit
+                'singular_name' => __('Prix', 'webfactor'),
+                'add_new' => __('Ajouter', 'webfactor'),
+                'add_new_item' => __('Ajouter Prix', 'webfactor'),
+                'edit' => __('Modifier', 'webfactor'),
+                'edit_item' => __('Modifier Prix', 'webfactor'),
+                'new_item' => __('Ajouter Prix', 'webfactor'),
+                'view' => __('Afficher Prix', 'webfactor'),
+                'view_item' => __('Afficher Prix', 'webfactor'),
+                'search_items' => __('Rechercher Prixes', 'webfactor'),
+                'not_found' => __('Pas de Prix trouvé', 'webfactor'),
+                'not_found_in_trash' => __('Pas de Prix trouvé dans la corbeille', 'webfactor')
+            ),
+            'map_meta_cap' => true,
+            'capability_type' => $prix_slug,
+            'capabilities' => array(
+                'create_posts' => 'create_' . $prix_slug_plural,
+                'delete_others_posts' => 'delete_others_' . $prix_slug_plural,
+                'delete_posts' => 'delete_' . $prix_slug_plural,
+                'delete_private_posts' => 'delete_private_' . $prix_slug_plural,
+                'delete_published_posts' => 'delete_published_' . $prix_slug_plural,
+                'edit_posts' => 'edit_' . $prix_slug_plural,
+                'edit_others_posts' => 'edit_others_' . $prix_slug_plural,
+                'edit_private_posts' => 'edit_private_' . $prix_slug_plural,
+                'edit_published_posts' => 'edit_published_' . $prix_slug_plural,
+                'publish_posts' => 'publish_' . $prix_slug_plural,
+                'read_private_posts' => 'read_private_' . $prix_slug_plural,
+                'read' => 'read',
+            ),
+            'public' => true,
+            'publicly_queryable' => true, // dont allow to see on front end
+            'exclude_from_search' => true, // dont show in search
+            'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+            'has_archive' => true,
+            'supports' => array(
+                'title',
+                'editor',
+                'excerpt',
+                'thumbnail'
+            ), // Go to Dashboard Custom HTML5 Blank post for supports
+            'can_export' => true, // Allows export in Tools > Export
+            'taxonomies' => array(
+                //    'post_tag',
+                //    'category'
+            ) // Add Category and Post Tags support
+        )
+    );
 }
 
 
@@ -977,6 +1032,83 @@ function remove_checkout_fields($fields) {
     return $fields;
 }
 
+
+function prix_fields() {
+    return [
+        'first_name' => 'Prénom',
+        'last_name' => 'Nom',
+        'email' => 'Adresse électronique',
+    ];
+}
+
+
+add_action('admin_post_nopriv_prix_jeune_form',    'process_prix_jeune_form');
+add_action('admin_post_prix_jeune_form',  'process_prix_jeune_form');
+
+
+function process_prix_jeune_form() {
+
+    $referer = $_SERVER['HTTP_REFERER'];
+    $referer =  explode('?',   $referer)[0];
+
+    // IF DATA HAS BEEN POSTED
+    if (isset($_POST['action'])  && $_POST['action'] == 'prix_jeune_form') {
+
+        $concert_id = $_POST['concert_id'];
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $email = $_POST['email'];
+
+
+        // if we  have the right data and user logged in
+        //  && $current_user_id > 0
+        if (!empty($email)  && !empty($first_name) &&  !empty($last_name)) {
+            $post = array(
+                'post_title'   => $first_name . ' ' . $last_name,
+                'post_status'  => 'publish',
+                'post_type'    => 'prix',
+                'post_content' => '',
+                'post_parent' =>  $concert_id
+
+            );
+
+            // EDIT OR ADD NEW POST
+            $new_prix = wp_insert_post($post);
+
+            // IF SUCCESS
+            if ($new_prix > 0) {
+                // add email to ACF
+                $fields = prix_fields();
+                foreach ($fields as $field => $translation) :
+                    $$field = $_POST[$field];
+                    if ($$field  != '') :
+                        update_field($field, $$field,  $new_prix);
+                    endif;
+                endforeach;
+
+                $ip_address = $_SERVER['REMOTE_ADDR'];
+                update_field('ip_address',   $ip_address, $new_prix);
+                update_field('concert_id',   $concert_id, $new_prix);
+
+
+                wp_redirect($referer . '?success', $status = 302);
+                //wp_redirect(  get_permalink( $new_prix )  );
+
+                // something went wrong with adding the prix post
+            } else {
+                wp_redirect($referer . '?problem', $status = 302);
+            }
+
+            // if we dont have all the data or user not logged in
+        } else {
+            wp_redirect($referer . '?problem', $status = 302);
+        }
+
+        // if the form didnt post the action field
+    } else {
+        wp_redirect($referer . '?problem', $status = 302);
+    }
+}
 
 
 ?>

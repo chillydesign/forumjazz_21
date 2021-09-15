@@ -20,17 +20,43 @@
         <section>
 
             <div class="container">
+                <?php if (isset($_GET['success'])) : ?>
+                    <p class="alert alert_success">Votre suggestion a été enregistrée</p>
+                <?php endif; ?>
+                <?php if (isset($_GET['problem'])) : ?>
+                    <p class="alert alert_problem">A problem occurred. Please try again.</p>
+                <?php endif; ?>
 
 
-                <form action="">
+                <form id="prix_jeune_form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post" enctype="multipart/form-data">
 
 
-                    <select name="" id="">
-                        <?php foreach ($concerts as $concert) : ?>
-                            <option value="<?php echo $concert->ID; ?>"><?php echo $concert->post_name; ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                    <div class="field">
+                        <label for="first_name"><?php _e('Prénom', 'webfactor'); ?>*</label>
+                        <input type="text" id="input_first_name" name="first_name">
+                    </div>
+                    <div class="field">
+                        <label for="last_name"><?php _e('Nom', 'webfactor'); ?>*</label>
+                        <input type="text" id="input_last_name" name="last_name">
+                    </div>
+                    <div class="field">
+                        <label for="email"><?php _e('Adresse électronique', 'webfactor'); ?>*</label>
+                        <input type="text" id="input_email" name="email">
+                    </div>
 
+                    <div class="field">
+                        <label for="concert_id">Concert</label>
+                        <select name="concert_id" id="concert_id">
+                            <?php foreach ($concerts as $concert) : ?>
+                                <option value="<?php echo $concert->ID; ?>"><?php echo $concert->post_name; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <input type="hidden" name="action" value="prix_jeune_form">
+                        <input class="button" id="prix_jeune_form_submit_button" type="submit" value="<?php _e('Submit', 'webfactor'); ?>">
+
+                    </div>
                 </form>
 
             </div>
