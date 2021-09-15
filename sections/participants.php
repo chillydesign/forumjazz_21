@@ -35,7 +35,7 @@
                 }
                 $structure =  get_field('structure_name',  "user_" . $participant->ID);
                 $position =  get_field('structure_position',  "user_" . $participant->ID);
-                $website =  get_field('structure_website',  "user_" . $intervenant->ID);
+                $website =  get_field('structure_website',  "user_" . $participant->ID);
                 ?>
 
 
