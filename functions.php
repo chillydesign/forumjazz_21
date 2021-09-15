@@ -767,6 +767,10 @@ function chilly_extra_woocommerce_fields() {
 function chilly_custom_checkout_field($checkout) {
 
     echo '<div id="my_custom_checkout_field"><br><br><h3>' . __('Vos informations personnelles') . '</h3>';
+
+    // add image upload
+    echo '<p class="form-row my-field-class form-row-wide validate-required" id="structure_image_field" data-priority=""><label for="structure_image" class="">Image&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="hidden" name="structure_image_id" id="structure_image_id" /><input type="file" class="input-text " name="structure_image" id="structure_image" placeholder="Structure"  value=""  /></span></p><script>const wordpress_ajax_url = "' .  admin_url('admin-ajax.php') . '"</script> ';
+
     $fields  = chilly_extra_woocommerce_fields();
     foreach ($fields   as $field) {
         woocommerce_form_field($field[0], array(
@@ -778,8 +782,7 @@ function chilly_custom_checkout_field($checkout) {
         ), $checkout->get_value($field[0]));
     }
 
-    // add image upload
-    echo '<p class="form-row my-field-class form-row-wide validate-required" id="structure_image_field" data-priority=""><label for="structure_image" class="">Image&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="hidden" name="structure_image_id" id="structure_image_id" /><input type="file" class="input-text " name="structure_image" id="structure_image" placeholder="Structure"  value=""  /></span></p><script>const wordpress_ajax_url = "' .  admin_url('admin-ajax.php') . '"</script> ';
+
 
 
     echo '</div>';
