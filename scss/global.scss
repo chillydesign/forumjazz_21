@@ -145,6 +145,8 @@ section {
     &.orange {
         background-color: lighten($orange, 10);
     }
+
+
 }
 
 
@@ -153,7 +155,7 @@ header#page_header {
     background: url('../img/squiggles.png') no-repeat center right;
     background-size: 300px;
     background-color: $black;
-    margin: 0 0 10px;
+    margin: 0 0 40px;
 
     h1 {
         color: $white;
@@ -179,6 +181,9 @@ header#page_header {
 }
 
 
+header#page_header+section {
+    margin-top: -40px;
+}
 
 
 #welcome_section {
@@ -187,6 +192,7 @@ header#page_header {
     min-height: 700px;
     position: relative;
     overflow: hidden;
+
 
 
     .welcome_text {
@@ -980,6 +986,19 @@ body .woocommerce input.button {
     display: flex;
     border-radius: 5px;
     flex-wrap: nowrap;
+    position: relative;
+
+
+    .social_links {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+
+        a {
+            margin: 0;
+        }
+    }
 
     .participant_image {
         width: 100px;
@@ -1033,7 +1052,18 @@ body .woocommerce input.button {
             &.overflow {
                 height: 50px;
                 overflow: hidden;
+                position: relative;
                 cursor: pointer;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 50%;
+                    top: 50%;
+                    left: 0;
+                    background: linear-gradient(0deg, $light_grey 0%, transparentize($light_grey, 1) 100%);
+                }
             }
 
         }

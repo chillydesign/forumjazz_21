@@ -761,6 +761,7 @@ function chilly_extra_woocommerce_fields() {
     return array(
         array('structure_name', __('Structure', 'blankslate')),
         array('structure_position',   __('Position', 'blankslate')),
+        array('structure_website',   __('Site web', 'blankslate')),
         array('structure_telephone',  __('Phone', 'blankslate'))
     );
 }
