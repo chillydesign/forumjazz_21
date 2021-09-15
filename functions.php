@@ -96,12 +96,13 @@ function blankslate_enqueue() {
     wp_enqueue_script('wf_google_maps'); // Enqueue it!
 
 
-    wp_register_script('scripts', $tdu . '/js/scripts.js', array(), wf_version(), true);
-    wp_enqueue_script('scripts'); // Enqueue it!
-    wp_register_script('vector', $tdu . '/js/vector.js', array(), wf_version(), true);
-    wp_enqueue_script('vector'); // Enqueue it!
-    wp_register_script('canvas', $tdu . '/js/canvas.js', array(), wf_version(), true);
-    wp_enqueue_script('canvas'); // Enqueue it!
+    // COOL MUSIC NOTES
+    // wp_register_script('scripts', $tdu . '/js/scripts.js', array(), wf_version(), true);
+    // wp_enqueue_script('scripts'); // Enqueue it!
+    // wp_register_script('vector', $tdu . '/js/vector.js', array(), wf_version(), true);
+    // wp_enqueue_script('vector'); // Enqueue it!
+    // wp_register_script('canvas', $tdu . '/js/canvas.js', array(), wf_version(), true);
+    // wp_enqueue_script('canvas'); // Enqueue it!
 
 
 
