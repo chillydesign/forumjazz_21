@@ -52,6 +52,12 @@
                             <em class="overflow"><?php echo $position; ?></em>
                         </p>
                     </div>
+                    <?php if ($website) : ?>
+                        <span class="social_links">
+                            <a class="website" title="site web" href="<?php echo $website; ?>" target="_blank"></a>
+                        </span>
+                    <?php endif; ?>
+
 
                 </div>
 
