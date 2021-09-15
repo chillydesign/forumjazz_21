@@ -36,7 +36,7 @@
             if ($subpage == 'showcases') {
                 $title = 'Showcases';
             } else if ($subpage == 'rencontres') {
-                $title = 'Recontres';
+                $title = 'Rencontres';
             }
         }
         if ($subpage == 'rencontres') {
