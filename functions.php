@@ -1062,7 +1062,7 @@ function process_prix_jeune_form() {
 
         // if we  have the right data and user logged in
         //  && $current_user_id > 0
-        if (!empty($email)  && !empty($first_name) &&  !empty($last_name)) {
+        if (!empty($email)  && !empty($first_name) &&  !empty($last_name) &&  !empty($concert_id)) {
             $post = array(
                 'post_title'   => $first_name . ' ' . $last_name,
                 'post_status'  => 'publish',
