@@ -945,15 +945,6 @@ body .woocommerce input.button {
 
 
 
-.product.woocommerce.add_to_cart_inline {
-    border: 0 !important;
-    padding: 0 !important;
-
-    span.amount {
-        display: inline-block;
-        padding: 5px 15px 5px 0;
-    }
-}
 
 
 .woocommerce div.product p.price,
@@ -991,8 +982,8 @@ body .woocommerce input.button {
 
     .social_links {
         position: absolute;
-        bottom: 0;
-        left: 0;
+        top: 0;
+        right: 0;
         margin: 0;
 
         a {
@@ -1071,5 +1062,36 @@ body .woocommerce input.button {
 
 
 
+
+}
+
+
+.pricing_box {
+    padding: $padding;
+    background: $light_grey;
+    border-radius: 20px;
+    text-align: center;
+
+    h3 {
+        font-size: 2em;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .product.woocommerce.add_to_cart_inline {
+        border: 0 !important;
+        padding: 0 !important;
+
+        span.amount {
+            display: block;
+            padding: 0 0 20px;
+            font-size: 1.8em;
+            color: $medium_grey;
+        }
+
+        a.button {
+            display: block;
+        }
+    }
 
 }
