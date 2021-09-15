@@ -500,16 +500,24 @@ $con_ren_height: 60px;
 // EVENTS
 
 .event_subtitle {
-    font-size: 2em;
+    font-size: 1.7em;
     font-weight: normal;
-    margin-top: $negative_padding;
+    padding: 0 0 5px;
+    letter-spacing: 1px;
     font-style: italic;
+    color: $medium_grey;
+    text-transform: uppercase;
 }
 
 .event_datetime_container {
     margin: 0 0 $padding;
     display: flex;
     flex-wrap: nowrap;
+
+    h1 {
+        font-size: 2.5em;
+        padding: 0;
+    }
 }
 
 .event_date_container {
@@ -519,6 +527,8 @@ $con_ren_height: 60px;
     margin: 0;
     width: 80px;
     min-width: 80px;
+    border-radius: 0 0 0 23px;
+
 
 }
 
@@ -528,6 +538,7 @@ $con_ren_height: 60px;
     padding: 8px 0;
     letter-spacing: 2px;
     background-color: darken($light_grey, 10);
+
 }
 
 .day {
@@ -539,6 +550,7 @@ $con_ren_height: 60px;
     background-color: lighten($light_grey, 5);
     padding: 5px 5px 5px 10px;
     width: 100%;
+    border-radius: 0 23px 0 0;
 
     p {
         padding: 0;
@@ -952,6 +964,19 @@ body .woocommerce input.button {
     font-size: 3.26em;
 }
 
+
+
+.wc-stripe-elements-field,
+.wc-stripe-iban-element-field {
+    padding: 16px;
+}
+
+.wc-stripe-error {
+    li {
+        font-size: 1.2em;
+    }
+}
+
 // WOOCOMMERCE
 // WOOCOMMERCE
 
@@ -1076,7 +1101,7 @@ body .woocommerce input.button {
         font-size: 2em;
         font-weight: bold;
         text-transform: uppercase;
-        min-height: 100px;
+        min-height: 80px;
     }
 
     p {

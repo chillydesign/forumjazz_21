@@ -297,6 +297,12 @@ iframe {
   margin: 0 0 20px;
 }
 
+.payment_method_stripe {
+  iframe {
+    min-height: unset;
+  }
+}
+
 img {
   width: 100%;
   height: auto;

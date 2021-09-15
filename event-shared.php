@@ -19,7 +19,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <section>
         <header>
-            <h1 class="entry-title" itemprop="headline"> <?php the_title(); ?></h1>
+
             <?php if ($subtitle) : ?>
                 <h2 class="event_subtitle"><?php echo $subtitle; ?></h2>
             <?php endif; ?>
@@ -33,14 +33,13 @@
                         <?php generate_date_box($date); ?>
                     <?php endif; ?>
                     <div class="event_time_container">
+                        <h1 class="entry-title" itemprop="headline"> <?php the_title(); ?></h1>
 
                         <p>
                             <span class="time"><?php echo $time; ?></span>
-                            <?php if ($ticketing) : ?>
-                                | <a href="<?php echo $ticketing; ?>"><?php _e('Tickets', 'blankslate'); ?> </a>
-                            <?php endif; ?>
+                            | <a href="<?php echo $ticketing; ?>"><?php _e('Tickets', 'blankslate'); ?> </a>
                         </p>
-                        <div class="lineup"> <?php echo $line_up; ?></div>
+
                     </div>
                 </div>
 
@@ -54,6 +53,13 @@
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
+
+
+                <?php if ($line_up) : ?>
+                    <h3>Line up</h3>
+                    <div class="lineup"> <?php echo $line_up; ?></div>
+                <?php endif; ?>
+
 
                 <?php if ($location) : ?>
                     <?php $location_title = $location->post_title; ?>
