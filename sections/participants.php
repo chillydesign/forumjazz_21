@@ -1,7 +1,10 @@
 <?php $participants = get_users(
     array(
         'role' => 'participant',
-        'number' => -1
+        'number' => -1,
+        'orderby' => array('meta_value', 'login'),
+        'meta_key' => 'last_name',
+        'order' => 'ASC',
     )
 ); ?>
 
