@@ -1,7 +1,11 @@
 <?php /* Template Name: Forum Template */  ?>
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
         <?php
+
+
+
         $dates =  array(
             array('date' => '2021-11-24', 'nice_date' =>  __('Mercredi', 'blankslate') .  ' 24', 'concerts' => array()),
             array('date' => '2021-11-25', 'nice_date' =>  __('Jeudi', 'blankslate') .  ' 25', 'concerts' => array()),
@@ -24,9 +28,24 @@
             'post_type' => 'rencontre',
             'posts_per_page' => -1,
         ));
-        $combined = array_merge($concerts, $rencontres);
 
-
+        $title = get_the_title();
+        $subpage = 'programme';
+        if (isset($_GET['subpage'])) {
+            $subpage = $_GET['subpage'];
+            if ($subpage == 'showcases') {
+                $title = 'Showcases';
+            } else if ($subpage == 'rencontres') {
+                $title = 'Recontres';
+            }
+        }
+        if ($subpage == 'rencontres') {
+            $combined = $rencontres;
+        } else if ($subpage == 'showcases') {
+            $combined = $concerts;
+        } else {
+            $combined = array_merge($concerts, $rencontres);
+        }
         $processed_dates =  processDatesForConcertGrid($dates, $combined);
 
 
@@ -34,7 +53,9 @@
 
         <header id="page_header">
             <div class="container">
-                <h1 class="entry-title" itemprop="name"><?php the_title(); ?></h1>
+                <h1 class="entry-title" itemprop="name">
+                    <?php echo $title; ?>
+                </h1>
             </div>
         </header>
 
