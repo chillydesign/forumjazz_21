@@ -105,6 +105,10 @@
         // concert search
         // concert search
 
+        $('.overflow').on('click', function () {
+            $(this).toggleClass('overflow');
+        })
+
 
 
         $("#structure_image").change(function () {

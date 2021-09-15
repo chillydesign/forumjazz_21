@@ -32,7 +32,7 @@
                             <?php echo ($intervenant->last_name); ?>
                         </h3>
                         <p> <strong><?php echo $structure; ?></strong> <br>
-                            <em><?php echo $position; ?></em>
+                            <em class="overflow"><?php echo $position; ?></em>
                         </p>
                     </div>
 

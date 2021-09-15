@@ -1016,13 +1016,26 @@ body .woocommerce input.button {
     .participant_text {
         padding: 10px;
 
+
         h3 {
             padding: 0 0 5px;
-            font-size: 2.7em;
+            font-size: 2.5em;
         }
 
         p {
             padding: 0;
+        }
+
+        em {
+            display: block;
+
+
+            &.overflow {
+                height: 50px;
+                overflow: hidden;
+                cursor: pointer;
+            }
+
         }
     }
 
