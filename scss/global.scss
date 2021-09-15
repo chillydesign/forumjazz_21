@@ -983,6 +983,8 @@ body .woocommerce input.button {
 
     .participant_image {
         width: 100px;
+        min-width: 100px;
+        max-width: 100px;
         background: no-repeat center center darken($light_grey, 10);
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
