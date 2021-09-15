@@ -1071,11 +1071,13 @@ body .woocommerce input.button {
     background: $light_grey;
     border-radius: 20px;
     text-align: center;
+    color: $medium_grey;
 
     h3 {
         font-size: 2em;
         font-weight: bold;
         text-transform: uppercase;
+        color: $black;
     }
 
     .product.woocommerce.add_to_cart_inline {
@@ -1086,7 +1088,8 @@ body .woocommerce input.button {
             display: block;
             padding: 0 0 20px;
             font-size: 1.8em;
-            color: $medium_grey;
+            color: $black;
+
         }
 
         a.button {
