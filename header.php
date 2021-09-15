@@ -27,7 +27,7 @@
                 </nav>
             </div>
         </div>
-        <a href="#" id="menu_button" title="Menu">Menu</a>
+        <a href="#" id="menu_button" title="Menu"><?php _e('Menu', 'blankslate'); ?></a>
 
 
     </header>

@@ -758,18 +758,18 @@ add_action('woocommerce_after_order_notes', 'chilly_custom_checkout_field');
 
 function chilly_extra_woocommerce_fields() {
     return array(
-        array('structure_name', 'Structure'),
-        array('structure_position', 'Position'),
-        array('structure_telephone', 'Phone')
+        array('structure_name', __('Structure', 'blankslate')),
+        array('structure_position',   __('Position', 'blankslate')),
+        array('structure_telephone',  __('Phone', 'blankslate'))
     );
 }
 
 function chilly_custom_checkout_field($checkout) {
 
-    echo '<div id="my_custom_checkout_field"><br><br><h3>' . __('Vos informations personnelles') . '</h3>';
+    echo '<div id="my_custom_checkout_field"><br><br><h3>' . __('Vos informations personnelles', 'blankslate') . '</h3>';
 
     // add image upload
-    echo '<p class="form-row my-field-class form-row-wide validate-required" id="structure_image_field" data-priority=""><label for="structure_image" class="">Image&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="hidden" name="structure_image_id" id="structure_image_id" /><input type="file" class="input-text " name="structure_image" id="structure_image" placeholder="Structure"  value=""  /></span></p><script>const wordpress_ajax_url = "' .  admin_url('admin-ajax.php') . '"</script> ';
+    echo '<p class="form-row my-field-class form-row-wide validate-required" id="structure_image_field" data-priority=""><label for="structure_image" class="">' .  __('Image', 'blankslate') . '&nbsp;<abbr class="required" title="required">*</abbr></label><span class="woocommerce-input-wrapper"><input type="hidden" name="structure_image_id" id="structure_image_id" /><input type="file" class="input-text " name="structure_image" id="structure_image" placeholder="Structure"  value=""  /></span></p><script>const wordpress_ajax_url = "' .  admin_url('admin-ajax.php') . '"</script> ';
 
     $fields  = chilly_extra_woocommerce_fields();
     foreach ($fields   as $field) {
@@ -929,7 +929,7 @@ function processConcert($concert) {
         $concert->location_name = $concert->location->post_title;
         $concert->search = sanitize_title($concert->location_name . ' ' . $concert->post_title);
     } else if ($concert->post_type == 'rencontre') {
-        $concert->location_name = ' Rencontres';
+        $concert->location_name =   __('Rencontres', 'blankslate');
     }
 
     return $concert;

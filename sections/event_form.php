@@ -37,7 +37,7 @@
                 <input type="hidden" name="event_id" value="<?php echo get_the_ID(); ?>">
                 <input type="hidden" name="event_title" value="<?php echo get_the_title(); ?>">
                 <div id="inscription_submit_button_outer" style="margin-top:30px;">
-                    <input id="inscription_submit_button" type="submit" value="<?php _e('Inscrivez-vous', 'webfactor'); ?>">
+                    <input id="inscription_submit_button" type="submit" value="<?php _e('Inscrivez-vous', 'blankslate'); ?>">
                 </div>
 
                 <p id="form_alert" class="alert_message alert_error">Veuillez remplir tous les champs obligatoires pour valider votre inscription. Pensez à bien numéroter tous les ateliers par ordre de préférence.</p>

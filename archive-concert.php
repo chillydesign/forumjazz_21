@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <header id="page_header">
     <div class="container">
-        <h1 class="entry-title" itemprop="name">Concert</h1>
+        <h1 class="entry-title" itemprop="name"><?php _e('Concerts', 'blankslate'); ?></h1>
     </div>
 </header>
 <section>
@@ -21,7 +21,7 @@
                             <?php if ($cat_names) : ?>
                                 <p class="category"><?php echo $cat_names; ?></p>
                             <?php endif; ?>
-                            <a href="<?php echo $url; ?>" class="button">Lire plus</a>
+                            <a href="<?php echo $url; ?>" class="button"><?php _e('Lire plus', 'blankslate'); ?></a>
                         </div>
                     </div>
                 </div>

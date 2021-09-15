@@ -13,7 +13,7 @@ foreach ($lieux as $lieu) {
 
 <header id="page_header">
     <div class="container">
-        <h1 class="entry-title" itemprop="name">Lieux</h1>
+        <h1 class="entry-title" itemprop="name"><?php _e('Lieux', 'blankslate'); ?></h1>
     </div>
 </header>
 <div id="map_container" class="map_container_large"></div>

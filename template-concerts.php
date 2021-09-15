@@ -3,12 +3,11 @@
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <?php
         $dates =  array(
-            array('date' => '2021-11-24', 'nice_date' =>  'Mercredi 24', 'concerts' => array()),
-            array('date' => '2021-11-25', 'nice_date' =>  'Jeudi 25', 'concerts' => array()),
-            array('date' => '2021-11-26', 'nice_date' =>  'Vendredi 26', 'concerts' => array()),
-            array('date' => '2021-11-27', 'nice_date' =>  'Samedi 27', 'concerts' => array()),
+            array('date' => '2021-11-24', 'nice_date' =>  __('Mercredi', 'blankslate') .  ' 24', 'concerts' => array()),
+            array('date' => '2021-11-25', 'nice_date' =>  __('Jeudi', 'blankslate') .  ' 25', 'concerts' => array()),
+            array('date' => '2021-11-26', 'nice_date' =>  __('Vendredi', 'blankslate') .  ' 26', 'concerts' => array()),
+            array('date' => '2021-11-27', 'nice_date' =>  __('Samedi', 'blankslate') .  ' 27', 'concerts' => array()),
         );
-
 
         $tax_query = array(
             array(
@@ -40,11 +39,11 @@
                 <?php $site_url = site_url(); ?>
                 <form id="search_concerts_form">
                     <div class="button_group">
-                        <a href="<?php echo $site_url; ?>/concerts" class="button">Programmation</a>
-                        <a href="<?php echo $site_url; ?>/jeune-public" class="button">Sélection jeune public</a>
-                        <a href="<?php echo $site_url; ?>/extras" class="button">Extras</a>
+                        <a href="<?php echo $site_url; ?>/concerts" class="button"><?php _e('Programmation', 'blankslate'); ?></a>
+                        <a href="<?php echo $site_url; ?>/jeune-public" class="button"><?php _e('Sélection jeune public', 'blankslate'); ?></a>
+                        <a href="<?php echo $site_url; ?>/extras" class="button"><?php _e('Extras', 'blankslate'); ?></a>
                     </div>
-                    <input type="text" id="search_concerts" placeholder="rechercher ..." />
+                    <input type="text" id="search_concerts" placeholder="<?php _e('rechercher', 'blankslate'); ?> ..." />
                 </form>
 
                 <div id="concert_grid">

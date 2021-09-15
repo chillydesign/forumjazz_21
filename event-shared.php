@@ -35,7 +35,7 @@
                         <p>
                             <span class="time"><?php echo $time; ?></span>
                             <?php if ($ticketing) : ?>
-                                | <a href="<?php echo $ticketing; ?>">Tickets</a>
+                                | <a href="<?php echo $ticketing; ?>"><?php _e('Tickets', 'blankslate'); ?> </a>
                             <?php endif; ?>
                         </p>
                         <div class="lineup"> <?php echo $line_up; ?></div>
@@ -57,7 +57,7 @@
                     <?php $location_title = $location->post_title; ?>
                     <?php $location_address = get_field('address', $location->ID); ?>
                     <?php $lieu_json  = lieu_to_map_json($location); ?>
-                    <h3> Lieu: <?php echo $location_title; ?></h3>
+                    <h3><?php _e('Lieu', 'blankslate'); ?>: <?php echo $location_title; ?></h3>
                     <?php if ($lieu_json) : ?>
                         <div id="map_container"></div>
                         <script>
@@ -87,7 +87,7 @@
                 <?php endif; ?>
 
                 <?php if ($ticketing) : ?>
-                    <a class="button button_block button_large" href="<?php echo $ticketing; ?>">Tickets</a>
+                    <a class="button button_block button_large" href="<?php echo $ticketing; ?>"><?php _e('Tickets', 'blankslate'); ?></a>
                 <?php endif; ?>
 
 

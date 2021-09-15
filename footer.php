@@ -3,7 +3,7 @@
     <div class="container">
         <div class="columns">
             <div class="column">
-                <h4>Liens utiles</h4>
+                <h4><?php _e('Liens utiles', 'blankslate'); ?></h4>
                 <ul>
                     <?php chilly_nav('footer-navigation'); ?>
 
@@ -18,7 +18,7 @@
 
             </div>
             <div class="column">
-                <h4>Suivez-nous</h4>
+                <h4><?php _e('Suivez-nous', 'blankslate'); ?></h4>
                 <ul>
                     <?php chilly_nav('social-navigation'); ?>
                 </ul>
@@ -30,7 +30,7 @@
         <div class="container">
             <p>
                 &copy; <?php echo esc_html(date_i18n(__('Y', 'blankslate'))); ?> <?php echo esc_html(get_bloginfo('name')); ?>
-                | Website by Webfactor
+                | <?php _e('Website by Webfactor', 'blankslate'); ?>
             </p>
         </div>
     </div>
