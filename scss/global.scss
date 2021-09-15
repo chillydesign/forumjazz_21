@@ -926,6 +926,26 @@ td.actions,
 }
 
 
+body .woocommerce #respond input#submit,
+body .woocommerce a.button,
+body .woocommerce button.button,
+body .woocommerce input.button {
+    background-color: $blue;
+
+    &:hover {
+        background-color: darken($blue, 5);
+    }
+}
+
+
+
+.product.woocommerce.add_to_cart_inline {
+    border: 0 !important;
+    padding: 0 !important;
+    text-align: center;
+}
+
+
 .woocommerce div.product p.price,
 .woocommerce div.product span.price {
     font-size: 3.26em;
