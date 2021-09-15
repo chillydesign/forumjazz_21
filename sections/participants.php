@@ -16,7 +16,7 @@
         <?php get_template_part('tabs_forum', null, array('hide_search' => true)); ?>
 
 
-        <div class="participant_containers">
+        <div class="participants_container">
 
 
             <?php foreach ($participants as $participant) : ?>
@@ -52,7 +52,6 @@
                             <em><?php echo $position; ?></em>
                         </p>
                     </div>
-
 
                 </div>
 
