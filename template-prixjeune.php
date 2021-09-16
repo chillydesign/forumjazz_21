@@ -42,7 +42,7 @@
                 <form id="prix_jeune_form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post" enctype="multipart/form-data">
 
                     <?php
-                    $first_name = $last_name = $email =  $etablissement = '';
+                    $first_name = $last_name = $email =  $etablissement =  $justification = '';
                     $jcookie = $_COOKIE["jazz_prix_form"];
                     if (isset($jcookie)) {
                         $j = explode(';;', $jcookie);
@@ -56,6 +56,10 @@
                     ?>
 
                     <div class="field">
+                        <label for="code"><?php _e(' Code (Communiqué dans votre invitation)', 'webfactor'); ?>*</label>
+                        <input type="text" id="code" name="code" />
+                    </div>
+                    <div class="field">
                         <label for="first_name"><?php _e('Prénom', 'webfactor'); ?>*</label>
                         <input type="text" id="first_name" name="first_name" value="<?php echo $first_name; ?>">
                     </div>
@@ -67,7 +71,6 @@
                         <label for="email"><?php _e('Email', 'webfactor'); ?>*</label>
                         <input type="text" id="email" name="email" value="<?php echo $email; ?>">
                     </div>
-
 
 
                     <div class="field">

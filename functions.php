@@ -1038,6 +1038,7 @@ function prix_fields() {
         'etablissement' => 'Etablissement',
         'je_suis' => 'Je suis',
         'justification' => 'Justification',
+        'code' => 'Code used',
     ];
 }
 
@@ -1054,6 +1055,7 @@ function process_prix_jeune_form() {
     // IF DATA HAS BEEN POSTED
     if (isset($_POST['action'])  && $_POST['action'] == 'prix_jeune_form') {
 
+        $code = $_POST['code'];
         $concert_id = $_POST['concert_id'];
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
@@ -1061,60 +1063,66 @@ function process_prix_jeune_form() {
         $etablissement = $_POST['etablissement'];
         $justification = $_POST['justification'];
 
-        setcookie('jazz_prix_form', implode(';;', [$first_name, $last_name, $email, $etablissement, $justification]), time() + 3600, "/");
+        if ($code == 'code123') {
+            setcookie('jazz_prix_form', implode(';;', [$first_name, $last_name, $email, $etablissement, $justification]), time() + 3600, "/");
 
 
-        // if we  have the right data and user logged in
-        //  && $current_user_id > 0
-        if (
-            !empty($email)  &&
-            !empty($first_name) &&
-            !empty($last_name) &&
-            !empty($justification) &&
-            !empty($concert_id) &&
-            $concert_id != ''
-        ) {
-            $post = array(
-                'post_title'   => $first_name . ' ' . $last_name,
-                'post_status'  => 'publish',
-                'post_type'    => 'prix',
-                'post_content' => '',
-                'post_parent' =>  $concert_id
+            // if we  have the right data and user logged in
+            //  && $current_user_id > 0
+            if (
+                !empty($email)  &&
+                !empty($first_name) &&
+                !empty($last_name) &&
+                !empty($justification) &&
+                !empty($concert_id) &&
+                $concert_id != ''
+            ) {
+                $post = array(
+                    'post_title'   => $first_name . ' ' . $last_name,
+                    'post_status'  => 'publish',
+                    'post_type'    => 'prix',
+                    'post_content' => '',
+                    'post_parent' =>  $concert_id
 
-            );
+                );
 
-            // EDIT OR ADD NEW POST
-            $new_prix = wp_insert_post($post);
+                // EDIT OR ADD NEW POST
+                $new_prix = wp_insert_post($post);
 
-            // IF SUCCESS
-            if ($new_prix > 0) {
-                // add email to ACF
-                $fields = prix_fields();
-                foreach ($fields as $field => $translation) :
-                    $$field = $_POST[$field];
-                    if ($$field  != '') :
-                        update_field($field, $$field,  $new_prix);
-                    endif;
-                endforeach;
+                // IF SUCCESS
+                if ($new_prix > 0) {
+                    // add email to ACF
+                    $fields = prix_fields();
+                    foreach ($fields as $field => $translation) :
+                        $$field = $_POST[$field];
+                        if ($$field  != '') :
+                            update_field($field, $$field,  $new_prix);
+                        endif;
+                    endforeach;
 
-                $ip_address = $_SERVER['REMOTE_ADDR'];
-                update_field('ip_address',   $ip_address, $new_prix);
-                update_field('concert_id',   $concert_id, $new_prix);
+                    $ip_address = $_SERVER['REMOTE_ADDR'];
+                    update_field('ip_address',   $ip_address, $new_prix);
+                    update_field('concert_id',   $concert_id, $new_prix);
 
-                // clear cookie
-                setcookie('jazz_prix_form', '', time() - 3600, "/");
+                    // clear cookie
+                    setcookie('jazz_prix_form', '', time() - 3600, "/");
 
-                wp_redirect($referer . '?success', $status = 302);
+                    wp_redirect($referer . '?success', $status = 302);
 
-                // something went wrong with adding the prix post
+                    // something went wrong with adding the prix post
+                } else {
+                    wp_redirect($referer . '?problem', $status = 302);
+                }
+
+                // if we dont have all the data or user not logged in
             } else {
-                wp_redirect($referer . '?problem', $status = 302);
+                wp_redirect($referer . '?problem=fields', $status = 302);
             }
-
-            // if we dont have all the data or user not logged in
         } else {
-            wp_redirect($referer . '?problem=fields', $status = 302);
+            // code is wrong
+            wp_redirect($referer . '?problem=code', $status = 302);
         }
+
 
         // if the form didnt post the action field
     } else {
