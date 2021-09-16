@@ -19,7 +19,20 @@
 
             <?php foreach ($intervenants as $intervenant) : ?>
 
-                <?php $image =  get_field('structure_image',  "user_" . $intervenant->ID); ?>
+                <?php
+                $image = null;
+                $image_id =  get_field('structure_image',  "user_" . $intervenant->ID);
+                if ($image_id) {
+                    $image_src = wp_get_attachment_image_src($image_id, 'medium');
+                    if ($image_src) {
+                        $image = $image_src[0];
+                    }
+                }
+                if (!$image) {
+                    $image = get_avatar_url($intervenant->user_email);
+                }
+
+                ?>
                 <?php $structure =  get_field('structure_name',  "user_" . $intervenant->ID); ?>
                 <?php $position =  get_field('structure_position',  "user_" . $intervenant->ID); ?>
                 <?php $website =  get_field('structure_website',  "user_" . $intervenant->ID); ?>
