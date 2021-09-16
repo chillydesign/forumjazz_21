@@ -18,10 +18,10 @@
                 </div>
 
                 <ul class="welcome_buttons">
-                    <li><a href="<?php echo get_home_url();?>/concerts"><strong> Concerts</strong><span>Ouverts au public & aux professionnels dans la limite des places disponibles.</span></a></li>
-                    <li><a href="<?php echo get_home_url();?>/rencontres"><strong>Rencontres & showcases</strong><span>Uniquement accessible aux professionnels et étudiants sur inscription.</span></a></li>
-                    <li><a href="<?php echo get_home_url();?>/extras"><strong>Extras</strong><span>
-                                Expositions, masterclass & autres évènements autour du forum.</span></a></li>
+                    <li><a href="<?php echo get_home_url(); ?>/concerts"><strong> <?php _e('Concerts', 'blankslate'); ?></strong><span><?php _e('Ouverts au public & aux professionnels dans la limite des places disponibles.', 'blankslate'); ?></span></a></li>
+                    <li><a href="<?php echo get_home_url(); ?>/rencontres"><strong><?php _e('Rencontres & showcases', 'blankslate'); ?></strong><span><?php _e('Uniquement accessible aux professionnels et étudiants sur inscription.', 'blankslate'); ?></span></a></li>
+                    <li><a href="<?php echo get_home_url(); ?>/extras"><strong><?php _e('Extras', 'blankslate'); ?></strong><span><?php _e('Expositions, masterclass & autres évènements autour du forum.', 'blankslate'); ?>
+                            </span></a></li>
                 </ul>
 
                 <?php include('img/truck.svg'); ?>
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="concert_recontre_thing" id="concerts_thing">
 
                     <h3>GRAND PUBLIC / PROFESSIONNELS / JEUNE PUBLIC</h3>
