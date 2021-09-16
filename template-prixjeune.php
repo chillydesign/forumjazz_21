@@ -26,9 +26,9 @@
                 <?php if (isset($_GET['problem'])) : ?>
                     <p class="alert alert_problem">
                         <?php if ($_GET['problem'] == 'fields') {
-                            _e("Une erreur s'est produite.", 'blankslate');
-                        } else {
                             _e("Veuillez renseigner tous les champs.", 'blankslate');
+                        } else {
+                            _e("Une erreur s'est produite.", 'blankslate');
                         } ?>
                     </p>
                 <?php endif; ?>
