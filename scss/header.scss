@@ -6,6 +6,8 @@ header#header {
     padding: 0;
     border-bottom: 5px double $black;
 
+    margin-bottom: 60px;
+
     @media (min-width: $mobile_width) {
         height: auto;
     }
@@ -23,9 +25,9 @@ header#header {
         flex: 1 auto;
         display: block;
         background: url('../img/logo.png') no-repeat center center $black;
-        background-size: 88px;
+        background-size: 78px;
         width: 130px;
-        height: 135px;
+        height: 125px;
         text-indent: -9999px;
         position: absolute;
         top: 0;

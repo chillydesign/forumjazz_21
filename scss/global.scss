@@ -162,7 +162,9 @@ header#page_header {
     background: url('../img/squiggles.png') no-repeat center right;
     background-size: 300px;
     background-color: $black;
-    margin: 0 0 40px;
+    margin: -60px 0 40px;
+
+    @media (min-width: $mobile_width) {}
 
     h1 {
         color: $white;
@@ -200,7 +202,9 @@ header#page_header+section {
     min-height: 700px;
     position: relative;
     overflow: hidden;
+    margin-top: -60px;
 
+    @media (min-width: $mobile_width) {}
 
 
     .welcome_text {
