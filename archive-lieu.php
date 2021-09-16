@@ -16,8 +16,9 @@ foreach ($lieux as $lieu) {
         <h1 class="entry-title" itemprop="name"><?php _e('Lieux', 'blankslate'); ?></h1>
     </div>
 </header>
-<section>
 
+
+<div class="container">
     <div class="columns" id="map_and_lieux">
         <div class="column column_large no_padding">
             <div id="map_container" class="map_container_large"></div>
@@ -53,8 +54,7 @@ foreach ($lieux as $lieu) {
         </div>
 
     </div>
-</section>
-
+</div>
 <script>
     const map_locations = <?php echo  json_encode($location_objects); ?>;
     const theme_directory = '<?php echo get_template_directory_uri(); ?>';
