@@ -1119,5 +1119,20 @@ function process_prix_jeune_form() {
     }
 }
 
+function user_structure_image($user) {
+    $image = null;
+    $image_id =  get_field('structure_image',  "user_" . $user->ID);
+    if ($image_id) {
+        $image_src = wp_get_attachment_image_src($image_id, 'medium');
+        if ($image_src) {
+            $image = $image_src[0];
+        }
+    }
+    if (!$image) {
+        $image = get_avatar_url($user->user_email);
+    }
+    return $image;
+}
+
 
 ?>

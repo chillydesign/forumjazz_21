@@ -21,24 +21,10 @@
 
             <?php foreach ($participants as $participant) : ?>
 
-                <?php
-                $image = null;
-                $image_id =  get_field('structure_image',  "user_" . $participant->ID);
-                if ($image_id) {
-                    $image_src = wp_get_attachment_image_src($image_id, 'medium');
-                    if ($image_src) {
-                        $image = $image_src[0];
-                    }
-                }
-                if (!$image) {
-                    $image = get_avatar_url($participant->user_email);
-                }
-                $structure =  get_field('structure_name',  "user_" . $participant->ID);
-                $position =  get_field('structure_position',  "user_" . $participant->ID);
-                $website =  get_field('structure_website',  "user_" . $participant->ID);
-                ?>
-
-
+                <?php $image = user_structure_image($participant); ?>
+                <?php $structure =  get_field('structure_name',  "user_" . $participant->ID); ?>
+                <?php $position =  get_field('structure_position',  "user_" . $participant->ID); ?>
+                <?php $website =  get_field('structure_website',  "user_" . $participant->ID); ?>
 
                 <div class="participant_container">
                     <div class="participant_image" style="background-image: url('<?php echo $image; ?>');">
