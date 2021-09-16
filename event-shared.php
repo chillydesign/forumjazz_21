@@ -64,12 +64,11 @@
 
                 <?php if ($intervenants) : ?>
                     <h3><?php _e('Intervenants', 'blankslate'); ?></h3>
-                    <div class="participants_container">
-
+                    <div class="participants_container participants_container_small">
                         <?php foreach ($intervenants as $intervenant) : ?>
+                            <?php var_dump($intervenant); ?>
                             <?php $image = user_structure_image($intervenant); ?>
                             <?php $structure =  get_field('structure_name',  "user_" . $intervenant->ID); ?>
-
                             <div class="participant_container">
                                 <div class="participant_image" style="background-image: url('<?php echo $image; ?>');">
                                 </div>
@@ -112,6 +111,7 @@
             <div class="column">
 
                 <?php if ($image) : ?>
+                    <?php var_dump($image); ?>
                     <img src="<?php echo $image['sizes']['medium']; ?>" alt="<?php echo get_the_title(); ?>" />
                 <?php endif; ?>
 

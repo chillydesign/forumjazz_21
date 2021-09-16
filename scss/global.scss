@@ -1003,6 +1003,16 @@ body .woocommerce input.button {
     align-items: flex-start;
     align-content: flex-start;
 
+    &.participants_container_small {
+        display: block;
+
+        .participant_container {
+            width: 100%;
+            max-width: unset;
+            min-width: unset;
+        }
+    }
+
 }
 
 .participant_container {
