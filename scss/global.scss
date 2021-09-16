@@ -745,11 +745,13 @@ $con_ren_height: 60px;
 
         a {
             background-color: $orange;
+            padding-left: 12px;
+            padding-right: 12px;
         }
     }
 
     input {
-        width: 200px
+        width: 140px
     }
 }
 
