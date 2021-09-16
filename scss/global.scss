@@ -169,6 +169,7 @@ header#page_header {
 
         @media (min-width: $mobile_width) {
             text-align: left;
+
         }
     }
 
@@ -223,9 +224,11 @@ header#page_header+section {
             display: inline-block;
             margin: -30px 0 0px;
             text-align: center;
+            padding-top: 50px;
 
             @media (min-width: $mobile_width) {
                 text-align: left;
+                padding-top: 0;
             }
         }
 
