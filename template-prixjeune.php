@@ -83,9 +83,9 @@
 
 
                     <div class="field">
-                        <label for="concert_id">Vote</label>
+                        <label for="concert_id"><?php _e('Cliquez sur votre groupe coup de coeur Forum Jazz 2021'); ?></label>
                         <select name="concert_id" id="concert_id">
-                            <option value="">Vote</option>
+                            <option value=""><?php _e('Choisir un groupe'); ?></option>
                             <?php foreach ($concerts as $concert) : ?>
                                 <option value="<?php echo $concert->ID; ?>"><?php echo $concert->post_name; ?></option>
                             <?php endforeach; ?>
