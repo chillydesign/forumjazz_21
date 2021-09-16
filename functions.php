@@ -1119,9 +1119,9 @@ function process_prix_jeune_form() {
     }
 }
 
-function user_structure_image($user) {
+function user_structure_image($user_id) {
     $image = null;
-    $image_id =  get_field('structure_image',  "user_" . $user->ID);
+    $image_id =  get_field('structure_image',  "user_" . $user_id);
     if ($image_id) {
         $image_src = wp_get_attachment_image_src($image_id, 'medium');
         if ($image_src) {
@@ -1129,7 +1129,8 @@ function user_structure_image($user) {
         }
     }
     if (!$image) {
-        $image = get_avatar_url($user->user_email);
+        // get $user and get user email from id
+        // $image = get_avatar_url($user->user_email);
     }
     return $image;
 }

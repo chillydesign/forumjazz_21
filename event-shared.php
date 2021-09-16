@@ -67,15 +67,15 @@
                     <div class="participants_container participants_container_small">
                         <?php foreach ($intervenants as $intervenant) : ?>
                             <?php var_dump($intervenant); ?>
-                            <?php $image = user_structure_image($intervenant); ?>
-                            <?php $structure =  get_field('structure_name',  "user_" . $intervenant->ID); ?>
+                            <?php $user_image = user_structure_image($intervenant['ID']); ?>
+                            <?php $structure =  get_field('structure_name',  "user_" . $intervenant['ID']); ?>
                             <div class="participant_container">
-                                <div class="participant_image" style="background-image: url('<?php echo $image; ?>');">
+                                <div class="participant_image" style="background-image: url('<?php echo $user_image; ?>');">
                                 </div>
                                 <div class="participant_text">
                                     <h3>
-                                        <?php echo ($intervenant->first_name); ?>
-                                        <?php echo ($intervenant->last_name); ?>
+                                        <?php echo ($intervenant['first_name']); ?>
+                                        <?php echo ($intervenant['last_name']); ?>
                                     </h3>
                                     <p> <strong><?php echo $structure; ?> </strong>
                                     </p>
@@ -111,7 +111,6 @@
             <div class="column">
 
                 <?php if ($image) : ?>
-                    <?php var_dump($image); ?>
                     <img src="<?php echo $image['sizes']['medium']; ?>" alt="<?php echo get_the_title(); ?>" />
                 <?php endif; ?>
 

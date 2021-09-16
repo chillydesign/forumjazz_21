@@ -19,7 +19,7 @@
 
             <?php foreach ($intervenants as $intervenant) : ?>
 
-                <?php $image = user_structure_image($intervenant); ?>
+                <?php $image = user_structure_image($intervenant->ID); ?>
                 <?php $structure =  get_field('structure_name',  "user_" . $intervenant->ID); ?>
                 <?php $position =  get_field('structure_position',  "user_" . $intervenant->ID); ?>
                 <?php $website =  get_field('structure_website',  "user_" . $intervenant->ID); ?>

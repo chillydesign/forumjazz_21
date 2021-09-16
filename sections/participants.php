@@ -21,7 +21,7 @@
 
             <?php foreach ($participants as $participant) : ?>
 
-                <?php $image = user_structure_image($participant); ?>
+                <?php $image = user_structure_image($participant->ID); ?>
                 <?php $structure =  get_field('structure_name',  "user_" . $participant->ID); ?>
                 <?php $position =  get_field('structure_position',  "user_" . $participant->ID); ?>
                 <?php $website =  get_field('structure_website',  "user_" . $participant->ID); ?>
