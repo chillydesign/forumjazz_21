@@ -21,7 +21,7 @@
 
             <div class="container">
                 <?php if (isset($_GET['success'])) : ?>
-                    <p class="alert alert_success"> Votre vote a bien été enregistré !</p>
+                    <p class="alert alert_success"><?php _e("Votre vote a bien été enregistré !", 'blankslate'); ?> </p>
                 <?php endif; ?>
                 <?php if (isset($_GET['problem'])) : ?>
                     <p class="alert alert_problem">
@@ -74,12 +74,12 @@
                     </div>
 
 
-                    <div class="field">
+                    <!-- <div class="field">
                         <label><?php _e('Je suis', 'webfactor'); ?>: *</label>
                         <label class="inline_label"> <input type="radio" id="je_suis" name="je_suis" value="Etudiant"> Etudiant </label>
                         <label class="inline_label"> <input type="radio" id="je_suis" name="je_suis" value="Collégien"> Collégien </label>
                         <label class="inline_label"> <input type="radio" id="je_suis" name="je_suis" value="Lycéen"> Lycéen </label>
-                    </div>
+                    </div> -->
 
 
                     <div class="field">
