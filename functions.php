@@ -1063,8 +1063,12 @@ function process_prix_jeune_form() {
         $etablissement = $_POST['etablissement'];
         $justification = $_POST['justification'];
 
+
+        setcookie('jazz_prix_form', implode(';;', [$first_name, $last_name, $email, $etablissement, $justification]), time() + 3600, "/");
+
+
         if ($code == 'code123') {
-            setcookie('jazz_prix_form', implode(';;', [$first_name, $last_name, $email, $etablissement, $justification]), time() + 3600, "/");
+
 
 
             // if we  have the right data and user logged in
