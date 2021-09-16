@@ -35,6 +35,7 @@
             $subpage = $_GET['subpage'];
             if ($subpage == 'showcases') {
                 $title = 'Showcases';
+                $dates = array($dates[1], $dates[2]); // hide 24th and 27th
             } else if ($subpage == 'rencontres') {
                 $title = 'Rencontres';
             }
