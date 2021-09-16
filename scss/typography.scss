@@ -215,16 +215,17 @@ ol {
   border: 1px solid $blue;
   background: lighten($blue, 30);
   border-radius: 5px;
+  color: darken($blue, 20);
 
   &.alert_success {
     background-color: lighten($green, 30);
-    color: $green;
+    color: darken($green, 20);
     border-color: $green;
   }
 
   &.alert_problem {
     background-color: lighten($red, 30);
-    color: $red;
+    color: darken($red, 20);
     border-color: $red;
   }
 }
