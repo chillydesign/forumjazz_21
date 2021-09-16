@@ -94,13 +94,20 @@ header#header {
                 &.wpml-ls-item-en,
                 &.wpml-ls-item-fr {
                     a {
-                        display: inline-block;
-                        background: url('../img/flags/en.svg') no-repeat center center;
+                        display: block;
+                        background: url('../img/flags/en.svg') no-repeat 15px center;
                         background-size: 18px;
-                        padding: 14px 13px;
-                        text-align: left;
-                        text-indent: -9999px;
-                        height: 100%;
+                        padding: 14px 13px 14px 43px;
+
+
+
+                        @media (min-width: $mobile_width) {
+                            display: inline-block;
+                            text-align: left;
+                            text-indent: -9999px;
+                            background-position: center center;
+                            padding-left: 13px;
+                        }
                     }
                 }
 
