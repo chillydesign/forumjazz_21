@@ -10,6 +10,7 @@
 <?php $line_up = get_field('line_up'); ?>
 <?php $video_clip = get_field('video_clip'); ?>
 <?php $subtitle = get_field('subtitle'); ?>
+<?php $intervenants = get_field('intervenants'); ?>
 <?php $facebook = get_field('facebook'); ?>
 <?php $instagram = get_field('instagram'); ?>
 <?php $spotify = get_field('spotify'); ?>
@@ -56,10 +57,15 @@
 
 
                 <?php if ($line_up) : ?>
-                    <h3>Line up</h3>
+                    <h3><?php _e('Line up', 'blankslate'); ?></h3>
                     <div class="lineup"> <?php echo $line_up; ?></div>
                 <?php endif; ?>
 
+
+                <?php if ($intervenants) : ?>
+                    <h3><?php _e('Intervenants', 'blankslate'); ?>Line up</h3>
+                    <?php var_dump($intervenants); ?>
+                <?php endif; ?>
 
                 <?php if ($location) : ?>
                     <?php $location_title = $location->post_title; ?>
