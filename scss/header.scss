@@ -91,6 +91,16 @@ header#header {
                     padding: 0;
                 }
 
+                &.wpml-ls-item-en {
+                    a {
+                        display: inline-block;
+                        background: url('../img/flags/en.svg') no-repeat center center;
+                        background-size: contain;
+                        width: 17px;
+                        height: 15px;
+                    }
+                }
+
 
 
                 a {
