@@ -93,7 +93,7 @@
                         <select name="concert_id" id="concert_id">
                             <option value=""><?php _e('Choisir un groupe'); ?></option>
                             <?php foreach ($concerts as $concert) : ?>
-                                <option value="<?php echo $concert->ID; ?>"><?php echo $concert->post_name; ?></option>
+                                <option value="<?php echo $concert->ID; ?>"><?php echo $concert->post_title; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
