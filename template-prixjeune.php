@@ -51,7 +51,7 @@
                         <input type="text" id="last_name" name="last_name">
                     </div>
                     <div class="field">
-                        <label for="email"><?php _e('Adresse électronique', 'webfactor'); ?>*</label>
+                        <label for="email"><?php _e('Email', 'webfactor'); ?>*</label>
                         <input type="text" id="email" name="email">
                     </div>
 
@@ -81,7 +81,7 @@
                     </div>
                     <div class="field">
                         <input type="hidden" name="action" value="prix_jeune_form">
-                        <input class="button" id="prix_jeune_form_submit_button" type="submit" value="<?php _e('Submit', 'webfactor'); ?>">
+                        <input class="button" id="prix_jeune_form_submit_button" type="submit" value="<?php _e('Envoyer', 'webfactor'); ?>">
 
                     </div>
                 </form>

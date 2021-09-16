@@ -606,18 +606,18 @@ function create_post_types() {
         'prix', // Register Custom Post Type
         array(
             'labels' => array(
-                'name' => __('Prixes', 'webfactor'), // Rename these to suit
-                'singular_name' => __('Prix', 'webfactor'),
+                'name' => __('Votes', 'webfactor'), // Rename these to suit
+                'singular_name' => __('Vote', 'webfactor'),
                 'add_new' => __('Ajouter', 'webfactor'),
-                'add_new_item' => __('Ajouter Prix', 'webfactor'),
+                'add_new_item' => __('Ajouter Vote', 'webfactor'),
                 'edit' => __('Modifier', 'webfactor'),
-                'edit_item' => __('Modifier Prix', 'webfactor'),
-                'new_item' => __('Ajouter Prix', 'webfactor'),
-                'view' => __('Afficher Prix', 'webfactor'),
-                'view_item' => __('Afficher Prix', 'webfactor'),
-                'search_items' => __('Rechercher Prixes', 'webfactor'),
-                'not_found' => __('Pas de Prix trouvé', 'webfactor'),
-                'not_found_in_trash' => __('Pas de Prix trouvé dans la corbeille', 'webfactor')
+                'edit_item' => __('Modifier Vote', 'webfactor'),
+                'new_item' => __('Ajouter Vote', 'webfactor'),
+                'view' => __('Afficher Vote', 'webfactor'),
+                'view_item' => __('Afficher Vote', 'webfactor'),
+                'search_items' => __('Rechercher Votes', 'webfactor'),
+                'not_found' => __('Pas de Vote trouvé', 'webfactor'),
+                'not_found_in_trash' => __('Pas de Vote trouvé dans la corbeille', 'webfactor')
             ),
             'map_meta_cap' => true,
             'capability_type' => $prix_slug,
@@ -636,15 +636,12 @@ function create_post_types() {
                 'read' => 'read',
             ),
             'public' => true,
-            'publicly_queryable' => true, // dont allow to see on front end
+            'publicly_queryable' => false, // dont allow to see on front end
             'exclude_from_search' => true, // dont show in search
             'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
             'has_archive' => true,
             'supports' => array(
-                'title',
-                'editor',
-                'excerpt',
-                'thumbnail'
+                'title'
             ), // Go to Dashboard Custom HTML5 Blank post for supports
             'can_export' => true, // Allows export in Tools > Export
             'taxonomies' => array(
