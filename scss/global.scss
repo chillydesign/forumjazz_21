@@ -499,6 +499,15 @@ $con_ren_height: 60px;
     }
 }
 
+#map_container {
+    height: 400px;
+    background-color: $light_grey;
+    margin: 0;
+
+    &.map_container_large {
+        height: 600px;
+    }
+}
 
 .lieux_container {
     height: 100vh;
@@ -523,15 +532,17 @@ $con_ren_height: 60px;
 }
 
 
-#map_container {
-    height: 400px;
-    background-color: $light_grey;
-    margin: 0;
 
-    &.map_container_large {
+
+#map_and_lieux {
+    margin-top: -20px; // not sure why
+
+    .lieux_container,
+    #map_container {
         height: 600px;
     }
 }
+
 
 // EVENTS
 // EVENTS

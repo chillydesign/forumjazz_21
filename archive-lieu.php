@@ -18,7 +18,7 @@ foreach ($lieux as $lieu) {
 </header>
 <section>
 
-    <div class="columns">
+    <div class="columns" id="map_and_lieux">
         <div class="column column_small no_padding">
 
             <div class="lieux_container">
