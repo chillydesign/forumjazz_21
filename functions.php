@@ -1057,6 +1057,9 @@ function process_prix_jeune_form() {
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
         $email = $_POST['email'];
+        $etablissement = $_POST['etablissement'];
+
+        setcookie('jazz_prix_form', implode(';;', [$first_name, $last_name, $email, $etablissement]), time() + 3600, "/");
 
 
         // if we  have the right data and user logged in
@@ -1095,9 +1098,10 @@ function process_prix_jeune_form() {
                 update_field('ip_address',   $ip_address, $new_prix);
                 update_field('concert_id',   $concert_id, $new_prix);
 
+                // clear cookie
+                setcookie('jazz_prix_form', '', time() - 3600, "/");
 
                 wp_redirect($referer . '?success', $status = 302);
-                //wp_redirect(  get_permalink( $new_prix )  );
 
                 // something went wrong with adding the prix post
             } else {

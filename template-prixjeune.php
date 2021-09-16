@@ -41,24 +41,36 @@
 
                 <form id="prix_jeune_form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post" enctype="multipart/form-data">
 
+                    <?php
+                    $first_name = $last_name = $email =  $etablissement = '';
+                    $jcookie = $_COOKIE["jazz_prix_form"];
+                    if (isset($jcookie)) {
+                        $j = explode(';;', $jcookie);
+                        $first_name = $j[0];
+                        $last_name = $j[1];
+                        $email = $j[2];
+                        $etablissement = $j[3];
+                    }
+
+                    ?>
 
                     <div class="field">
                         <label for="first_name"><?php _e('Prénom', 'webfactor'); ?>*</label>
-                        <input type="text" id="first_name" name="first_name">
+                        <input type="text" id="first_name" name="first_name" value="<?php echo $first_name; ?>">
                     </div>
                     <div class="field">
                         <label for="last_name"><?php _e('Nom', 'webfactor'); ?>*</label>
-                        <input type="text" id="last_name" name="last_name">
+                        <input type="text" id="last_name" name="last_name" value="<?php echo $last_name; ?>">
                     </div>
                     <div class="field">
                         <label for="email"><?php _e('Email', 'webfactor'); ?>*</label>
-                        <input type="text" id="email" name="email">
+                        <input type="text" id="email" name="email" value="<?php echo $email; ?>">
                     </div>
 
 
                     <div class="field">
                         <label for="etablissement"><?php _e('Etablissement', 'webfactor'); ?>*</label>
-                        <input type="text" id="etablissement" name="etablissement">
+                        <input type="text" id="etablissement" name="etablissement" value="<?php echo $etablissement; ?>">
                     </div>
 
 
