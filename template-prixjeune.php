@@ -68,6 +68,7 @@
                     </div>
 
 
+
                     <div class="field">
                         <label for="etablissement"><?php _e('Etablissement', 'webfactor'); ?>*</label>
                         <input type="text" id="etablissement" name="etablissement" value="<?php echo $etablissement; ?>">
@@ -83,7 +84,7 @@
 
 
                     <div class="field">
-                        <label for="concert_id"><?php _e('Cliquez sur votre groupe coup de coeur Forum Jazz 2021'); ?></label>
+                        <label for="concert_id"><?php _e('Cliquez sur votre groupe coup de coeur Forum Jazz 2021', 'blankslate'); ?></label>
                         <select name="concert_id" id="concert_id">
                             <option value=""><?php _e('Choisir un groupe'); ?></option>
                             <?php foreach ($concerts as $concert) : ?>
@@ -91,6 +92,13 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
+
+                    <div class="field">
+                        <label for="justification"><?php _e('Merci de justifier votre choix en quelques mots"', 'blankslate'); ?>*</label>
+                        <textarea id="justification" name="justification"><?php echo $justification; ?></textarea>
+                    </div>
+
+
                     <div class="field">
                         <input type="hidden" name="action" value="prix_jeune_form">
                         <input class="button" id="prix_jeune_form_submit_button" type="submit" value="<?php _e('Envoyer', 'webfactor'); ?>">

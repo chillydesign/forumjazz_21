@@ -1037,6 +1037,7 @@ function prix_fields() {
         'email' => 'Adresse électronique',
         'etablissement' => 'Etablissement',
         'je_suis' => 'Je suis',
+        'justification' => 'Justification',
     ];
 }
 
@@ -1058,8 +1059,9 @@ function process_prix_jeune_form() {
         $last_name = $_POST['last_name'];
         $email = $_POST['email'];
         $etablissement = $_POST['etablissement'];
+        $justification = $_POST['justification'];
 
-        setcookie('jazz_prix_form', implode(';;', [$first_name, $last_name, $email, $etablissement]), time() + 3600, "/");
+        setcookie('jazz_prix_form', implode(';;', [$first_name, $last_name, $email, $etablissement, $justification]), time() + 3600, "/");
 
 
         // if we  have the right data and user logged in
@@ -1068,6 +1070,7 @@ function process_prix_jeune_form() {
             !empty($email)  &&
             !empty($first_name) &&
             !empty($last_name) &&
+            !empty($justification) &&
             !empty($concert_id) &&
             $concert_id != ''
         ) {
