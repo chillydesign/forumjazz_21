@@ -4,6 +4,7 @@
         <a href="<?php echo $site_url; ?>/rencontres?subpage=programme" class="button"><?php _e('Programme', 'blankslate'); ?></a>
         <a href="<?php echo $site_url; ?>/rencontres?subpage=rencontres" class="button"><?php _e('Rencontres', 'blankslate'); ?></a>
         <a href="<?php echo $site_url; ?>/rencontres?subpage=showcases" class="button"><?php _e('Showcases', 'blankslate'); ?></a>
+        <a href="<?php echo $site_url; ?>/extras-forum" class="button"><?php _e('Extras Forum', 'blankslate'); ?></a>
         <a href="<?php echo $site_url; ?>/intervenants" class="button"><?php _e('Intervenants', 'blankslate'); ?></a>
         <a href="<?php echo $site_url; ?>/participants" class="button"><?php _e('Participants', 'blankslate'); ?></a>
     </div>
