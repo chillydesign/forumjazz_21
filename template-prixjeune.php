@@ -50,6 +50,7 @@
                         $last_name = $j[1];
                         $email = $j[2];
                         $etablissement = $j[3];
+                        $justification = $j[4];
                     }
 
                     ?>
