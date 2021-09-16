@@ -20,7 +20,8 @@
         $concerts  = get_posts(array(
             'post_type' => 'concert',
             'posts_per_page' => -1,
-            'tax_query'      =>  $tax_query
+            'tax_query'      =>  $tax_query,
+            'suppress_filters' => 0, // stop wpml giving posts from all languages
         ));
         $processed_dates =  processDatesForConcertGrid($dates, $concerts);
 

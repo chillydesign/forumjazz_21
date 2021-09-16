@@ -3,6 +3,7 @@
 <?php $partenaires  = get_posts(array(
     'post_type' => 'partenaire',
     'posts_per_page' => -1,
+    'suppress_filters' => 0, // stop wpml giving posts from all languages
     'tax_query' => array(
         array(
             'taxonomy' => 'partenaire_category',

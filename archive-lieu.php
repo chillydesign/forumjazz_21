@@ -2,7 +2,8 @@
 <?php
 $lieux = get_posts(array(
     'post_type' => 'lieu',
-    'posts_per_page' => -1
+    'posts_per_page' => -1,
+    'suppress_filters' => 0, // stop wpml giving posts from all languages
 ));
 $location_objects = [];
 foreach ($lieux as $lieu) {
