@@ -468,7 +468,7 @@ $con_ren_height: 60px;
 
 
     .conc_rec_image {
-        background: url('https://images.ctfassets.net/bdyhigkzupmv/6lySzcy7qcIN1tf81Qkus/5b5ac73daeaf61f9057c0b0dd8447a31/hero-guitar-outro.jpg') no-repeat center center;
+        background: $light_grey no-repeat center center;
         background-size: cover;
         width: 100%;
         height: 500px;

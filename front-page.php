@@ -8,6 +8,10 @@
         <?php $who_we_are_video =  get_field('who_we_are_video'); ?>
         <?php $concerts_box =  get_field('concerts_box'); ?>
         <?php $rencontres_box =  get_field('rencontres_box'); ?>
+        <?php $concert_photo =  get_field('concert_photo'); ?>
+        <?php $rencontres_photo =  get_field('rencontres_photo'); ?>
+        <?php $concert_image =  ($concert_photo) ? $concert_photo['sizes']['large'] : ''; ?>
+        <?php $rencontres_image =  ($rencontres_photo) ?  $rencontres_photo['sizes']['large'] : ''; ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -79,7 +83,7 @@
                             </div>
                         </div>
                         <div class="column">
-                            <div class="conc_rec_image"></div>
+                            <div class="conc_rec_image" style="background-image: url('<?php echo $concert_image; ?>')"></div>
                         </div>
                     </div>
                 </div>
@@ -91,11 +95,10 @@
                         <div class="column">
                             <div class="concert_recontre_text">
                                 <?php echo $concerts_box; ?>
-
                             </div>
                         </div>
                         <div class="column">
-                            <div class="conc_rec_image"></div>
+                            <div class="conc_rec_image" style="background-image: url('<?php echo $rencontres_image; ?>')"></div>
                         </div>
                     </div>
                 </div>
