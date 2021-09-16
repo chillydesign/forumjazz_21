@@ -37,9 +37,6 @@ article {
 
     &.columns_reversed {
         flex-direction: row-reverse;
-
-
-
     }
 
     @media (min-width: $mobile_width) {
@@ -67,7 +64,7 @@ article {
     }
 
     &.large_column,
-    &.large_column {
+    &.column_large {
         @media (min-width: $mobile_width) {
             width: 60%;
         }
@@ -78,6 +75,10 @@ article {
         @media (min-width: $mobile_width) {
             width: 40%;
         }
+    }
+
+    &.no_padding {
+        padding: 0;
     }
 }
 
@@ -498,6 +499,28 @@ $con_ren_height: 60px;
     }
 }
 
+
+.lieux_container {
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: $light_grey
+}
+
+.lieu_container {
+    padding: $padding;
+    border: 1px solid $medium_grey;
+    margin: $padding;
+    background-color: lighten($light_grey, 10);
+
+    h4 {
+        padding: 0;
+    }
+
+    .address {
+        color: $medium_grey;
+        font-style: italic;
+    }
+}
 
 
 #map_container {

@@ -11,17 +11,51 @@ foreach ($lieux as $lieu) {
     array_push($location_objects, $lieu_json);
 }
 ?>
-
 <header id="page_header">
     <div class="container">
         <h1 class="entry-title" itemprop="name"><?php _e('Lieux', 'blankslate'); ?></h1>
     </div>
 </header>
-<div id="map_container" class="map_container_large"></div>
+<section>
+
+    <div class="columns">
+        <div class="column column_small no_padding">
+
+            <div class="lieux_container">
+                <?php foreach ($lieux as $lieu) : ?>
+
+                    <?php $description = get_field('description', $lieu->ID); ?>
+                    <?php $address = get_field('address', $lieu->ID); ?>
+                    <?php $website = get_field('website', $lieu->ID); ?>
+
+                    <div class="lieu_container">
+
+                        <h4><?php echo $lieu->post_title; ?></h4>
+                        <?php if ($address) : ?>
+                            <p class="address"><?php echo $address; ?></p>
+                        <?php endif; ?>
+                        <?php if ($description) : ?>
+                            <?php echo $description; ?>
+                        <?php endif; ?>
+
+                        <?php if ($website) : ?>
+                            <p> <a href="<?php echo $website; ?>" target="_blank"><?php echo $website; ?></a> </p>
+                        <?php endif; ?>
+
+
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="column column_large no_padding">
+            <div id="map_container" class="map_container_large"></div>
+        </div>
+    </div>
+</section>
+
 <script>
     const map_locations = <?php echo  json_encode($location_objects); ?>;
     const theme_directory = '<?php echo get_template_directory_uri(); ?>';
 </script>
 
-</div>
 <?php get_footer(); ?>
