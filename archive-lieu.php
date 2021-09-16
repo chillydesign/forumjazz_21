@@ -20,7 +20,9 @@ foreach ($lieux as $lieu) {
 
     <div class="columns" id="map_and_lieux">
         <div class="column column_small no_padding">
-
+            <div class="column column_large no_padding">
+                <div id="map_container" class="map_container_large"></div>
+            </div>
             <div class="lieux_container">
                 <?php foreach ($lieux as $lieu) : ?>
 
@@ -47,9 +49,7 @@ foreach ($lieux as $lieu) {
                 <?php endforeach; ?>
             </div>
         </div>
-        <div class="column column_large no_padding">
-            <div id="map_container" class="map_container_large"></div>
-        </div>
+
     </div>
 </section>
 

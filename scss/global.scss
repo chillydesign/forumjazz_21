@@ -509,10 +509,28 @@ $con_ren_height: 60px;
     }
 }
 
-.lieux_container {
-    height: 100vh;
-    overflow-y: scroll;
-    background-color: $light_grey
+
+
+#map_and_lieux {
+    margin-top: -30px; // not sure why
+
+
+    #map_container {
+        height: 300px;
+
+        @media (min-width: $mobile_width) {
+            height: 600px;
+        }
+    }
+
+    .lieux_container {
+        background-color: $light_grey;
+
+        @media (min-width: $mobile_width) {
+            overflow-y: scroll;
+            height: 600px;
+        }
+    }
 }
 
 .lieu_container {
@@ -533,15 +551,6 @@ $con_ren_height: 60px;
 
 
 
-
-#map_and_lieux {
-    margin-top: -20px; // not sure why
-
-    .lieux_container,
-    #map_container {
-        height: 600px;
-    }
-}
 
 
 // EVENTS
