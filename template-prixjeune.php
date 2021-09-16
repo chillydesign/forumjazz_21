@@ -33,19 +33,34 @@
 
                     <div class="field">
                         <label for="first_name"><?php _e('Prénom', 'webfactor'); ?>*</label>
-                        <input type="text" id="input_first_name" name="first_name">
+                        <input type="text" id="first_name" name="first_name">
                     </div>
                     <div class="field">
                         <label for="last_name"><?php _e('Nom', 'webfactor'); ?>*</label>
-                        <input type="text" id="input_last_name" name="last_name">
+                        <input type="text" id="last_name" name="last_name">
                     </div>
                     <div class="field">
                         <label for="email"><?php _e('Adresse électronique', 'webfactor'); ?>*</label>
-                        <input type="text" id="input_email" name="email">
+                        <input type="text" id="email" name="email">
                     </div>
 
+
                     <div class="field">
-                        <label for="concert_id">Concert</label>
+                        <label for="etablissement"><?php _e('Etablissement', 'webfactor'); ?>*</label>
+                        <input type="text" id="etablissement" name="etablissement">
+                    </div>
+
+
+                    <div class="field">
+                        <label><?php _e('Je suis', 'webfactor'); ?>: *</label>
+                        <label class="inline_label"> <input type="radio" id="je_suis" name="je_suis" value="Etudiant"> Etudiant </label>
+                        <label class="inline_label"> <input type="radio" id="je_suis" name="je_suis" value="Collégien"> Collégien </label>
+                        <label class="inline_label"> <input type="radio" id="je_suis" name="je_suis" value="Lycéen"> Lycéen </label>
+                    </div>
+
+
+                    <div class="field">
+                        <label for="concert_id">Vote</label>
                         <select name="concert_id" id="concert_id">
                             <?php foreach ($concerts as $concert) : ?>
                                 <option value="<?php echo $concert->ID; ?>"><?php echo $concert->post_name; ?></option>

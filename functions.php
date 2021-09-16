@@ -1038,6 +1038,8 @@ function prix_fields() {
         'first_name' => 'Prénom',
         'last_name' => 'Nom',
         'email' => 'Adresse électronique',
+        'etablissement' => 'Etablissement',
+        'je_suis' => 'Je suis électronique',
     ];
 }
 
