@@ -62,6 +62,7 @@
                     <div class="field">
                         <label for="concert_id">Vote</label>
                         <select name="concert_id" id="concert_id">
+                            <option value="">Vote</option>
                             <?php foreach ($concerts as $concert) : ?>
                                 <option value="<?php echo $concert->ID; ?>"><?php echo $concert->post_name; ?></option>
                             <?php endforeach; ?>

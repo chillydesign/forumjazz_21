@@ -1039,7 +1039,7 @@ function prix_fields() {
         'last_name' => 'Nom',
         'email' => 'Adresse électronique',
         'etablissement' => 'Etablissement',
-        'je_suis' => 'Je suis électronique',
+        'je_suis' => 'Je suis',
     ];
 }
 
@@ -1064,7 +1064,13 @@ function process_prix_jeune_form() {
 
         // if we  have the right data and user logged in
         //  && $current_user_id > 0
-        if (!empty($email)  && !empty($first_name) &&  !empty($last_name) &&  !empty($concert_id)) {
+        if (
+            !empty($email)  &&
+            !empty($first_name) &&
+            !empty($last_name) &&
+            !empty($concert_id) &&
+            $concert_id != ''
+        ) {
             $post = array(
                 'post_title'   => $first_name . ' ' . $last_name,
                 'post_status'  => 'publish',
