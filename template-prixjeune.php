@@ -6,6 +6,7 @@
         $concerts  = get_posts(array(
             'post_type' => 'concert',
             'posts_per_page' => -1,
+            'suppress_filters' => 0, // stop wpml giving posts from all languages
         ));
 
         ?>
