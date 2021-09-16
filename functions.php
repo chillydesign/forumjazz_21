@@ -745,6 +745,7 @@ function generate_date_box($date) {
 
 
 function sort_by_location_name_and_time($a, $b) {
+    var_dump($a->location_name . $a->time);
     return strcmp($a->location_name . $a->time, $b->location_name . $a->time);
 }
 
