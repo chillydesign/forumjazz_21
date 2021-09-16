@@ -400,6 +400,61 @@ function create_post_types() {
         )
     );
 
+    $extra_forum_slug = 'extraforum';
+    $extra_forum_slug_plural = 'extraforums';
+
+    register_post_type(
+        'extraforum', // Register Custom Post Type
+        array(
+            'labels' => array(
+                'name' => __('Extra forums', 'webfactor'), // Rename these to suit
+                'singular_name' => __('Extra forum', 'webfactor'),
+                'add_new' => __('Ajouter', 'webfactor'),
+                'add_new_item' => __('Ajouter Extra forum', 'webfactor'),
+                'edit' => __('Modifier', 'webfactor'),
+                'edit_item' => __('Modifier Extra forum', 'webfactor'),
+                'new_item' => __('Ajouter Extra forum', 'webfactor'),
+                'view' => __('Afficher Extra forum', 'webfactor'),
+                'view_item' => __('Afficher Extra forum', 'webfactor'),
+                'search_items' => __('Rechercher Extra forums', 'webfactor'),
+                'not_found' => __('Pas de Extra forum trouvé', 'webfactor'),
+                'not_found_in_trash' => __('Pas de Extra forum trouvé dans la corbeille', 'webfactor')
+            ),
+            'map_meta_cap' => true,
+            'capability_type' => $extra_forum_slug,
+            'capabilities' => array(
+                'create_posts' => 'create_' . $extra_forum_slug_plural,
+                'delete_others_posts' => 'delete_others_' . $extra_forum_slug_plural,
+                'delete_posts' => 'delete_' . $extra_forum_slug_plural,
+                'delete_private_posts' => 'delete_private_' . $extra_forum_slug_plural,
+                'delete_published_posts' => 'delete_published_' . $extra_forum_slug_plural,
+                'edit_posts' => 'edit_' . $extra_forum_slug_plural,
+                'edit_others_posts' => 'edit_others_' . $extra_forum_slug_plural,
+                'edit_private_posts' => 'edit_private_' . $extra_forum_slug_plural,
+                'edit_published_posts' => 'edit_published_' . $extra_forum_slug_plural,
+                'publish_posts' => 'publish_' . $extra_forum_slug_plural,
+                'read_private_posts' => 'read_private_' . $extra_forum_slug_plural,
+                'read' => 'read',
+            ),
+            'public' => true,
+            'publicly_queryable' => true, // dont allow to see on front end
+            'exclude_from_search' => true, // dont show in search
+            'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+            'has_archive' => true,
+            'supports' => array(
+                'title',
+                'editor',
+                'excerpt',
+                'thumbnail'
+            ), // Go to Dashboard Custom HTML5 Blank post for supports
+            'can_export' => true, // Allows export in Tools > Export
+            'taxonomies' => array(
+                //    'post_tag',
+                //    'category'
+            ) // Add Category and Post Tags support
+        )
+    );
+
     $recontre_slug = 'rencontre';
     $recontre_slug_plural = 'rencontres';
 
