@@ -66,14 +66,14 @@ article {
     &.large_column,
     &.column_large {
         @media (min-width: $mobile_width) {
-            width: 60%;
+            width: 70%;
         }
     }
 
     &.small_column,
     &.column_small {
         @media (min-width: $mobile_width) {
-            width: 40%;
+            width: 30%;
         }
     }
 
@@ -512,8 +512,10 @@ $con_ren_height: 60px;
 
 
 #map_and_lieux {
-    margin-top: -30px; // not sure why
 
+    @media (min-width: $mobile_width) {
+        margin-top: -30px; // not sure why
+    }
 
     #map_container {
         height: 300px;
@@ -525,6 +527,7 @@ $con_ren_height: 60px;
 
     .lieux_container {
         background-color: $light_grey;
+        padding: $padding;
 
         @media (min-width: $mobile_width) {
             overflow-y: scroll;
@@ -536,7 +539,7 @@ $con_ren_height: 60px;
 .lieu_container {
     padding: $padding;
     border: 1px solid $medium_grey;
-    margin: $padding;
+    margin: $padding 0;
     background-color: lighten($light_grey, 10);
 
     h4 {
