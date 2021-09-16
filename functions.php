@@ -744,8 +744,8 @@ function generate_date_box($date) {
 }
 
 
-function sort_by_location_name($a, $b) {
-    return strcmp($a->location_name, $b->location_name);
+function sort_by_location_name_and_time($a, $b) {
+    return strcmp($a->location_name . $a->time, $b->location_name . $a->time);
 }
 
 
@@ -1010,7 +1010,7 @@ function processDatesForConcertGrid($dates, $concerts) {
 
     // for some reason this doesnt work with a normal foreach loop
     for ($d = 0; $d < sizeof($dates); $d++) {
-        usort($dates[$d]['concerts'], "sort_by_location_name");
+        usort($dates[$d]['concerts'], "sort_by_location_name_and_time");
     }
     return $dates;
 }
