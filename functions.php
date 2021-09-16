@@ -1109,7 +1109,7 @@ function process_prix_jeune_form() {
 
             // if we dont have all the data or user not logged in
         } else {
-            wp_redirect($referer . '?problem', $status = 302);
+            wp_redirect($referer . '?problem=fields', $status = 302);
         }
 
         // if the form didnt post the action field

@@ -21,11 +21,22 @@
 
             <div class="container">
                 <?php if (isset($_GET['success'])) : ?>
-                    <p class="alert alert_success">Votre suggestion a été enregistrée</p>
+                    <p class="alert alert_success"> Votre vote a bien été enregistré !</p>
                 <?php endif; ?>
                 <?php if (isset($_GET['problem'])) : ?>
-                    <p class="alert alert_problem">A problem occurred. Please try again.</p>
+                    <p class="alert alert_problem">
+                        <?php if ($_GET['problem'] == 'fields') {
+                            _e("Une erreur s'est produite.", 'blankslate');
+                        } else {
+                            _e("Veuillez renseigner tous les champs.", 'blankslate');
+                        } ?>
+                    </p>
                 <?php endif; ?>
+
+
+
+
+
 
 
                 <form id="prix_jeune_form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="post" enctype="multipart/form-data">
