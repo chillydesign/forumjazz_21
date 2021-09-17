@@ -1028,9 +1028,19 @@ function processConcerts($concerts) {
     return $concerts;
 }
 
+
+function processTime($time) {
+    if ($time) {
+        if ($time == '23:59') {
+            return '00:00';
+        }
+    }
+    return $time;
+}
 function processConcert($concert) {
     $concert->location = get_field('location', $concert->ID);
-    $concert->time = get_field('time',  $concert->ID);
+    $concert->time = processTime(get_field('time',  $concert->ID));
+
     // $concert->image = thumbnail_of_post_url($concert->ID, 'medium');
     $image =  get_field('image',  $concert->ID);
     if ($image) {

@@ -1,7 +1,7 @@
 <?php $website = get_field('website'); ?>
 <?php $texte_de_presentation = get_field('texte_de_presentation'); ?>
 <?php $date = get_field('date'); ?>
-<?php $time = get_field('time'); ?>
+<?php $time =  processTime(get_field('time')); ?>
 <?php $location = get_field('location'); ?>
 <?php // $image = thumbnail_of_post_url(get_the_ID(), 'large'); 
 ?>
