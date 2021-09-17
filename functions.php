@@ -800,7 +800,7 @@ function generate_date_box($date) {
 
 
 function sort_by_location_name_and_time($a, $b) {
-    return strcmp($a->location_name . $a->time, $b->location_name . $b->time);
+    return strcmp($a->location_name . $a->search_time, $b->location_name . $b->search_time);
 }
 
 
