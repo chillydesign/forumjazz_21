@@ -1039,7 +1039,7 @@ function processTime($time) {
 }
 function processConcert($concert) {
     $concert->location = get_field('location', $concert->ID);
-    $concert->time = processTime(get_field('time',  $concert->ID));
+    $concert->time = get_field('time',  $concert->ID);
 
     // $concert->image = thumbnail_of_post_url($concert->ID, 'medium');
     $image =  get_field('image',  $concert->ID);
