@@ -1029,17 +1029,27 @@ function processConcerts($concerts) {
 }
 
 
-function processTime($time) {
+function makeSearchTime($time) {
     if ($time) {
-        if ($time == '23:59') {
-            return '00:00';
+
+        $ar = explode(':', $time);
+        $h = intval($ar[0]);
+        $m = intval($ar[1]);
+        if ($h < 5) {
+            $h += 24;
+            if ($m == 0) {
+                $m = '00';
+            }
+            return  $h . ':' . $m;
         }
+        return $time;
     }
     return $time;
 }
 function processConcert($concert) {
     $concert->location = get_field('location', $concert->ID);
     $concert->time = get_field('time',  $concert->ID);
+    $concert->search_time = makeSearchTime($concert->time);
 
     // $concert->image = thumbnail_of_post_url($concert->ID, 'medium');
     $image =  get_field('image',  $concert->ID);
