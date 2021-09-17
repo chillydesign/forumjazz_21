@@ -1050,12 +1050,17 @@ function sort_by_location_name_and_time($a, $b) {
 }
 
 function sort_by_location_post_order_and_time($a, $b) {
-    return strcmp($a->menu_order . '---' . $a->search_time, $b->menu_order . '---' . $b->search_time);
+    return strcmp(
+        $a->menu_order . '---' . $a->search_time,
+        $b->menu_order . '---' . $b->search_time
+    );
 }
 
 
 
 function processConcert($concert) {
+
+
 
     $concert->location = get_field('location', $concert->ID);
     $concert->time = get_field('time',  $concert->ID);
@@ -1096,7 +1101,7 @@ function processDatesForConcertGrid($dates, $concerts) {
 
     // for some reason this doesnt work with a normal foreach loop
     for ($d = 0; $d < sizeof($dates); $d++) {
-        usort($dates[$d]['concerts'], "sort_by_location_name_and_time");
+        usort($dates[$d]['concerts'], "sort_by_location_post_order_and_time");
     }
     return $dates;
 }
