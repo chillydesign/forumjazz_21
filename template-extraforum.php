@@ -81,7 +81,6 @@
 
 
 
-        </div>
 <?php endwhile;
 endif; ?>
 <?php get_footer(); ?>
