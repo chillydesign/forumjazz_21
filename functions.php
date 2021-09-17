@@ -799,10 +799,6 @@ function generate_date_box($date) {
 }
 
 
-function sort_by_location_name_and_time($a, $b) {
-    return strcmp($a->location_name . $a->search_time, $b->location_name . $b->search_time);
-}
-
 
 
 add_action('pre_get_posts', 'my_change_sort_order');
@@ -1031,10 +1027,11 @@ function processConcerts($concerts) {
 
 function makeSearchTime($time) {
     if ($time) {
-
         $ar = explode(':', $time);
         $h = intval($ar[0]);
         $m = intval($ar[1]);
+        // if after midnight make it display after
+        // morning and evening events, not before
         if ($h < 5) {
             $h += 24;
             if ($m == 0) {
@@ -1046,10 +1043,24 @@ function makeSearchTime($time) {
     }
     return $time;
 }
+
+
+function sort_by_location_name_and_time($a, $b) {
+    return strcmp($a->location_name . $a->search_time, $b->location_name . $b->search_time);
+}
+
+function sort_by_location_post_order_and_time($a, $b) {
+    return strcmp($a->menu_order . '---' . $a->search_time, $b->menu_order . '---' . $b->search_time);
+}
+
+
+
 function processConcert($concert) {
+
     $concert->location = get_field('location', $concert->ID);
     $concert->time = get_field('time',  $concert->ID);
     $concert->search_time = makeSearchTime($concert->time);
+
 
     // $concert->image = thumbnail_of_post_url($concert->ID, 'medium');
     $image =  get_field('image',  $concert->ID);
