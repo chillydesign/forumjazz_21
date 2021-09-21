@@ -33,12 +33,16 @@ $sorted_concerts = processDatesForConcertsByDate($concerts);
                 <?php endif; ?>
                 <tr>
                     <td>
-                        <strong> <?php echo $concert->post_title; ?></strong>
+                        <strong>
+                            <a href="<?php echo $concert->guid; ?>">
+                                <?php echo $concert->post_title; ?>
+                            </a>
+                        </strong>
                     </td>
                     <td> <?php echo $concert->time; ?> </td>
                     <td>
                         <?php if ($concert->ticketing) : ?>
-                            <a href="<?php echo $concert->ticketing; ?>" class="button"><?php _e('Tickets', 'blankslate'); ?></a>
+                            <a href="<?php echo $concert->ticketing; ?>" class="button"><?php _e('Billets', 'blankslate'); ?></a>
                         <?php endif; ?>
                     </td>
                 </tr>

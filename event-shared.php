@@ -38,7 +38,7 @@
 
                         <p>
                             <span class="time"><?php echo $time; ?></span>
-                            | <a href="<?php echo $ticketing; ?>"><?php _e('Tickets', 'blankslate'); ?> </a>
+                            | <a href="<?php echo $ticketing; ?>"><?php _e('Billets', 'blankslate'); ?> </a>
                         </p>
 
                     </div>
@@ -119,7 +119,7 @@
                 <?php endif; ?>
 
                 <?php if ($ticketing) : ?>
-                    <a class="button button_block button_large" href="<?php echo $ticketing; ?>"><?php _e('Tickets', 'blankslate'); ?></a>
+                    <a class="button button_block button_large" href="<?php echo $ticketing; ?>"><?php _e('Billets', 'blankslate'); ?></a>
                 <?php endif; ?>
 
 
