@@ -1049,7 +1049,7 @@ function sort_by_location_name_and_time($a, $b) {
     return strcmp($a->location_name . $a->search_time, $b->location_name . $b->search_time);
 }
 
-function sort_by_location_post_order_and_time($a, $b) {
+function sort_by_menu_order_and_time($a, $b) {
     return strcmp(
         $a->menu_order . '---' . $a->search_time,
         $b->menu_order . '---' . $b->search_time
@@ -1059,7 +1059,7 @@ function sort_by_location_post_order_and_time($a, $b) {
 function sort_by_event_date_and_time($a, $b) {
     return strcmp(
         $a->date . '---' . $a->search_time,
-        $b->date . '---' . $a->search_time,
+        $b->date . '---' . $b->search_time,
     );
 }
 
@@ -1120,7 +1120,7 @@ function processDatesForConcertGrid($dates, $concerts) {
 
     // for some reason this doesnt work with a normal foreach loop
     for ($d = 0; $d < sizeof($dates); $d++) {
-        usort($dates[$d]['concerts'], "sort_by_location_post_order_and_time");
+        usort($dates[$d]['concerts'], "sort_by_menu_order_and_time");
     }
     return $dates;
 }
