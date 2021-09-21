@@ -73,7 +73,7 @@ add_action('after_setup_theme', 'remove_json_api');
 
 
 function wf_version() {
-    return '0.1.4';
+    return '0.1.5';
 }
 
 add_action('wp_enqueue_scripts', 'blankslate_enqueue');
@@ -1056,6 +1056,13 @@ function sort_by_location_post_order_and_time($a, $b) {
     );
 }
 
+function sort_by_event_date_and_time($a, $b) {
+    return strcmp(
+        $a->date . '---' . $a->search_time,
+        $b->date . '---' . $a->search_time,
+    );
+}
+
 
 
 function processConcert($concert) {
@@ -1082,6 +1089,18 @@ function processConcert($concert) {
     }
 
     return $concert;
+}
+
+function processDatesForConcertsByDate($concerts) {
+    foreach ($concerts as $concert) {
+        $concert = processConcert($concert);
+        $date =  get_field('date',  $concert->ID);
+        $concert->date = $date;
+        $concert->nice_date = month_of($date) . ' ' . day_of($date);
+        $concert->ticketing = get_field('ticketing');
+    }
+    usort($concerts, "sort_by_event_date_and_time");
+    return $concerts;
 }
 
 function processDatesForConcertGrid($dates, $concerts) {

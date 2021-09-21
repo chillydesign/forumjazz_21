@@ -862,6 +862,29 @@ a.post-edit-link {
 }
 
 
+section.section_events_by_date {
+
+    table {
+        tr.date_row {
+            td {
+                border-top: 15px solid white;
+                background-color: $blue;
+                color: white;
+                padding: 15px;
+            }
+        }
+
+        .button {
+            padding: 3px 15px;
+            margin: 0;
+        }
+    }
+
+}
+
+// section_events_by_date
+// section_events_by_date
+
 
 
 section.section_partners {

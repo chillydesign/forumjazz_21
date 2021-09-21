@@ -245,10 +245,24 @@ table {
   margin: 10px 0 30px;
   width: 100%;
 
+  &.zebra {
+    tr:nth-child(2n) {
+      td {
+        background-color: lighten($light_grey, 8);
+
+      }
+    }
+  }
+
   th,
   td {
-    padding: 8px;
+    padding: 12px 8px;
     font-size: $font_size;
+
+
+    .button {
+      font-size: 1em;
+    }
   }
 
   th {
