@@ -1097,7 +1097,7 @@ function processDatesForConcertsByDate($concerts) {
         $date =  get_field('date',  $concert->ID);
         $concert->date = $date;
         $concert->nice_date = month_of($date) . ' ' . day_of($date);
-        $concert->ticketing = get_field('ticketing');
+        $concert->ticketing = get_field('ticketing',  $concert->ID);
     }
     usort($concerts, "sort_by_event_date_and_time");
     return $concerts;
