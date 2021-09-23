@@ -1098,6 +1098,15 @@ function processDatesForConcertsByDate($concerts) {
         $concert->date = $date;
         $concert->nice_date = month_of($date) . ' ' . day_of($date);
         $concert->ticketing = get_field('ticketing',  $concert->ID);
+        $concert->ticketing_text = get_field('ticketing_text',  $concert->ID);
+
+        // if exists alt_title display tha tinstead of title
+        $alt_title = get_field('alt_title',  $concert->ID);
+        if ($alt_title) {
+            $concert->alt_title =  $alt_title;
+        } else {
+            $concert->alt_title =  $concert->post_title;
+        }
     }
     usort($concerts, "sort_by_event_date_and_time");
     return $concerts;

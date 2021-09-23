@@ -25,8 +25,7 @@ $concerts  = get_posts(array(
 
 
 
-// if exists alt_title display tha tinstead of title
-// if no ticketing link display ticketing_text instead
+
 
 
 $sorted_concerts = processDatesForConcertsByDate($concerts);
@@ -50,7 +49,7 @@ $sorted_concerts = processDatesForConcertsByDate($concerts);
                     <td>
                         <strong>
                             <a href="<?php echo $concert->guid; ?>">
-                                <?php echo $concert->post_title; ?>
+                                <?php echo $concert->alt_title; ?>
                             </a>
                         </strong>
                     </td>
@@ -58,6 +57,8 @@ $sorted_concerts = processDatesForConcertsByDate($concerts);
                     <td>
                         <?php if ($concert->ticketing) : ?>
                             <a href="<?php echo $concert->ticketing; ?>" class="button"><?php _e('Billets', 'blankslate'); ?></a>
+                        <?php elseif ($concert->ticketing_text) :  ?>
+                            <?php echo $concert->ticketing_text; ?>
                         <?php endif; ?>
                     </td>
                 </tr>
