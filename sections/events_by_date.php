@@ -12,14 +12,14 @@ $concerts  = get_posts(array(
     'post_type' => 'concert',
     'posts_per_page' => -1,
     'tax_query'      =>  $tax_query,
-    // 'meta_key' => 'show_in_ticketing',
-    // 'meta_query' => array(
-    //     array(
-    //         'key' => 'show_in_ticketing',
-    //         'value' => 1,
-    //         'compare' => '='
-    //     )
-    // ),
+    'meta_key' => 'show_in_ticketing',
+    'meta_query' => array(
+        array(
+            'key' => 'show_in_ticketing',
+            'value' => 1,
+            'compare' => '='
+        )
+    ),
     'suppress_filters' => 0, // stop wpml giving posts from all languages
 ));
 
