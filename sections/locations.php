@@ -10,10 +10,14 @@ foreach ($lieux as $lieu) {
     array_push($location_objects, $lieu_json);
 }
 ?>
-
+<?php $title =  get_sub_field('title'); ?>
 
 
 <div class="container">
+    <?php if ($title) : ?>
+        <h2 class="sectiontitle"><?php echo $title; ?></h2>
+    <?php endif; ?>
+
     <div class="columns" id="map_and_lieux">
         <div class="column column_large no_padding">
             <div id="map_container" class="map_container_large"></div>
