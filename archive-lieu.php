@@ -33,7 +33,7 @@ foreach ($lieux as $lieu) {
                     <?php $address = get_field('address', $lieu->ID); ?>
                     <?php $website = get_field('website', $lieu->ID); ?>
 
-                    <div class="lieu_container">
+                    <div class="lieu_container" data-id="<?php echo $lieu->ID; ?>">
 
                         <h4><?php echo $lieu->post_title; ?></h4>
                         <?php if ($address) : ?>

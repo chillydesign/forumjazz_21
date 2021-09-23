@@ -147,6 +147,22 @@
         });
 
 
+        $('.lieu_container').on('click', function () {
+            let $this = $(this);
+            let $id = $this.data('id');
+            if (map_markers) {
+                const map_marker = map_markers.find(m => m.location_id == $id);
+                if (map_marker) {
+                    map_map.panTo(map_marker.position);
+                    if (map_map.zoom !== 16) {
+                        map_map.setZoom(16);
+                    }
+                    map_infowindow.setContent(map_marker.infocontent);
+                    map_infowindow.open(map_map, map_marker);
+                }
+            }
+        })
+
 
 
         // MAP
@@ -207,10 +223,11 @@ function addPointToMap(map, location, bounds, infowindow, markers) {
             position: latlng,
             title: location.title,
             url: location.url,
-            id: location.id,
+            location_id: location.id,
+            infocontent: location.title
         });
         marker.addListener('click', function () {
-            infowindow.setContent('<a class="map_link" href="' + this.url + '">' + this.title + '</a>');
+            infowindow.setContent(this.infocontent);
             infowindow.open(map, this);
         });
         markers.push(marker);

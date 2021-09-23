@@ -539,9 +539,11 @@ $con_ren_height: 60px;
     border: 1px solid $medium_grey;
     margin: $padding 0;
     background-color: lighten($light_grey, 10);
+    cursor: pointer;
 
     h4 {
         padding: 0;
+
     }
 
     .address {
