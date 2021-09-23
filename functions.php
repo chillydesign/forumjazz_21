@@ -1283,7 +1283,7 @@ function user_structure_image($user_id) {
 function webfactor_prix_jeune_shortcode($atts) {
 
 
-    $output = '';
+    $output = '<div class="prix_jeune_form_container>';
 
     $concerts  = get_posts(array(
         'post_type' => 'concert',
@@ -1371,7 +1371,8 @@ function webfactor_prix_jeune_shortcode($atts) {
         <input type="hidden" name="action" value="prix_jeune_form">
         <input class="button" id="prix_jeune_form_submit_button" type="submit" value="' . __('Envoyer', 'webfactor') .  '">
     </div>
-</form>';
+</form>
+</div>';
 
 
     return $output;

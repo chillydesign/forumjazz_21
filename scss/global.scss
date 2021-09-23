@@ -945,7 +945,7 @@ section.section_partners {
         font-weight: bold;
         color: $orange;
 
-        p{
+        p {
             line-height: 110%;
         }
     }
@@ -1247,4 +1247,20 @@ body .woocommerce input.button {
         }
     }
 
+}
+
+
+.prix_jeune_form_container {
+    position: relative;
+
+    &:after {
+        content: '';
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background-color: $orange;
+        z-index: -1;
+    }
 }
