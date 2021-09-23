@@ -917,6 +917,7 @@ section.section_partners {
 
         a {
             display: block;
+            text-decoration: none;
         }
     }
 
@@ -943,6 +944,10 @@ section.section_partners {
         text-align: center;
         font-weight: bold;
         color: $orange;
+
+        p{
+            line-height: 110%;
+        }
     }
 }
 
