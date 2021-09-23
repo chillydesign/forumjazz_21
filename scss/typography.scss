@@ -36,7 +36,7 @@ h2 a {
   text-align: center;
   border-radius: 20px;
   font-size: 0.8em;
-  color: black!important;
+  color: black !important;
 
   &:hover {
     background-color: darken($yellow, 20);
@@ -305,6 +305,7 @@ table {
 select {
   font-size: $font_size;
   padding: 10px;
+  max-width: 100%;
 
   &:focus {
     box-shadow: 0 0 10px $brand_color;
