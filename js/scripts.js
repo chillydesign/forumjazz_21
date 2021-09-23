@@ -198,10 +198,11 @@
                 map_map.setCenter(center);
             }
 
-            const map_cluster = new MarkerClusterer(map_map, map_markers, {
-                imagePath:
-                    theme_directory + '/img/m',
-            });
+            const map_cluster = new MarkerClusterer(
+                map_map,
+                map_markers,
+                { imagePath: theme_directory + '/img/m' }
+            );
         }
         // MAP
         // MAP
@@ -217,6 +218,14 @@
 function addPointToMap(map, location, bounds, infowindow, markers) {
 
     if (typeof location.lat != 'undefined' && typeof location.lng != 'undefined') {
+
+        var customMarker = {
+            url: theme_directory + '/img/marker.svg',
+            size: new google.maps.Size(22, 33),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(0, 0)
+        };
+
         var latlng = new google.maps.LatLng(location.lat, location.lng);
         var marker = new google.maps.Marker({
             map: map,
@@ -224,7 +233,8 @@ function addPointToMap(map, location, bounds, infowindow, markers) {
             title: location.title,
             url: location.url,
             location_id: location.id,
-            infocontent: location.title
+            infocontent: location.title,
+            icon: customMarker
         });
         marker.addListener('click', function () {
             infowindow.setContent(this.infocontent);
