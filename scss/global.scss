@@ -816,7 +816,7 @@ $con_ren_height: 60px;
     &.jeune_concert_grid {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-start;
 
         .concert_location_box {
             flex: 1 auto;
