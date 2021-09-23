@@ -6,12 +6,27 @@
         'operator' => 'NOT IN'
     )
 );
+
+// only display events if show_in_ticketing is true
 $concerts  = get_posts(array(
     'post_type' => 'concert',
     'posts_per_page' => -1,
     'tax_query'      =>  $tax_query,
+    'meta_key' => 'show_in_ticketing',
+    'meta_query' => array(
+        array(
+            'key' => 'show_in_ticketing',
+            'value' => 1,
+            'compare' => '='
+        )
+    ),
     'suppress_filters' => 0, // stop wpml giving posts from all languages
 ));
+
+
+
+// if exists alt_title display tha tinstead of title
+// if no ticketing link display ticketing_text instead
 
 
 $sorted_concerts = processDatesForConcertsByDate($concerts);
