@@ -27,6 +27,30 @@ h2 {
   @media (min-width: $mobile_width) {}
 }
 
+h2 a {
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  background: $yellow;
+  padding: 8px 20px;
+  text-align: center;
+  border-radius: 20px;
+  font-size: 0.8em;
+  color: black!important;
+
+  &:hover {
+    background-color: darken($yellow, 20);
+  }
+}
+
+h2.forum a {
+  background: $blue;
+
+  &:hover {
+    background-color: darken($blue, 20);
+  }
+}
+
 h3 {
   font-size: 2.5em;
   padding: 0 0 20px;
