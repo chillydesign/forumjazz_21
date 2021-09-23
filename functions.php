@@ -1283,7 +1283,7 @@ function user_structure_image($user_id) {
 function webfactor_prix_jeune_shortcode($atts) {
 
 
-    $output = '<div class="prix_jeune_form_container>';
+    $output = '<div class="prix_jeune_form_container">';
 
     $concerts  = get_posts(array(
         'post_type' => 'concert',
