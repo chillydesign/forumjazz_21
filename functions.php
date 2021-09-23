@@ -709,13 +709,22 @@ function create_post_types() {
 
 
 
-function month_of($date) {
-    // %A <br> %d.%m.%Y
+function shortmonth_of($date) {
     $nice_date =  strftime('%h', strtotime(($date)));
     return $nice_date;
 }
 
+function month_of($date) {
+    $nice_date =  strftime('%B', strtotime(($date)));
+    return $nice_date;
+}
+
 function day_of($date) {
+
+    $nice_date =  strftime('%A', strtotime(($date)));
+    return $nice_date;
+}
+function date_of($date) {
 
     $nice_date =  strftime('%d', strtotime(($date)));
     return $nice_date;
@@ -789,8 +798,8 @@ function login_background_image() {
 
 
 function generate_date_box($date) {
-    $month = month_of($date);
-    $day = day_of($date);
+    $month = shortmonth_of($date);
+    $day = date_of($date);
 
     echo   '<div class="event_date_container">
             <div class="month">' . $month . '</div>
@@ -1096,7 +1105,7 @@ function processDatesForConcertsByDate($concerts) {
         $concert = processConcert($concert);
         $date =  get_field('date',  $concert->ID);
         $concert->date = $date;
-        $concert->nice_date = month_of($date) . ' ' . day_of($date);
+        $concert->nice_date = implode(' ', array(day_of($date), date_of($date), month_of($date)));
         $concert->ticketing = get_field('ticketing',  $concert->ID);
         $concert->ticketing_text = get_field('ticketing_text',  $concert->ID);
 
