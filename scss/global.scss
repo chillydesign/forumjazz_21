@@ -1252,6 +1252,11 @@ body .woocommerce input.button {
 
 .prix_jeune_form_container {
     padding: 30px;
+    position: relative;
+
+    @media (min-width: $mobile_width) {
+        position: static;
+    }
 
     &:after {
         content: '';
@@ -1260,18 +1265,13 @@ body .woocommerce input.button {
         width: 100%;
         left: 0;
         top: 0;
-
         background-color: $orange;
         z-index: -1;
-
 
         @media (min-width: $mobile_width) {
             width: 50%;
             left: 50%;
         }
-
-
-
 
     }
 }
