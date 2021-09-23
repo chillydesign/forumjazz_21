@@ -154,8 +154,8 @@
                 const map_marker = map_markers.find(m => m.location_id == $id);
                 if (map_marker) {
                     map_map.panTo(map_marker.position);
-                    if (map_map.zoom !== 16) {
-                        map_map.setZoom(16);
+                    if (map_map.zoom !== 17) {
+                        map_map.setZoom(17);
                     }
                     map_infowindow.setContent(map_marker.infocontent);
                     map_infowindow.open(map_map, map_marker);
