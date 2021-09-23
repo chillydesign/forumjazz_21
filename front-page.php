@@ -36,7 +36,7 @@
             <section id="who_are_we">
                 <div class="container">
 
-                    <h2>Qui sommes nous</h2>
+                    <h2><?php _e('Qui sommes nous ?', 'blankslate'); ?></h2>
                     <div class="columns">
                         <div class="column">
                             <?php echo $who_we_are_video; ?>
@@ -68,7 +68,7 @@
 
                                         <div class="column">
                                             <span class="h3_offset">
-                                                PROFESSIONNELS / ETUDIANTS
+                                            <?php _e('PROFESSIONNELS / ETUDIANTS', 'blankslate'); ?>
                                             </span>
                                         </div>
                                         <div class="column"></div>
@@ -90,7 +90,7 @@
 
                 <div class="concert_recontre_thing" id="concerts_thing">
 
-                    <h3>GRAND PUBLIC / PROFESSIONNELS / JEUNE PUBLIC</h3>
+                    <h3><?php _e('GRAND PUBLIC / PROFESSIONNELS / JEUNE PUBLIC', 'blankslate'); ?></h3>
                     <div class="columns ">
                         <div class="column">
                             <div class="concert_recontre_text">
