@@ -1279,4 +1279,106 @@ function user_structure_image($user_id) {
 }
 
 
+
+function webfactor_prix_jeune_shortcode($atts) {
+
+
+    $output = '';
+
+    $concerts  = get_posts(array(
+        'post_type' => 'concert',
+        'posts_per_page' => -1,
+        'suppress_filters' => 0, // stop wpml giving posts from all languages
+    ));
+
+
+
+    if (isset($_GET['success'])) :
+        $output .= '<p class="alert alert_success">' . __("Votre vote a bien été enregistré !", 'blankslate') . '</p>';
+    endif;
+
+    if (isset($_GET['problem'])) :
+        $output .= ' <p class="alert alert_problem">';
+        if ($_GET['problem'] == 'fields') {
+            $output .= __("Veuillez renseigner tous les champs.", 'blankslate');
+        } else {
+            $output .= __("Une erreur s'est produite.", 'blankslate');
+        }
+        $output .= '</p>';
+    endif;
+
+
+
+
+
+    $output .= '<form id="prix_jeune_form" action="' . esc_url(admin_url('admin-post.php')) . ' " method="post" enctype="multipart/form-data">';
+
+
+    $first_name = $last_name = $email =  $etablissement =  $justification = '';
+    $jcookie = $_COOKIE["jazz_prix_form"];
+    if (isset($jcookie)) {
+        $j = explode(';;', $jcookie);
+        $first_name = $j[0];
+        $last_name = $j[1];
+        $email = $j[2];
+        $etablissement = $j[3];
+        $justification = $j[4];
+    }
+
+
+
+    $output .= '<div class="field">
+        <label for="code"> ' . __(' Code (Communiqué dans votre invitation)', 'webfactor') . '*</label>
+        <input type="text" id="code" name="code" />
+    </div>
+    <div class="field">
+        <label for="first_name"> ' . __('Prénom', 'webfactor') . '*</label>
+        <input type="text" id="first_name" name="first_name" value="' .  $first_name . '">
+    </div>
+    <div class="field">
+        <label for="last_name"> ' . __('Nom', 'webfactor') . '*</label>
+        <input type="text" id="last_name" name="last_name" value="' .  $last_name . '">
+    </div>
+    <div class="field">
+        <label for="email"> ' . __('Email', 'webfactor') . '*</label>
+        <input type="text" id="email" name="email" value="' .  $email . '">
+    </div>
+
+
+    <div class="field">
+        <label for="etablissement"> ' . __('Etablissement', 'webfactor') . '*</label>
+        <input type="text" id="etablissement" name="etablissement" value="' .  $etablissement . '">
+    </div>
+
+
+    <div class="field">
+        <label for="concert_id">' . __('Cliquez sur votre groupe coup de coeur Forum Jazz 2021', 'blankslate') . '</label>
+        <select name="concert_id" id="concert_id">
+            <option value="">' . __('Choisir un groupe') . '</option>';
+    foreach ($concerts as $concert) :
+        $output .= '<option value="' . $concert->ID . '>' . $concert->post_title . '</option>';
+    endforeach;
+    $output .= '</select>
+    </div>
+
+    <div class="field">
+        <label for="justification">' . __('Merci de justifier votre choix en quelques mots', 'blankslate') . '*</label>
+        <textarea id="justification" name="justification">' . $justification .  '</textarea>
+    </div>
+
+
+    <div class="field">
+        <input type="hidden" name="action" value="prix_jeune_form">
+        <input class="button" id="prix_jeune_form_submit_button" type="submit" value="' . __('Envoyer', 'webfactor') .  '">
+    </div>
+</form>';
+
+
+    return $output;
+}
+add_shortcode('prix_jeune', 'webfactor_prix_jeune_shortcode');
+
+
+
+
 ?>
