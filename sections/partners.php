@@ -23,7 +23,7 @@
             <?php foreach ($partenaires as $partenaire) : ?>
                 <div class="partner">
                     <?php $lien = get_field('lien', $partenaire->ID); ?>
-                    <?php $description =  get_the_content(null, false, $partenaire->ID); ?>
+                    <?php $description =  get_title(null, false, $partenaire->ID); ?>
                     <?php $image =  thumbnail_of_post_url($partenaire->ID, 'medium'); ?>
                     <a href="<?php echo  $lien; ?>" target="_blank">
                         <div class="partner_picture" style="background-image:url('<?php echo $image; ?>')"></div>
