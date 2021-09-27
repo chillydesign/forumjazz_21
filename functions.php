@@ -1362,7 +1362,7 @@ function webfactor_prix_jeune_shortcode($atts) {
     </div>
 
     <div class="field">
-        <label for="justification">' . __('Merci de justifier votre choix en quelques mots', 'blankslate') . '*</label>
+        <label for="justification">' . __('Merci de justifier votre choix en quelques mots', 'webfactor') . '*</label>
         <textarea id="justification" name="justification">' . $justification .  '</textarea>
     </div>
 

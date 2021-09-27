@@ -99,7 +99,7 @@
                     </div>
 
                     <div class="field">
-                        <label for="justification"><?php _e('Merci de justifier votre choix en quelques mots', 'blankslate'); ?>*</label>
+                        <label for="justification"><?php _e('Merci de justifier votre choix en quelques mots', 'webfactor'); ?>*</label>
                         <textarea id="justification" name="justification"><?php echo $justification; ?></textarea>
                     </div>
 
