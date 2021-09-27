@@ -1406,5 +1406,20 @@ add_shortcode('prix_jeune', 'webfactor_prix_jeune_shortcode');
 
 
 
+add_action('manage_posts_extra_tablenav', 'add_download_link');
+
+
+function add_download_link($which) {
+
+    if ($which == 'bottom') {
+        $tdu = get_template_directory_uri();  // get_home_url()
+        if (is_post_type_archive('prix')) {
+            $download_link = $tdu . '/api/v1/?prix';
+            echo '<div class="alignleft actions"><a class="action button-primary button" href="' . $download_link . '">Télécharger CSV</a></div>';
+        }
+    }
+}
+
+
 
 ?>
