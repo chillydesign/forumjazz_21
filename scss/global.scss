@@ -1042,6 +1042,13 @@ td.actions,
     font-size: $font_size;
 }
 
+div#my_custom_checkout_field h3 {
+    margin-top: -24px;
+}
+
+tr.woocommerce-cart-form__cart-item.cart_item .product-thumbnail {
+    width: 0;
+}
 
 body .woocommerce #respond input#submit,
 body .woocommerce a.button,
