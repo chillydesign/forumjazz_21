@@ -1,6 +1,10 @@
 <?php
 
 
+ini_set('default_charset', 'UTF-8');
+header('Content-Type: application/json;charset=UTF-8');
+require_once('../../../../../wp-config.php');
+
 $requests_array = get_posts(
     array(
         'post_type'  => 'prix',
@@ -41,7 +45,7 @@ foreach ($requests_array as $request) {
 
 $encoded_csv = mb_convert_encoding($data, 'UTF-16LE', 'UTF-8');
 
-$file = 'request';
+$file = 'votes';
 $filename = $file . '_' . date('Y-m-d_H-i', time());
 header('Content-type: application/vnd.ms-excel');
 header('Content-disposition: csv' . date('Y-m-d') . '.csv');
