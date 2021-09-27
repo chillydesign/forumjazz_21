@@ -1239,6 +1239,9 @@ function process_prix_jeune_form() {
                     // clear cookie
                     setcookie('jazz_prix_form', '', time() - 3600, "/");
 
+
+                    send_prix_email($email, $first_name, $last_name, $justification, $etablissement, $concert_id);
+
                     wp_redirect($referer . '?success', $status = 302);
 
                     // something went wrong with adding the prix post
@@ -1261,6 +1264,27 @@ function process_prix_jeune_form() {
         wp_redirect($referer . '?problem', $status = 302);
     }
 }
+
+function send_prix_email($email, $first_name, $last_name, $justification, $etablissement, $concert_id) {
+
+    $concert = get_post($concert_id);
+    if ($concert) {
+        add_filter('wp_mail_content_type', create_function('', 'return "text/html"; '));
+        $headers = 'From: ' . $first_name . ' <' . $email . '>' . "\r\n";
+        $headers .= 'Reply-To: ' . $first_name . ' <' . $email . '>' . "\r\n";
+        $message = '';
+        $message .= '<strong>NOM</strong> : ' . $first_name . ' ' . $last_name . "<br>";
+        $message .= '<strong>EMAIL</strong> : '  . $email  . "<br>";
+        $message .= '<strong>ETABLISSEMENT</strong> : '  . $etablissement  . "<br>";
+        $message .= '<strong>JUSTIFIER VOTRE CHOIX</strong> : '  . $justification  . "<br>";
+        wp_mail($email, 'Forum Jazz Prix étudiant', $message, $headers);
+        remove_filter('wp_mail_content_type', 'wpdocs_set_html_mail_content_type');
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 function user_structure_image($user_id) {
     $image = null;
