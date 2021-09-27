@@ -1276,6 +1276,7 @@ function send_prix_email($email, $first_name, $last_name, $justification, $etabl
         $message .= '<strong>NOM</strong> : ' . $first_name . ' ' . $last_name . "<br>";
         $message .= '<strong>EMAIL</strong> : '  . $email  . "<br>";
         $message .= '<strong>ETABLISSEMENT</strong> : '  . $etablissement  . "<br>";
+        $message .= '<strong>Vote</strong> : '  . $concert->post_title  . "<br>";
         $message .= '<strong>JUSTIFIER VOTRE CHOIX</strong> : '  . $justification  . "<br>";
         wp_mail($email, 'Forum Jazz Prix étudiant', $message, $headers);
         remove_filter('wp_mail_content_type', 'wpdocs_set_html_mail_content_type');
