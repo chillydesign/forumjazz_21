@@ -322,12 +322,12 @@ textarea {
   font-family: $font_stack;
   padding: 10px;
   font-size: $font_size;
+  width: 100%;
 }
 
 textarea {
   height: 100px;
   width: 100%;
-  max-width: 420px;
 }
 
 label {
