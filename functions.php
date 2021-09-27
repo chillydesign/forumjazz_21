@@ -1414,7 +1414,7 @@ function add_download_link($which) {
     if ($which == 'bottom') {
         $tdu = get_template_directory_uri();  // get_home_url()
         if (is_post_type_archive('prix')) {
-            $download_link = $tdu . '/api/v1/?prix';
+            $download_link = $tdu . '/api/v1/index_prix.php';
             echo '<div class="alignleft actions"><a class="action button-primary button" href="' . $download_link . '">Télécharger CSV</a></div>';
         }
     }
