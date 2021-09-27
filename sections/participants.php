@@ -1,6 +1,6 @@
 <?php $participants = get_users(
     array(
-        'role' =>  array('participant', 'intervenant'),
+        'role' => 'participant,intervenant',
         'number' => -1,
         'orderby' => array('meta_value', 'login'),
         'meta_key' => 'last_name',
