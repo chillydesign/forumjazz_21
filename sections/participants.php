@@ -1,13 +1,12 @@
 <?php $participants = get_users(
     array(
-        'role' => 'participant,intervenant',
+        'role__in' =>  array('participant', 'intervenant'),
         'number' => -1,
         'orderby' => array('meta_value', 'login'),
         'meta_key' => 'last_name',
         'order' => 'ASC',
     )
 ); ?>
-
 
 <section class="section section_participants">
 
