@@ -14,6 +14,14 @@ footer#footer {
         margin-bottom: 30px;
     }
 
+    ul {
+        padding: 0;
+        li {
+            list-style: none;
+            text-transform: uppercase;
+        }
+    }
+
     a,
     a:link,
     a:visited,
