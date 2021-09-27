@@ -1354,9 +1354,9 @@ function webfactor_prix_jeune_shortcode($atts) {
     <div class="field">
         <label for="concert_id">' . __('Cliquez sur votre groupe coup de coeur Forum Jazz 2021', 'blankslate') . '</label>
         <select name="concert_id" id="concert_id">
-            <option value="">' . __('Choisir un groupe') . '</option>';
+            <option value="">' . __('Choisir un groupe', 'webfactor') . '</option>';
     foreach ($concerts as $concert) :
-        $output .= '<option value="' . $concert->ID . '>' . $concert->post_title . '</option>';
+        $output .= '<option value="' . $concert->ID . '">' . $concert->post_title . '</option>';
     endforeach;
     $output .= '</select>
     </div>
