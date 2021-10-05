@@ -1136,15 +1136,21 @@ body .woocommerce input.button {
 .participant_container {
     flex: 1;
     text-align: left;
-    width: calc(33% - 20px);
-    min-width: calc(33% - 20px);
-    max-width: calc(33% - 20px);
+
     background-color: $light_grey;
     margin: 10px;
     display: flex;
     border-radius: 5px;
     flex-wrap: nowrap;
     position: relative;
+    width: 100%;
+    min-width: 100%;
+
+    @media (min-width: $mobile_width) {
+        width: calc(33% - 20px);
+        min-width: calc(33% - 20px);
+        max-width: calc(33% - 20px);
+    }
 
 
     .social_links {
@@ -1194,6 +1200,10 @@ body .woocommerce input.button {
         padding: 10px;
         min-height: 175px;
 
+        @media (min-width: $mobile_width) {
+            min-height: 175px;
+
+        }
 
         h3 {
             padding: 0 0 5px;
