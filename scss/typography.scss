@@ -44,10 +44,10 @@ h2 a {
 }
 
 h2.forum a {
-  background: $blue;
+  background: $orange;
 
   &:hover {
-    background-color: darken($blue, 20);
+    background-color: darken($orange, 20);
   }
 }
 
@@ -346,6 +346,7 @@ label.inline_label {
 
   }
 }
+
 select {
   width: 100%;
 }
