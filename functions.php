@@ -1030,6 +1030,7 @@ function processConcerts($concerts) {
     foreach ($concerts as $concert) {
         processConcert($concert);
     }
+    usort($concerts, "sort_by_event_date_and_time");
     return $concerts;
 }
 
