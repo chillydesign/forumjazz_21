@@ -84,7 +84,7 @@
                                 </div>
                                 <!--END OF concert_location_box -->
                                 <div class="concert_location_box">
-                                    <h3 class="concert_h3"> <?php echo ($concert->location_name); ?> </h3>
+                                    <!-- <h3 class="concert_h3"> <?php echo ($concert->location_name); ?> </h3> -->
                                 <?php endif; ?>
                                 <div class="concert_box" data-search="<?php echo $concert->search; ?>">
                                     <h4 style="background-image:url('<?php echo $concert->image; ?>')">
