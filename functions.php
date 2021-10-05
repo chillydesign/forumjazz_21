@@ -1424,4 +1424,36 @@ function add_download_link($which) {
 
 
 
+function social_meta_properties() {
+
+    $smp =  new stdClass();
+    $smp->site_name = 'Forum Jazz';
+    global $post;
+
+
+    if (is_single() || is_page()) {
+
+        $post_id = get_the_ID();
+        $smp->title = get_the_title();
+        $smp->description = get_bloginfo('description');
+        $smp->image =  thumbnail_of_post_url($post_id, 'large');
+        if (!$smp->image || $smp->image == '') {
+            $smp->image =   get_template_directory_uri() . '/img/admin_background.jpg';
+        }
+        $smp->url = get_the_permalink();
+        $smp->type = 'article';
+    } else {
+        $smp->title =    get_bloginfo('name');
+        $smp->description = get_bloginfo('description');
+        $smp->image =   get_template_directory_uri() . '/img/admin_background.jpg';
+        $smp->url = get_home_url();
+        $smp->type = 'website';
+    }
+
+
+    return $smp;
+}
+
+
+
 ?>

@@ -13,6 +13,28 @@
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $tdu; ?>/img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $tdu; ?>/img/favicon/favicon-16x16.png">
     <link rel="manifest" href="<?php echo $tdu; ?>/img/favicon/site.webmanifest">
+
+    <?php $smp = social_meta_properties(); ?>
+    <meta name="description" content="<?php echo $smp->description; ?>">
+    <!-- Open Graph -->
+    <meta property="og:url" content="<?php echo $smp->url; ?>">
+    <meta property="og:type" content="<?php echo $smp->type; ?>" />
+    <meta property="og:site_name" content="<?php echo $smp->site_name; ?>">
+    <meta property="og:title" content="<?php echo $smp->title; ?>">
+    <meta property="og:description" content="<?php echo $smp->description; ?>">
+    <meta property="og:img" content="<?php echo $smp->image; ?>">
+    <meta property="og:image" content="<?php echo $smp->image; ?>">
+    <!-- TWITTER -->
+    <meta name="twitter:card" value="<?php echo $smp->description; ?>">
+    <meta name="twitter:title" content="<?php echo $smp->title; ?>">
+    <meta name="twitter:description" content="<?php echo $smp->description; ?>">
+    <meta name="twitter:image" content="<?php echo $smp->image; ?>">
+    <!-- GOOGLE -->
+    <meta itemprop="name" content="<?php echo $smp->title; ?>">
+    <meta itemprop="description" content="<?php echo $smp->description; ?>">
+    <meta itemprop="image" content="<?php echo $smp->image; ?>">
+
+
     <?php wp_head(); ?>
 </head>
 
