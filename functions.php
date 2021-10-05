@@ -1092,8 +1092,8 @@ function processConcert($concert) {
     $concert->search = sanitize_title($concert->post_title);
 
     if ($concert->location) {
-        // $concert->location_name = $concert->location->post_title;
-        $concert->location_name =   __('Showcase', 'blankslate');
+        $concert->location_name = $concert->location->post_title;
+        // $concert->location_name =   __('Showcase', 'blankslate');
         $concert->search = sanitize_title($concert->location_name . ' ' . $concert->post_title);
     } else if ($concert->post_type == 'rencontre') {
         $concert->location_name =   __('Rencontres', 'blankslate');
