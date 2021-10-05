@@ -3,7 +3,19 @@ $lieux = get_posts(array(
     'post_type' => 'lieu',
     'posts_per_page' => -1,
     'suppress_filters' => 0, // stop wpml giving posts from all languages
+    'meta_key' => 'show_in_map',
+    'meta_query' => array(
+        array(
+            'key' => 'show_in_map',
+            'value' => 1,
+            'compare' => '='
+        )
+    ),
 ));
+
+
+
+
 $location_objects = [];
 foreach ($lieux as $lieu) {
     $lieu_json  = lieu_to_map_json($lieu);
