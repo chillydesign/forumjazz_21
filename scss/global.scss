@@ -1179,9 +1179,14 @@ body .woocommerce input.button {
             padding: 0;
         }
 
+        strong {
+            display: block;
+        }
+
         em {
             display: block;
-
+            font-size: 79%;
+            line-height: 125%;
 
             &.overflow {
                 height: 50px;
