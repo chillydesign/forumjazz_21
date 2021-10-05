@@ -59,6 +59,10 @@
                 <h1 class="entry-title" itemprop="name">
                     <?php echo $title; ?>
                 </h1>
+                <?php $subtitle = get_field('subtitle'); ?>
+                <?php if ($subtitle) : ?>
+                    <h4 class="subtitle"><?php echo $subtitle; ?></h4>
+                <?php endif; ?>
             </div>
         </header>
 

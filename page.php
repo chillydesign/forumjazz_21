@@ -5,14 +5,9 @@
 
             <?php $image = thumbnail_of_post_url(get_the_ID(), 'large'); ?>
             <?php $image_html = ($image) ? 'class="background_image" style="background-image:url(' . $image . ')"'  : ''; ?>
-            <?php $sutitle = get_field('subtitle'); ?>
             <header id="page_header" <?php echo $image_html; ?>>
                 <div class="container">
                     <h1 class="entry-title" itemprop="name"><?php the_title(); ?></h1>
-
-                    <?php if ($subtitle) : ?>
-                        <h4 class="subtitle"><?php echo $subtitle; ?></h4>
-                    <?php endif; ?>
                 </div>
             </header>
 
