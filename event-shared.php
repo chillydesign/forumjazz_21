@@ -64,28 +64,7 @@
                 <?php endif; ?>
 
 
-                <?php if ($intervenants) : ?>
-                    <h3><?php _e('Intervenants', 'blankslate'); ?></h3>
-                    <div class="participants_container participants_container_small">
-                        <?php foreach ($intervenants as $intervenant) : ?>
-                            <?php $user_image = user_structure_image($intervenant['ID']); ?>
-                            <?php $structure =  get_field('structure_name',  "user_" . $intervenant['ID']); ?>
-                            <div class="participant_container">
-                                <div class="participant_image" style="background-image: url('<?php echo $user_image; ?>');">
-                                </div>
-                                <div class="participant_text">
-                                    <h3>
-                                        <?php echo ($intervenant['user_firstname']); ?>
-                                        <?php echo ($intervenant['user_lastname']); ?>
-                                    </h3>
-                                    <p> <strong><?php echo $structure; ?> </strong>
-                                    </p>
-                                </div>
-                            </div>
-                        <?php endforeach ?>
-                    </div>
 
-                <?php endif; ?>
 
                 <?php if ($location) : ?>
                     <?php $location_title = $location->post_title; ?>
@@ -122,6 +101,28 @@
 
                 <?php if ($ticketing) : ?>
                     <a class="button button_block button_large" href="<?php echo $ticketing; ?>"><?php _e('Billets', 'blankslate'); ?></a>
+                <?php endif; ?>
+
+                <?php if ($intervenants) : ?>
+                    <h3><?php _e('Intervenants', 'blankslate'); ?></h3>
+                    <div class="participants_container participants_container_small">
+                        <?php foreach ($intervenants as $intervenant) : ?>
+                            <?php $user_image = user_structure_image($intervenant['ID']); ?>
+                            <?php $structure =  get_field('structure_name',  "user_" . $intervenant['ID']); ?>
+                            <div class="participant_container">
+                                <div class="participant_image" style="background-image: url('<?php echo $user_image; ?>');">
+                                </div>
+                                <div class="participant_text">
+                                    <h3>
+                                        <?php echo ($intervenant['user_firstname']); ?>
+                                        <?php echo ($intervenant['user_lastname']); ?>
+                                    </h3>
+                                    <p> <strong><?php echo $structure; ?> </strong>
+                                    </p>
+                                </div>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
                 <?php endif; ?>
 
 
