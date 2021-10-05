@@ -85,6 +85,20 @@ class Vector {
     }
 
 
+    static lerp(v1, v2, amt) {
+        let target = v1.copy();
+        target.lerp(v2, amt);
+        return target;
+    };
+
+    lerp(v, amount) {
+        this.x += (v.x - this.x) * amount || 0;
+        this.y += (v.y - this.y) * amount || 0;
+        this.z += (v.z - this.z) * amount || 0;
+        return this;
+    };
+
+
     mult(v) {
         if (typeof v === 'number') {
             this.x *= v;
