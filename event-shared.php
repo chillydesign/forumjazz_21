@@ -38,7 +38,9 @@
 
                         <p>
                             <span class="time"><?php echo $time; ?></span>
-                            | <a href="<?php echo $ticketing; ?>"><?php _e('Billets', 'blankslate'); ?> </a>
+                            <?php if ($ticketing) : ?>
+                                | <a href="<?php echo $ticketing; ?>"><?php _e('Billets', 'blankslate'); ?> </a>
+                            <?php endif; ?>
                         </p>
 
                     </div>
