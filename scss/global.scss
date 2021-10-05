@@ -486,7 +486,7 @@ $con_ren_height: 60px;
 
     #recontres_thing {
         h3 {
-            background: transparentize($blue, 0.5);
+            background: transparentize($orange, 0.5);
         }
 
         @media (min-width: $mobile_width) {
@@ -496,8 +496,10 @@ $con_ren_height: 60px;
             }
         }
 
-        .button {
-            background-color: $blue;
+        .button,
+        h6 a {
+            background-color: $orange;
+
         }
     }
 }
