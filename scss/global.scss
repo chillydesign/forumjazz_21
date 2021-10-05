@@ -759,6 +759,12 @@ $con_ren_height: 60px;
             background-color: $orange;
             padding-left: 12px;
             padding-right: 12px;
+
+            margin: 0 0 5px;
+
+            @media (min-width: $mobile_width) {
+                margin: 0;
+            }
         }
     }
 
