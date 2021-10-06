@@ -1083,6 +1083,7 @@ function processConcert($concert) {
     $concert->time = get_field('time',  $concert->ID);
     $concert->search_time = makeSearchTime($concert->time);
 
+    $concert->url = get_permalink($concert->ID);
 
     // $concert->image = thumbnail_of_post_url($concert->ID, 'medium');
     $image =  get_field('image',  $concert->ID);

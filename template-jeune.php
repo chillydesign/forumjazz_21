@@ -38,7 +38,7 @@
                         <div class="concert_location_box">
                             <div class="concert_box" data-search="<?php echo $concert->search; ?>">
                                 <h4 style="background-image:url('<?php echo $concert->image; ?>')">
-                                    <a href="<?php echo $concert->guid; ?>">
+                                    <a href="<?php echo $concert->url; ?>">
                                         <span><?php echo  $concert->time  . ' - ' . $concert->post_title; ?></span>
                                     </a>
                                 </h4>

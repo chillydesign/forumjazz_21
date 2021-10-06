@@ -48,7 +48,7 @@ $sorted_concerts = processDatesForConcertsByDate($concerts);
                 <tr>
                     <td>
                         <strong>
-                            <a href="<?php echo $concert->guid; ?>">
+                            <a href="<?php echo $concert->url; ?>">
                                 <?php echo $concert->alt_title; ?>
                             </a>
                         </strong>
