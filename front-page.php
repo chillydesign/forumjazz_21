@@ -36,7 +36,7 @@
             <section id="who_are_we">
                 <div class="container">
 
-                    <h2><?php _e('Qui sommes nous ?', 'blankslate'); ?></h2>
+                    <h2><?php _e('UN FORUM JAZZ, UN FORUM DE MUSIQUES !', 'blankslate'); ?></h2>
                     <div class="columns">
                         <div class="column">
                             <?php echo $who_we_are_video; ?>
@@ -68,7 +68,7 @@
 
                                         <div class="column">
                                             <span class="h3_offset">
-                                            <?php _e('PROFESSIONNELS / ETUDIANTS', 'blankslate'); ?>
+                                                <?php _e('PROFESSIONNELS / ETUDIANTS', 'blankslate'); ?>
                                             </span>
                                         </div>
                                         <div class="column"></div>
