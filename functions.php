@@ -91,7 +91,7 @@ function blankslate_enqueue() {
     wp_enqueue_script('map_cluster'); // Enqueue it!
 
 
-    $gkey = 'AIzaSyAxQfqRqtPLAW4BolFMCxTiv9y--R8CXdU';
+    $gkey = 'AIzaSyBXhnvEf12n4T36mlca5zUM15uPJtD0HrA';
     wp_register_script('wf_google_maps', '//maps.google.com/maps/api/js?key=' . $gkey, array(), '', true); // Custom scripts
     wp_enqueue_script('wf_google_maps'); // Enqueue it!
 
@@ -1069,7 +1069,7 @@ function sort_by_menu_order_and_time($a, $b) {
 function sort_by_event_date_and_time($a, $b) {
     return strcmp(
         $a->date . '---' . $a->search_time,
-        $b->date . '---' . $b->search_time,
+        $b->date . '---' . $b->search_time
     );
 }
 
