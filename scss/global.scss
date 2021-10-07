@@ -275,7 +275,7 @@ header#page_header+section {
             opacity: 0;
 
             a {
-                background-color: $yellow;
+                background-color: $blue;
                 display: block;
                 color: $black;
                 text-decoration: none;
@@ -318,7 +318,7 @@ header#page_header+section {
 
                 a {
 
-                    background-color: $orange;
+                    background-color: $green;
                 }
             }
 
@@ -332,7 +332,7 @@ header#page_header+section {
 
                 a {
 
-                    background-color: $pink;
+                    background-color: $yellow;
                 }
             }
         }
@@ -458,7 +458,7 @@ $con_ren_height: 60px;
             line-height: $con_ren_height;
             width: 100%;
             left: 0;
-            background: transparentize($yellow, 0.5);
+            background: transparentize($blue, 0.5);
         }
 
         img {
@@ -471,6 +471,7 @@ $con_ren_height: 60px;
         .button,
         h6 a {
             margin: 0 $padding $padding 0;
+            background-color: $blue;
 
         }
     }
@@ -491,7 +492,7 @@ $con_ren_height: 60px;
 
     #recontres_thing {
         h3 {
-            background: transparentize($orange, 0.5);
+            background: transparentize($green, 0.5);
         }
 
         @media (min-width: $mobile_width) {
@@ -503,7 +504,7 @@ $con_ren_height: 60px;
 
         .button,
         h6 a {
-            background-color: $orange;
+            background-color: $green;
 
         }
     }

@@ -39,15 +39,15 @@ h2 a {
   color: black !important;
 
   &:hover {
-    background-color: darken($yellow, 20);
+    background-color: darken($blue, 20);
   }
 }
 
 h2.forum a {
-  background: $orange;
+  background: $green;
 
   &:hover {
-    background-color: darken($orange, 20);
+    background-color: darken($green, 20);
   }
 }
 
@@ -159,7 +159,7 @@ button,
 .woocommerce button.button {
   border: 0;
   transition: all 0.3s;
-  color: $white;
+  color: $font_color;
   background-color: $blue;
   display: inline-block;
   padding: 10px 50px;
@@ -170,12 +170,12 @@ button,
   font-weight: bold;
   border-radius: 400px;
   box-shadow: 0 3px 6px transparentize($medium_grey, 0.88);
-  text-shadow: 0 1px 0px transparentize($font_color, 0.3);
+  text-shadow: 0 1px 0px transparentize(white, 0.3);
 
 
   &:visited,
   &:link {
-    color: white;
+    color: $font_color;
   }
 
   &:hover,
