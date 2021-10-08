@@ -126,8 +126,8 @@ a {
 
   &.button_primary {
     background-color: $brand_color;
-    color: $font_color;
-    text-shadow: 0 1px 0px transparentize($white, 0.3);
+    color: $white;
+    text-shadow: 0 1px 0px transparentize($font_color, 0.3);
 
     &:visited,
     &:link,
