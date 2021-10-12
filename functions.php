@@ -834,6 +834,10 @@ function my_change_sort_order($query) {
 // WOOCOMMERCE
 // WOOCOMMERCE
 
+
+do_action('woocommerce_set_cart_cookies', TRUE);
+
+
 /**
  * Remove password strength check.
  */
