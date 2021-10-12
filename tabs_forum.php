@@ -1,4 +1,3 @@
-<?php $site_url = site_url(); ?>
 <form id="search_concerts_form">
     <div class="button_group">
 

@@ -1083,7 +1083,10 @@ tr.woocommerce-cart-form__cart-item.cart_item .product-thumbnail {
     width: 0;
 }
 
-tr.product-thumbnail, th.product-thumbnail {display: none;}
+td.product-thumbnail,
+th.product-thumbnail {
+    display: none;
+}
 
 body .woocommerce #respond input#submit,
 body .woocommerce a.button,

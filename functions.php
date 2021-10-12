@@ -872,8 +872,7 @@ function chilly_product_add_to_cart($atts) {
     ob_start();
 
     if (chilly_find_product_in_cart($atts['id'])) {
-        echo '<p>Product already in cart <br> <a class="button" href="' . wc_get_cart_url() . '">Go to cart</a>
-        </p>';
+        echo '<p style="min-height: auto;  padding: 10px; background: rgba(255,255,255,0.4);">' . __('Déjà ajouté au panier', 'webfactor')  . '<br>   <a class="added_to_cart" href="' . wc_get_cart_url() . '">' . __('Aller au panier', 'webfactor') . '</a></p>';
     } else {
         echo '<p class="product woocommerce add_to_cart_inline ' . esc_attr($atts['class']) . '" >';
         if (wc_string_to_bool($atts['show_price'])) {
@@ -907,6 +906,7 @@ function chilly_find_product_in_cart($product_id) {
     $in_cart = WC()->cart->find_product_in_cart($product_cart_id);
     return ($in_cart);
 }
+
 
 
 /**

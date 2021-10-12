@@ -11,6 +11,18 @@
                 </div>
             </header>
 
+
+
+            <?php if (isset($_GET['product_error'])) : ?>
+
+                <div class="container">
+                    <p class="alert alert_problem"><?php _e("L'achat du Pass est nominatif, nous vous demanderons d'ajouter votre adresse mail, une photographie, votre structure & poste occupé afin de vous faire figurer dans notre liste de participants. Vous ne pouvez donc ajouter chaque jour qu'une seule fois au panier.", 'webfactor'); ?></p>
+                </div>
+
+
+
+            <?php endif; ?>
+
             <?php include('section-loop.php'); ?>
             <div class="container">
                 <?php // required for woocommerce 
