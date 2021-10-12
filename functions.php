@@ -835,7 +835,78 @@ function my_change_sort_order($query) {
 // WOOCOMMERCE
 
 
-do_action('woocommerce_set_cart_cookies', TRUE);
+function chilly_product_add_to_cart($atts) {
+    global $post;
+
+    if (empty($atts)) {
+        return '';
+    }
+
+    $atts = shortcode_atts(
+        array(
+            'id'         => '',
+            'class'      => '',
+            'quantity'   => '1',
+            'sku'        => '',
+            'show_price' => 'true',
+        ),
+        $atts,
+        'product_add_to_cart'
+    );
+
+    if (!empty($atts['id'])) {
+        $product_data = get_post($atts['id']);
+    } elseif (!empty($atts['sku'])) {
+        $product_id   = wc_get_product_id_by_sku($atts['sku']);
+        $product_data = get_post($product_id);
+    } else {
+        return '';
+    }
+
+    $product = is_object($product_data) && in_array($product_data->post_type, array('product', 'product_variation'), true) ? wc_setup_product_data($product_data) : false;
+
+    if (!$product) {
+        return '';
+    }
+
+    ob_start();
+
+    if (chilly_find_product_in_cart($atts['id'])) {
+        echo '<p>Product already in cart <br> <a class="button" href="' . wc_get_cart_url() . '">Go to cart</a>
+        </p>';
+    } else {
+        echo '<p class="product woocommerce add_to_cart_inline ' . esc_attr($atts['class']) . '" >';
+        if (wc_string_to_bool($atts['show_price'])) {
+            // @codingStandardsIgnoreStart
+            echo $product->get_price_html();
+            // @codingStandardsIgnoreEnd
+        }
+        woocommerce_template_loop_add_to_cart(
+            array(
+                'quantity' => $atts['quantity'],
+            )
+        );
+        echo '</p>';
+    }
+
+
+
+    // Restore Product global in case this is shown inside a product post.
+    wc_setup_product_data($post);
+
+    return ob_get_clean();
+}
+
+
+
+add_shortcode('chilly_add_to_cart', 'chilly_product_add_to_cart');
+
+
+function chilly_find_product_in_cart($product_id) {
+    $product_cart_id = WC()->cart->generate_cart_id($product_id);
+    $in_cart = WC()->cart->find_product_in_cart($product_cart_id);
+    return ($in_cart);
+}
 
 
 /**
