@@ -835,6 +835,25 @@ function my_change_sort_order($query) {
 // WOOCOMMERCE
 
 
+function chilly_already_bought_shortcode($atts) {
+    $product_ids =  array(531, 532, 533, 534);
+    $products_bought = array();
+    foreach ($product_ids as $product_id) {
+        if (chilly_customer_already_bought($product_id)) {
+            $product = wc_get_product($product_id);
+            $product_name = $product->get_name();
+            array_push($products_bought, $product_name);
+        }
+    }
+
+    if (sizeof($products_bought) > 0) {
+
+        echo '<p class="alert">Vous avez acheté le pass pro ' . implode(',', $products_bought)  . '. Lors de l\'achat du pass nous vous demandons de renseigner des informations sur votre compte. Pour acheter le pass pro pour une autre personne, veuillez <a href="' . wp_logout_url(home_url()) . '">cliquer ici pour vous déconnecter</a>';
+    }
+}
+add_shortcode('already_bought_message', 'chilly_already_bought_shortcode');
+
+
 function chilly_product_add_to_cart($atts) {
     global $post;
 
