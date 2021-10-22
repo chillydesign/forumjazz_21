@@ -989,6 +989,16 @@ add_filter('woocommerce_enable_order_notes_field', '__return_false', 9999);
 add_action('woocommerce_after_order_notes', 'chilly_custom_checkout_field');
 
 
+add_action('woocommerce_before_checkout_form', 'chilly_add_message_checkout');
+
+function chilly_add_message_checkout() {
+
+    if (is_user_logged_in()) {
+        $email =   wp_get_current_user()->user_email;
+        echo '<p class="alert">' . __('Vous êtes connecté avec le compte', 'webfactor') . ' ' . $email .  '. ' . __('Si vous souhaitez acheter le pass pour un autre compte', 'webfactor') .  ' <a href="' .  wp_logout_url(home_url())  . '">' . __('veuillez vous déconnecter', 'webfactor') . '</a>.</p>';
+    }
+}
+
 /**
  * ADD CUSTOM FIELDS TO CHECKOUT
  */
