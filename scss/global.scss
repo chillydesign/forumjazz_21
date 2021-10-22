@@ -1139,6 +1139,12 @@ body .woocommerce {
             font-size: 1em;
         }
     }
+
+    .wc-stripe-elements-field,
+    .wc-stripe-iban-element-field {
+        max-width: 600px;
+        padding: 15px;
+    }
 }
 
 // WOOCOMMERCE
