@@ -871,8 +871,13 @@ function chilly_product_add_to_cart($atts) {
 
     ob_start();
 
-    if (chilly_find_product_in_cart($atts['id'])) {
-        echo '<p style="min-height: auto;  padding: 10px; background: rgba(255,255,255,0.4);">' . __('Déjà ajouté au panier', 'webfactor')  . '<br>   <a class="added_to_cart" href="' . wc_get_cart_url() . '">' . __('Aller au panier', 'webfactor') . '</a></p>';
+
+    $css = 'style="min-height: auto;  padding: 10px; background: rgba(255,255,255,0.4);"';
+
+    if (chilly_customer_already_bought($atts['id'])) {
+        echo '<p ' . $css . '>Acheté</p>';
+    } else    if (chilly_find_product_in_cart($atts['id'])) {
+        echo '<p ' . $css . ' >' . __('Déjà ajouté au panier', 'webfactor')  . '<br>   <a class="added_to_cart" href="' . wc_get_cart_url() . '">' . __('Aller au panier', 'webfactor') . '</a></p>';
     } else {
         echo '<p class="product woocommerce add_to_cart_inline ' . esc_attr($atts['class']) . '" >';
         if (wc_string_to_bool($atts['show_price'])) {
@@ -901,12 +906,38 @@ function chilly_product_add_to_cart($atts) {
 add_shortcode('chilly_add_to_cart', 'chilly_product_add_to_cart');
 
 
+
+
+function chilly_customer_already_bought($product_id) {
+
+    if (!is_user_logged_in()) {
+        return false;
+    }
+
+    return wc_customer_bought_product(
+        wp_get_current_user()->user_email,
+        get_current_user_id(),
+        $product_id
+    );
+}
+
+
 function chilly_find_product_in_cart($product_id) {
     $product_cart_id = WC()->cart->generate_cart_id($product_id);
     $in_cart = WC()->cart->find_product_in_cart($product_cart_id);
     return ($in_cart);
 }
 
+
+// // DONT LET LOGGED IN USER BUY SAME PRODUCT TWICE
+// add_filter('woocommerce_is_purchasable', 'chilly_wc_disable_repeat_purchase', 10, 2);
+// function chilly_wc_disable_repeat_purchase($purchasable, $product) {
+//     if (is_user_logged_in()) {
+//         return !chilly_customer_already_bought($product->get_id());
+//     } else {
+//         return $purchasable;
+//     }
+// }
 
 
 /**
