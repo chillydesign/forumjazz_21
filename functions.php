@@ -848,7 +848,7 @@ function chilly_already_bought_shortcode($atts) {
 
     if (sizeof($products_bought) > 0) {
 
-        echo '<p class="alert">Vous avez acheté le pass pro ' . implode(',', $products_bought)  . '. Lors de l\'achat du pass nous vous demandons de renseigner des informations sur votre compte. Pour acheter le pass pro pour une autre personne, veuillez <a href="' . wp_logout_url(home_url()) . '">cliquer ici pour vous déconnecter</a>';
+        echo '<p class="alert">' . __("Vous avez acheté le pass pro ", 'webfactor') . implode(',', $products_bought)  .  '. ' . __("Lors de l'achat du pass nous vous demandons de renseigner des informations sur votre compte. Pour acheter le pass pro pour une autre personne, veuillez", 'webfactor') . '<a href="' . wp_logout_url(home_url()) . '">' . __("cliquer ici pour vous déconnecter", 'webfactor') . '</a>';
     }
 }
 add_shortcode('already_bought_message', 'chilly_already_bought_shortcode');
@@ -894,7 +894,7 @@ function chilly_product_add_to_cart($atts) {
     $css = 'style="min-height: auto;  padding: 10px; background: rgba(255,255,255,0.4);"';
 
     if (chilly_customer_already_bought($atts['id'])) {
-        echo '<p ' . $css . '>Acheté</p>';
+        echo '<p ' . $css . '>' . __("Acheté", 'webfactor') . '</p>';
     } else    if (chilly_find_product_in_cart($atts['id'])) {
         echo '<p ' . $css . ' >' . __('Déjà ajouté au panier', 'webfactor')  . '<br>   <a class="added_to_cart" href="' . wc_get_cart_url() . '">' . __('Aller au panier', 'webfactor') . '</a></p>';
     } else {
