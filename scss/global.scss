@@ -1145,6 +1145,10 @@ body .woocommerce {
         max-width: 600px;
         padding: 15px;
     }
+
+    .woocommerce-form-login__submit {
+        font-size: 1em;
+    }
 }
 
 body.logged-in .woocommerce {
