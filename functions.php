@@ -73,7 +73,7 @@ add_action('after_setup_theme', 'remove_json_api');
 
 
 function wf_version() {
-    return '0.2.3';
+    return '0.2.4';
 }
 
 add_action('wp_enqueue_scripts', 'blankslate_enqueue');
