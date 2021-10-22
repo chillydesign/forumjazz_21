@@ -1121,6 +1121,26 @@ body .woocommerce input.button {
     }
 }
 
+
+
+body .woocommerce {
+    .woocommerce-info {
+        font-size: 1.8em;
+    }
+
+    p input[type="checkbox"] {
+        width: auto;
+    }
+
+    .woocommerce-form-login {
+        background-color: #f1f1f1;
+
+        label {
+            font-size: 1em;
+        }
+    }
+}
+
 // WOOCOMMERCE
 // WOOCOMMERCE
 
