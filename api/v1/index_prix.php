@@ -50,7 +50,7 @@ $filename = $file . '_' . date('Y-m-d_H-i', time());
 header('Content-type: application/vnd.ms-excel');
 header('Content-disposition: csv' . date('Y-m-d') . '.csv');
 header('Content-disposition: filename=' . $filename . '.csv');
-header('Content-Length: ' . strlen($encoded_csv));
+// header('Content-Length: ' . strlen($encoded_csv));
 $encoded_csv =   chr(255) . chr(254) . $encoded_csv;
 print $encoded_csv;
 

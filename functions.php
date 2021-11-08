@@ -999,6 +999,20 @@ function chilly_add_message_checkout() {
     }
 }
 
+if (!function_exists('api_save_csv_string')) {
+    function api_save_csv_string($string) {
+
+        $new_string = html_entity_decode($string);
+        $new_string = str_replace(array("\r", "\n"), ' | ', $new_string);
+        $new_string = str_replace(';', ' ', $new_string);
+        $new_string = str_replace(',', ' ', $new_string);
+        $new_string = strip_tags($new_string);
+        return $new_string;
+    }
+}
+
+
+
 /**
  * ADD CUSTOM FIELDS TO CHECKOUT
  */
