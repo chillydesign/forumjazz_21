@@ -4,8 +4,6 @@
 
         <?php
 
-
-
         $dates =  array(
             array('date' => '2021-11-24', 'nice_date' =>  __('Mercredi', 'blankslate') .  ' 24', 'concerts' => array()),
             array('date' => '2021-11-25', 'nice_date' =>  __('Jeudi', 'blankslate') .  ' 25', 'concerts' => array()),
@@ -13,18 +11,6 @@
             array('date' => '2021-11-27', 'nice_date' =>  __('Samedi', 'blankslate') .  ' 27', 'concerts' => array()),
         );
 
-        $concerts  = get_posts(array(
-            'post_type' => 'concert',
-            'posts_per_page' => -1,
-            'suppress_filters' => 0, // stop wpml giving posts from all languages
-            'tax_query'      => array(
-                array(
-                    'taxonomy' => 'concert_category',
-                    'field'    => 'slug',
-                    'terms' => 'showcase',
-                )
-            )
-        ));
         $rencontres  = get_posts(array(
             'post_type' => 'rencontre',
             'posts_per_page' => -1,
@@ -39,25 +25,7 @@
         ));
 
         $title = get_the_title();
-        $subpage = 'programme';
-        if (isset($_GET['subpage'])) {
-            $subpage = $_GET['subpage'];
-            if ($subpage == 'showcases') {
-                $title = 'Showcases';
-                $dates = array($dates[1], $dates[2]); // hide 24th and 27th
-            } else if ($subpage == 'rencontres') {
-                $title = 'Rencontres';
-            }
-        }
-        if ($subpage == 'rencontres') {
-            $combined = $rencontres;
-        } else if ($subpage == 'showcases') {
-            $combined = $concerts;
-        } else {
-            $combined = array_merge($concerts, $rencontres);
-        }
-        $processed_dates =  processDatesForConcertGrid($dates, $combined);
-
+        $processed_dates =  processDatesForConcertGrid($dates, $rencontres);
 
         ?>
 
@@ -79,7 +47,6 @@
 
             <div class="container">
 
-                <?php get_template_part('tabs_forum'); ?>
 
 
                 <div id="concert_grid">
@@ -112,7 +79,6 @@
                             </div>
 
                         <?php endforeach; ?>
-
 
                     </div>
                 </div>

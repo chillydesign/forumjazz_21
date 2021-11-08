@@ -1,8 +1,9 @@
-<?php /* Template Name: Forum Jeune Template */  ?>
+<?php /* Template Name: Forum Template */  ?>
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
         <?php
+
 
 
         $dates =  array(
@@ -12,7 +13,18 @@
             array('date' => '2021-11-27', 'nice_date' =>  __('Samedi', 'blankslate') .  ' 27', 'concerts' => array()),
         );
 
-
+        $concerts  = get_posts(array(
+            'post_type' => 'concert',
+            'posts_per_page' => -1,
+            'suppress_filters' => 0, // stop wpml giving posts from all languages
+            'tax_query'      => array(
+                array(
+                    'taxonomy' => 'concert_category',
+                    'field'    => 'slug',
+                    'terms' => 'showcase',
+                )
+            )
+        ));
         $rencontres  = get_posts(array(
             'post_type' => 'rencontre',
             'posts_per_page' => -1,
@@ -28,7 +40,24 @@
         ));
 
         $title = get_the_title();
-        $processed_dates =  processDatesForConcertGrid($dates, $rencontres);
+        $subpage = 'programme';
+        if (isset($_GET['subpage'])) {
+            $subpage = $_GET['subpage'];
+            if ($subpage == 'showcases') {
+                $title = 'Showcases';
+                $dates = array($dates[1], $dates[2]); // hide 24th and 27th
+            } else if ($subpage == 'rencontres') {
+                $title = 'Rencontres';
+            }
+        }
+        if ($subpage == 'rencontres') {
+            $combined = $rencontres;
+        } else if ($subpage == 'showcases') {
+            $combined = $concerts;
+        } else {
+            $combined = array_merge($concerts, $rencontres);
+        }
+        $processed_dates =  processDatesForConcertGrid($dates, $combined);
 
 
         ?>
@@ -50,6 +79,9 @@
 
 
             <div class="container">
+
+                <?php get_template_part('tabs_forum'); ?>
+
 
                 <div id="concert_grid">
                     <div class="columns">
@@ -73,6 +105,8 @@
                                         </a>
                                     </h4>
                                 </div>
+
+
                                 <?php $cur_location = $concert->location_name; ?>
                             <?php endforeach; ?>
                                 </div>
@@ -85,6 +119,8 @@
                 </div>
             </div>
         </section>
+
+
 
 
 
