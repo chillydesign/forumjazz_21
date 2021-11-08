@@ -1,4 +1,4 @@
-<?php /* Template Name: Forum Template */  ?>
+<?php /* Template Name: Forum Jeune Template */  ?>
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
