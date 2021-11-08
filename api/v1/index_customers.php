@@ -7,7 +7,7 @@ require_once('../../../../../wp-config.php');
 
 $participants = get_users(
     array(
-        'role__in' =>  array('participant', 'intervenant'),
+        'role__in' =>  array('participant'),
         'number' => -1,
         'orderby' => 'ID',
         'order' => 'ASC',
