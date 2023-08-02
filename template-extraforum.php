@@ -5,10 +5,10 @@
         <?php
 
         $dates =  array(
-            array('date' => '2021-11-24', 'nice_date' =>  __('Mercredi', 'blankslate') .  ' 24', 'concerts' => array()),
-            array('date' => '2021-11-25', 'nice_date' =>  __('Jeudi', 'blankslate') .  ' 25', 'concerts' => array()),
-            array('date' => '2021-11-26', 'nice_date' =>  __('Vendredi', 'blankslate') .  ' 26', 'concerts' => array()),
-            array('date' => '2021-11-27', 'nice_date' =>  __('Samedi', 'blankslate') .  ' 27', 'concerts' => array()),
+            array('date' => '2023-11-29', 'nice_date' =>  __('Mercredi', 'blankslate') .  ' 29 nov.', 'concerts' => array()),
+            array('date' => '2023-11-30', 'nice_date' =>  __('Jeudi', 'blankslate') .  ' 30 nov.', 'concerts' => array()),
+            array('date' => '2022-12-01', 'nice_date' =>  __('Vendredi', 'blankslate') .  ' 01 déc.', 'concerts' => array()),
+            array('date' => '2022-12-02', 'nice_date' =>  __('Samedi', 'blankslate') .  ' 02 déc.', 'concerts' => array()),
         );
 
         $concerts  = get_posts(array(
@@ -37,8 +37,7 @@
 
             <div class="container">
 
-                <?php get_template_part('tabs_forum'); ?>
-
+                <?php get_template_part('tabs_forum', null, array('hide_search' => false)); ?>
 
                 <div id="concert_grid">
                     <div class="columns">
