@@ -815,6 +815,11 @@ function generate_date_box($date) {
 
 add_action('pre_get_posts', 'my_change_sort_order');
 function my_change_sort_order($query) {
+
+
+    if (is_admin()) {
+        return;
+    }
     if ($query->is_main_query()) :
         if (is_post_type_archive(array('concert', 'extra', 'recontre'))) :
             $current_date = date('Ymd');
