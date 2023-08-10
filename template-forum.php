@@ -8,8 +8,8 @@
         $dates =  array(
             array('date' => '2023-11-29', 'nice_date' =>  __('Mercredi', 'blankslate') .  ' 29 nov.', 'concerts' => array()),
             array('date' => '2023-11-30', 'nice_date' =>  __('Jeudi', 'blankslate') .  ' 30 nov.', 'concerts' => array()),
-            array('date' => '2022-12-01', 'nice_date' =>  __('Vendredi', 'blankslate') .  ' 01 déc.', 'concerts' => array()),
-            array('date' => '2022-12-02', 'nice_date' =>  __('Samedi', 'blankslate') .  ' 02 déc.', 'concerts' => array()),
+            array('date' => '2023-12-01', 'nice_date' =>  __('Vendredi', 'blankslate') .  ' 01 déc.', 'concerts' => array()),
+            array('date' => '2023-12-02', 'nice_date' =>  __('Samedi', 'blankslate') .  ' 02 déc.', 'concerts' => array()),
         );
 
         $concerts  = get_posts(array(
