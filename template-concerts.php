@@ -13,8 +13,8 @@
             array(
                 'taxonomy' => 'concert_category',
                 'field'    => 'slug',
-                'terms' => 'showcase',
-                'operator' => 'NOT IN'
+                'terms' => array('concert-tous-publics', 'jeune-public'),
+                'operator' => 'IN'
             )
         );
         $concerts  = get_posts(array(
