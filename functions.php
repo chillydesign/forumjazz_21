@@ -1752,4 +1752,35 @@ function process_signup_form() {
     }
 }
 
+
+
+function signups_concerts_box_html() {
+
+    $posts = get_posts(array(
+        'post_parent' => get_the_ID(),
+        'post_type' => 'signup',
+        'posts_per_page' => -1,
+    ));
+
+    $count = sizeof($posts);
+
+    echo "<p><strong>{$count} inscriptions</strong></p>";
+    echo '<ul>';
+    foreach ($posts as $post) :
+        $link = get_edit_post_link($post->ID);
+        echo "<li><a href=\"{$link}\">{$post->post_date}</a> <br>  {$post->post_title}</li>";
+    endforeach;
+    echo '</ul>';
+}
+
+function add_signups_concerts_box() {
+    add_meta_box("signups-concerts-meta-box", " Inscriptions", "signups_concerts_box_html", "concert", "side", "high", null);
+}
+
+add_action("add_meta_boxes", "add_signups_concerts_box");
+
+
+
+
+
 ?>

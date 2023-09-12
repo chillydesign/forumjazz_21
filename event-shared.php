@@ -130,15 +130,15 @@
                 <?php $event_id =  get_the_ID(); ?>
                 <?php if ($can_signup) : ?>
                     <?php if (isset($_GET['success'])) : ?>
-                        <p class="alert alert_success">Your sign up was successful.</p>
+                        <p class="alert alert_success">Votre inscription a été enregistrée. </p>
                     <?php endif; ?>
                     <?php if (isset($_GET['problem'])) : ?>
-                        <p class="alert alert_problem">An error occured. Please try again.</p>
+                        <p class="alert alert_problem">Une erreur s'est produite. Veuillez réessayer.</p>
                     <?php endif; ?>
                     <?php $max_signups = get_field('max_signups'); ?>
                     <?php $current_signup_count = current_signup_count($event_id); ?>
                     <?php if ($current_signup_count < $max_signups) : ?>
-                        <p> Signups: <?php echo $current_signup_count; ?> / <?php echo $max_signups; ?></p>
+                        <!-- <p> Signups: <?php echo $current_signup_count; ?> / <?php echo $max_signups; ?></p> -->
                         <?php $current_user_id = get_current_user_id(); ?>
                         <?php if ($current_user_id) : ?>
                             <?php $has_signedup_already = user_signup_to_post($event_id, $current_user_id); ?>
@@ -150,15 +150,15 @@
                                     <button type="submit">Envoyer</button>
                                 </form>
                             <?php else : ?>
-                                <p class="alert">You have already signed up for this</p>
+                                <p class="alert">Vous êtes déjà inscrit(e) à cet évènement.</p>
                             <?php endif; ?>
                         <?php else : ?>
-                            <p class="alert">You must be signed in to register.</p>
+                            <p class="alert">Vous devez être connecté(e) pour vous inscrire.</p>
                             <?php $url = $_SERVER['REQUEST_URI']; ?>
-                            <a class="button" href="<?php echo  wp_login_url($url); ?> ">Sign in</a>
+                            <a class="button" href="<?php echo  wp_login_url($url); ?> ">Connexion</a>
                         <?php endif; ?>
                     <?php else : ?>
-                        <p class="alert">Signups full</p>
+                        <p class="alert">L'évènement est complet.</p>
                     <?php endif; ?>
                 <?php endif; ?>
 
