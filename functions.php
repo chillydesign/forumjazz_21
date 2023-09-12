@@ -516,8 +516,8 @@ function create_post_types() {
         'signup', // Register Custom Post Type
         array(
             'labels' => array(
-                'name' => __('signups', 'webfactor'), // Rename these to suit
-                'singular_name' => __('signup', 'webfactor'),
+                'name' => __('Signups', 'webfactor'), // Rename these to suit
+                'singular_name' => __('Signup', 'webfactor'),
                 'add_new' => __('Ajouter', 'webfactor'),
                 'add_new_item' => __('Ajouter signup', 'webfactor'),
                 'edit' => __('Modifier', 'webfactor'),
@@ -554,6 +554,7 @@ function create_post_types() {
                 'title',
                 'editor',
                 'excerpt',
+                'author',
                 'thumbnail'
             ), // Go to Dashboard Custom HTML5 Blank post for supports
             'can_export' => true, // Allows export in Tools > Export
@@ -1688,6 +1689,19 @@ function current_signup_count($post_id) {
 }
 
 
+function  user_signup_to_post($post_id, $user_id) {
+    global $wpdb;
+    $sql = $wpdb->prepare("SELECT COUNT( ID ) AS cnt FROM $wpdb->posts WHERE post_parent = %d AND post_type = %s AND post_author = %d", $post_id, 'signup', $user_id);
+    $result = $wpdb->get_results($sql);
+    if (!empty($result)) {
+        $cnt =  $result[0]->cnt;
+        if ($cnt > 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
 add_action('admin_post_nopriv_signup_form',    'process_signup_form');
 add_action('admin_post_signup_form',  'process_signup_form');
 
@@ -1713,7 +1727,8 @@ function process_signup_form() {
                 'post_status'  => 'publish',
                 'post_type'    => 'signup',
                 'post_parent' => $post_id,
-                'post_content' => ''
+                'post_content' => '',
+                'post_author' => $current_user_id,
             );
 
             // EDIT OR ADD NEW POST
