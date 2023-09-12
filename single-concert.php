@@ -14,6 +14,8 @@
 
             <?php get_template_part('event-shared'); ?>
 
+
+
     <?php endwhile;
     endif; ?>
 

@@ -510,7 +510,59 @@ function create_post_types() {
         )
     );
 
-
+    $signup_slug = 'signup';
+    $signup_slug_plural = 'signups';
+    register_post_type(
+        'signup', // Register Custom Post Type
+        array(
+            'labels' => array(
+                'name' => __('signups', 'webfactor'), // Rename these to suit
+                'singular_name' => __('signup', 'webfactor'),
+                'add_new' => __('Ajouter', 'webfactor'),
+                'add_new_item' => __('Ajouter signup', 'webfactor'),
+                'edit' => __('Modifier', 'webfactor'),
+                'edit_item' => __('Modifier signup', 'webfactor'),
+                'new_item' => __('Ajouter signup', 'webfactor'),
+                'view' => __('Afficher signup', 'webfactor'),
+                'view_item' => __('Afficher signup', 'webfactor'),
+                'search_items' => __('Rechercher signups', 'webfactor'),
+                'not_found' => __('Pas de signup trouvé', 'webfactor'),
+                'not_found_in_trash' => __('Pas de signup trouvé dans la corbeille', 'webfactor')
+            ),
+            'map_meta_cap' => true,
+            'capability_type' => $signup_slug,
+            'capabilities' => array(
+                'create_posts' => 'create_' . $signup_slug_plural,
+                'delete_others_posts' => 'delete_others_' . $signup_slug_plural,
+                'delete_posts' => 'delete_' . $signup_slug_plural,
+                'delete_private_posts' => 'delete_private_' . $signup_slug_plural,
+                'delete_published_posts' => 'delete_published_' . $signup_slug_plural,
+                'edit_posts' => 'edit_' . $signup_slug_plural,
+                'edit_others_posts' => 'edit_others_' . $signup_slug_plural,
+                'edit_private_posts' => 'edit_private_' . $signup_slug_plural,
+                'edit_published_posts' => 'edit_published_' . $signup_slug_plural,
+                'publish_posts' => 'publish_' . $signup_slug_plural,
+                'read_private_posts' => 'read_private_' . $signup_slug_plural,
+                'read' => 'read',
+            ),
+            'public' => true,
+            'publicly_queryable' => true, // dont allow to see on front end
+            'exclude_from_search' => true, // dont show in search
+            'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+            'has_archive' => true,
+            'supports' => array(
+                'title',
+                'editor',
+                'excerpt',
+                'thumbnail'
+            ), // Go to Dashboard Custom HTML5 Blank post for supports
+            'can_export' => true, // Allows export in Tools > Export
+            'taxonomies' => array(
+                //    'post_tag',
+                //    'category'
+            ) // Add Category and Post Tags support
+        )
+    );
 
     $location_slug = 'lieu';
     $location_slug_plural = 'lieux';
@@ -1625,5 +1677,64 @@ function social_meta_properties() {
 }
 
 
+function current_signup_count($post_id) {
+    global $wpdb;
+    $sql = $wpdb->prepare("SELECT COUNT( ID ) AS cnt FROM $wpdb->posts WHERE post_parent = %d AND post_type = %s", $post_id, 'signup');
+    $result = $wpdb->get_results($sql);
+    if (!empty($result)) {
+        return $result[0]->cnt;
+    }
+    return 0;
+}
+
+
+add_action('admin_post_nopriv_signup_form',    'process_signup_form');
+add_action('admin_post_signup_form',  'process_signup_form');
+
+
+
+
+function process_signup_form() {
+    // IF DATA HAS BEEN POSTED
+    if (isset($_POST['action'])  && $_POST['action'] == 'signup_form') {
+
+
+
+        $name = $_POST['name'];
+        $post_id = $_POST['post_id'];
+        $current_user_id = get_current_user_id();
+        $url = get_permalink($post_id);
+
+        // if we  have the right data and user logged in
+        //  && $current_user_id > 0
+        if (!empty($name)  ||  !$current_user_id) {
+            $post = array(
+                'post_title'   => "Signup {$name}",
+                'post_status'  => 'publish',
+                'post_type'    => 'signup',
+                'post_parent' => $post_id,
+                'post_content' => ''
+            );
+
+            // EDIT OR ADD NEW POST
+            $new_signup = wp_insert_post($post);
+
+            // IF SUCCESS
+            if ($new_signup > 0) {
+                wp_redirect(("{$url}?success"), $status = 302);
+            } else {
+                // something went wrong with adding the partage post
+                wp_redirect(("{$url}?problem=adding"), $status = 302);
+            }
+        } else {
+            // if we dont have all the data or user not logged in
+            wp_redirect(("{$url}?problem=nouser"), $status = 302);
+        }
+    } else {
+        $url = $_SERVER['HTTP_REFERER'];
+        // if the form didnt post the action field
+        wp_redirect(("{$url}?problem=noaction"), $status = 302);
+    }
+}
 
 ?>

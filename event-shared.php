@@ -126,6 +126,33 @@
                 <?php endif; ?>
 
 
+                <?php $can_signup = get_field('can_signup'); ?>
+                <?php $event_id =  get_the_ID(); ?>
+                <?php if ($can_signup) : ?>
+                    <?php $max_signups = get_field('max_signups'); ?>
+                    <?php $current_signup_count = current_signup_count($event_id); ?>
+                    <?php if ($current_signup_count < $max_signups) : ?>
+                        Signups: <?php echo $current_signup_count; ?> / <?php echo $max_signups; ?>
+                        <?php $current_user_id = get_current_user_id(); ?>
+                        <?php if ($current_user_id) : ?>
+                            <form action="<?php echo   esc_url(admin_url('admin-post.php')); ?>" method="post">
+                                <input name="name" id="name" placeholder="name" />
+                                <input type="hidden" name="post_id" value="<?php echo $event_id; ?>" />
+                                <input type="hidden" name="action" value="signup_form">
+                                <button type="submit">Envoyer</button>
+                            </form>
+                        <?php else : ?>
+                            <p>You must be signed in to register.</p>
+                            <?php $url = $_SERVER['REQUEST_URI']; ?>
+                            <a class="button" href="<?php echo  wp_login_url($url); ?> ">Sign in</a>
+                        <?php endif; ?>
+                    <?php else : ?>
+                        <p>Signups full</p>
+                    <?php endif; ?>
+                <?php endif; ?>
+
+
+
             </div>
         </div>
     </section>
