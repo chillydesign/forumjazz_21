@@ -748,11 +748,19 @@ function  cat_names_from_categories($categories) {
 function youtube_id_from_url($url) {
 
     $a = explode('?v=', $url);
-    $b = $a[1];
-    $c = explode('&', $b);
-    $d = $c[0];
-    $id = $d;
-    return $id;
+    if (sizeof($a) > 1) {
+        $b = $a[1];
+        $c = explode('&', $b);
+        $d = $c[0];
+        $id = $d;
+        return $id;
+    }
+
+    $b = explode('youtu.be/', $url);
+    if (sizeof($b) > 1) {
+        return $b[1];
+    }
+    return $url;
 }
 
 
@@ -844,7 +852,7 @@ function my_change_sort_order($query) {
 
 
 function chilly_already_bought_shortcode($atts) {
-    $product_ids =  array(531, 532, 533, 534);
+    $product_ids =  array(2837, 2838, 2839);
     $products_bought = array();
     foreach ($product_ids as $product_id) {
         if (chilly_customer_already_bought($product_id)) {
