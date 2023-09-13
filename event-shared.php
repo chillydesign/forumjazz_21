@@ -150,7 +150,9 @@
                                     <button type="submit">Envoyer</button>
                                 </form>
                             <?php else : ?>
-                                <p class="alert">Vous êtes déjà inscrit(e) à cet évènement.</p>
+                                <?php if (!isset($_GET['success'])) : ?>
+                                    <p class="alert">Vous êtes déjà inscrit(e) à cet évènement.</p>
+                                <?php endif; ?>
                             <?php endif; ?>
                         <?php else : ?>
                             <p class="alert">Vous devez être connecté(e) pour vous inscrire.</p>

@@ -21,14 +21,16 @@
                     <?php echo $welcome_text; ?>
                 </div>
 
-                <ul class="welcome_buttons">
+                <ul style="display:none" class="welcome_buttons">
                     <li><a href="<?php echo get_home_url(); ?>/concerts"><strong> <?php _e('Concerts', 'blankslate'); ?></strong><span><?php _e('Ouverts au public & aux professionnels dans la limite des places disponibles.', 'blankslate'); ?></span></a></li>
                     <li><a href="<?php echo get_home_url(); ?>/rencontres"><strong><?php _e('Forum professionel', 'blankslate'); ?></strong><span><?php _e('Uniquement accessible aux professionnels et étudiants sur inscription.', 'blankslate'); ?></span></a></li>
-                    <li><a href="<?php echo get_home_url(); ?>/billetterie"><strong><?php _e('Billetterie', 'blankslate'); ?></strong><span><?php _e('Achetez vos tickets pour les concerts ou notre pass professionnel', 'blankslate'); ?>
+                    <li style="display:none"><a href="<?php echo get_home_url(); ?>/billetterie"><strong><?php _e('Billetterie', 'blankslate'); ?></strong><span><?php _e('Achetez vos tickets pour les concerts ou notre pass professionnel', 'blankslate'); ?>
                             </span></a></li>
                 </ul>
-
-                <?php include('img/truck.svg'); ?>
+                <?php $tdu = get_template_directory_uri(); ?>
+                <img src="<?php echo $tdu; ?>/img/metronome.png" style="max-width: 400px;position: absolute;top: 40px;  left: 30px;" alt="Metronome" />
+                <?php // include('img/truck.svg'); 
+                ?>
                 <div id="jazz_canvas"></div>
             </section>
 
