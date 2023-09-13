@@ -4,7 +4,10 @@
         <a href="<?php echo get_permalink(359); ?>" class="button"><?php _e('Sélection jeune public', 'blankslate'); ?></a>
         <a href="<?php echo get_permalink(329); ?>" class="button"><?php _e('Extras', 'blankslate'); ?></a>
 
-
+        <?php $brochure_file = get_field('brochure'); ?>
+        <?php if ($brochure_file) : ?>
+            <a href="<?php echo $brochure_file['url']; ?>" target="_blank" class="button"><?php _e('Télécharger le programme', 'blankslate'); ?></a>
+        <?php endif; ?>
 
 
     </div>

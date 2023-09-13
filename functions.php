@@ -849,7 +849,7 @@ function login_background_image() {
     $tdu = get_template_directory_uri();
     echo '<style type="text/css">
     body.login { 
-        background-image: url( "' . $tdu . '/img/admin_background.jpg") !important;
+        background-image: url( "' . $tdu . '/img/forumjazz_social.jpg") !important;
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
@@ -1658,7 +1658,7 @@ function social_meta_properties() {
         $post_id = get_the_ID();
         $smp->title = get_the_title();
         $smp->description = get_bloginfo('description');
-        $smp->image =   get_template_directory_uri() . '/img/admin_background.jpg';
+        $smp->image =   get_template_directory_uri() . '/img/forumjazz_social.jpg';
         $image = get_field('image', $post_id);
         if ($image) {
             $smp->image =  $image['sizes']['medium'];
@@ -1668,7 +1668,7 @@ function social_meta_properties() {
     } else {
         $smp->title =    get_bloginfo('name');
         $smp->description = get_bloginfo('description');
-        $smp->image =   get_template_directory_uri() . '/img/admin_background.jpg';
+        $smp->image =   get_template_directory_uri() . '/img/forumjazz_social.jpg';
         $smp->url = get_home_url();
         $smp->type = 'website';
     }
