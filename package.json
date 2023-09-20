@@ -4,14 +4,11 @@
   "description": "Wordpress Theme for Forum Jazz 2021",
   "main": "index.php",
   "scripts": {
-    "test": "say hello"
+    "test": "say hello",
+    "css": "sass scss/global.scss css/global.css  --watch --style=compressed  --no-source-map",
+    "cssbuild": "postcss css/global.css -r  -u autoprefixer -m "
   },
-  "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^6.1.0",
-    "gulp-sass": "^4.1.0",
-    "gulp-watch": "^5.0.1"
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chillydesign/forumjazz_21.git"

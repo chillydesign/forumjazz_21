@@ -143,21 +143,33 @@
                         <?php if ($current_user_id) : ?>
                             <?php $has_signedup_already = user_signup_to_post($event_id, $current_user_id); ?>
                             <?php if (!$has_signedup_already) : ?>
-                                <form action="<?php echo   esc_url(admin_url('admin-post.php')); ?>" method="post">
-                                    <input name="name" id="name" placeholder="name" />
-                                    <input type="hidden" name="post_id" value="<?php echo $event_id; ?>" />
-                                    <input type="hidden" name="action" value="signup_form">
-                                    <button type="submit">Envoyer</button>
-                                </form>
+                                <div class="alert">
+                                    <p><strong>L’accès à cet événement est réservé aux professionnels de la diffusion, dans la limite des places disponibles.</strong></p>
+                                    <p>Nombre de places disponibles restantes pour cet évènement :
+                                        <?php echo $max_signups - $current_signup_count; ?>
+                                    </p>
+                                    <form action="<?php echo   esc_url(admin_url('admin-post.php')); ?>" method="post">
+                                        <input type="hidden" name="post_id" value="<?php echo $event_id; ?>" />
+                                        <input type="hidden" name="action" value="signup_form">
+                                        <button type="submit">S'inscrire</button>
+                                    </form>
+                                </div>
                             <?php else : ?>
                                 <?php if (!isset($_GET['success'])) : ?>
                                     <p class="alert">Vous êtes déjà inscrit(e) à cet évènement.</p>
                                 <?php endif; ?>
                             <?php endif; ?>
                         <?php else : ?>
-                            <p class="alert">Vous devez être connecté(e) pour vous inscrire.</p>
                             <?php $url = $_SERVER['REQUEST_URI']; ?>
-                            <a class="button" href="<?php echo  wp_login_url($url); ?> ">Connexion</a>
+                            <div class="alert">
+                                <p><strong>L’accès à cet événement est réservé aux professionnels de la diffusion, dans la limite des places disponibles.</strong></p>
+                                <p>Veuillez réserver un Pass Pro correspondant à la date de l’événement afin de vous permettre l’accès aux inscriptions.</p>
+                                <p>Si vous avez déjà réservé le Pass Pro correspondant, veuillez-vous connecter à votre compte personnel afin de vous inscrire à cet événement.</p>
+                                <div class="button_group">
+                                    <a class="button" href="<?php echo  wp_login_url($url); ?> ">Connexion</a>
+                                    <a class="button" href="<?php echo  site_url('pass-pro'); ?> ">Réserver un Pass Pro</a>
+                                </div>
+                            </div>
                         <?php endif; ?>
                     <?php else : ?>
                         <p class="alert">L'évènement est complet.</p>

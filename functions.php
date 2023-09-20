@@ -73,7 +73,7 @@ add_action('after_setup_theme', 'remove_json_api');
 
 
 function wf_version() {
-    return '0.2.4';
+    return '0.2.5';
 }
 
 add_action('wp_enqueue_scripts', 'blankslate_enqueue');
@@ -516,18 +516,18 @@ function create_post_types() {
         'signup', // Register Custom Post Type
         array(
             'labels' => array(
-                'name' => __('Signups', 'webfactor'), // Rename these to suit
-                'singular_name' => __('Signup', 'webfactor'),
+                'name' => __('Inscriptions', 'webfactor'), // Rename these to suit
+                'singular_name' => __('Inscription', 'webfactor'),
                 'add_new' => __('Ajouter', 'webfactor'),
-                'add_new_item' => __('Ajouter signup', 'webfactor'),
+                'add_new_item' => __('Ajouter inscription', 'webfactor'),
                 'edit' => __('Modifier', 'webfactor'),
-                'edit_item' => __('Modifier signup', 'webfactor'),
-                'new_item' => __('Ajouter signup', 'webfactor'),
-                'view' => __('Afficher signup', 'webfactor'),
-                'view_item' => __('Afficher signup', 'webfactor'),
-                'search_items' => __('Rechercher signups', 'webfactor'),
-                'not_found' => __('Pas de signup trouvé', 'webfactor'),
-                'not_found_in_trash' => __('Pas de signup trouvé dans la corbeille', 'webfactor')
+                'edit_item' => __('Modifier inscription', 'webfactor'),
+                'new_item' => __('Ajouter inscription', 'webfactor'),
+                'view' => __('Afficher inscription', 'webfactor'),
+                'view_item' => __('Afficher inscription', 'webfactor'),
+                'search_items' => __('Rechercher inscriptions', 'webfactor'),
+                'not_found' => __('Pas d\'inscriptions trouvées', 'webfactor'),
+                'not_found_in_trash' => __('Pas d\'inscriptions trouvées dans la corbeille', 'webfactor')
             ),
             'map_meta_cap' => true,
             'capability_type' => $signup_slug,
@@ -1691,7 +1691,7 @@ function current_signup_count($post_id) {
 
 function  user_signup_to_post($post_id, $user_id) {
     global $wpdb;
-    $sql = $wpdb->prepare("SELECT COUNT( ID ) AS cnt FROM $wpdb->posts WHERE post_parent = %d AND post_type = %s AND post_author = %d", $post_id, 'signup', $user_id);
+    $sql = $wpdb->prepare("SELECT COUNT( ID ) AS cnt FROM $wpdb->posts WHERE post_parent = %d AND post_type = %s AND post_status = %s AND post_author = %d", $post_id, 'signup', 'publish',  $user_id);
     $result = $wpdb->get_results($sql);
     if (!empty($result)) {
         $cnt =  $result[0]->cnt;
@@ -1710,18 +1710,19 @@ add_action('admin_post_signup_form',  'process_signup_form');
 
 function process_signup_form() {
     // IF DATA HAS BEEN POSTED
+    global $current_user;
+
     if (isset($_POST['action'])  && $_POST['action'] == 'signup_form') {
 
 
-
-        $name = $_POST['name'];
         $post_id = $_POST['post_id'];
         $current_user_id = get_current_user_id();
         $url = get_permalink($post_id);
 
         // if we  have the right data and user logged in
         //  && $current_user_id > 0
-        if (!empty($name)  ||  !$current_user_id) {
+        if ($current_user_id > 0) {
+            $name =  $current_user->display_name;
             $post = array(
                 'post_title'   => "Signup {$name}",
                 'post_status'  => 'publish',
@@ -1780,7 +1781,17 @@ function add_signups_concerts_box() {
 add_action("add_meta_boxes", "add_signups_concerts_box");
 
 
+// function admin_default_page() {
+//     if( current_user_can('editor') || current_user_can('administrator') ) { 
 
+//     } else {
+//         $redirectto = get_home_url() . '/espace-membres';
+//         return $redirectto;
+//     }
+
+// }
+
+// add_filter('login_redirect', 'admin_default_page');
 
 
 ?>

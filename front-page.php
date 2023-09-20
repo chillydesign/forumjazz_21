@@ -23,11 +23,11 @@
 
                 <ul class="welcome_buttons">
 
-                    <li><a href="<?php echo get_home_url(); ?>/conference-de-presse/"><strong><?php _e('Concerts', 'blankslate'); ?></strong><span><?php _e('Conférence de Presse - mardi 26 septembre.', 'blankslate'); ?></span></a></li>
+                    <li><a href="<?php echo get_home_url(); ?>/conference-de-presse/"><strong><?php _e('Conférence de Presse', 'blankslate'); ?></strong><span><?php _e('Le 26 septembre 2023 au Périscope, Lyon', 'blankslate'); ?></span></a></li>
 
 
                     <li style="display:none"><a href="<?php echo get_home_url(); ?>/concerts"><strong> <?php _e('Concerts', 'blankslate'); ?></strong><span><?php _e('Ouverts au public & aux professionnels dans la limite des places disponibles.', 'blankslate'); ?></span></a></li>
-                    <li style="display:none"><a href="<?php echo get_home_url(); ?>/rencontres"><strong><?php _e('Forum professionel', 'blankslate'); ?></strong><span><?php _e('Uniquement accessible aux professionnels et étudiants sur inscription.', 'blankslate'); ?></span></a></li>
+                    <li style="display:none"><a href="<?php echo get_home_url(); ?>/rencontres"><strong><?php _e('Forum professionel & showcases', 'blankslate'); ?></strong><span><?php _e('Uniquement accessible aux professionnels et étudiants sur inscription.', 'blankslate'); ?></span></a></li>
                     <li style="display:none"><a href="<?php echo get_home_url(); ?>/billetterie"><strong><?php _e('Billetterie', 'blankslate'); ?></strong><span><?php _e('Achetez vos tickets pour les concerts ou notre pass professionnel', 'blankslate'); ?>
                             </span></a></li>
                 </ul>
@@ -38,18 +38,28 @@
                 <div id="jazz_canvas"></div>
             </section>
 
+            <div class="container">
+                <div class="who_we_are_video_container">
+                    <?php echo $who_we_are_video; ?>
+                </div>
+            </div>
+
+
 
             <section id="who_are_we">
                 <div class="container">
 
                     <h2><?php _e('UN FORUM JAZZ, UN FORUM DE MUSIQUES !', 'blankslate'); ?></h2>
+                    <div style="padding: 0 50px">
+                        <?php echo $who_we_are; ?>
+                    </div>
                     <div class="columns">
                         <div class="column">
-                            <?php echo $who_we_are_video; ?>
+
 
                         </div>
                         <div class="column">
-                            <?php echo $who_we_are; ?>
+
 
 
 
