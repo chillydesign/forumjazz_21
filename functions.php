@@ -1346,6 +1346,7 @@ function processDatesForConcertGrid($dates, $concerts) {
     foreach ($concerts as $concert) {
         $concert_date = get_field('date',  $concert->ID);
 
+
         $date_index = array_search($concert_date, array_column($dates, 'date'));
         if (is_int($date_index)) {
 

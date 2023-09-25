@@ -26,6 +26,21 @@
         ));
         $processed_dates =  processDatesForConcertGrid($dates, $concerts);
 
+
+
+        $margegare1 =  new stdClass();
+        $margegare1->location = null;
+        $margegare1->location_name = "Marché gare";
+        $margegare1->post_title = "Afficher les showcases du Marché Gare";
+        $margegare1->time = '19:00';
+        $margegare1->search_time = '19:00';
+        $margegare1->url = "https://marchegare.fr/agenda/forum-jazz-2023-0";
+        $margegare2 = clone $margegare1;
+        $margegare2->url = "https://marchegare.fr/agenda/forum-jazz-2023";
+        array_push($processed_dates[1]['concerts'], $margegare1);
+        array_push($processed_dates[2]['concerts'], $margegare2);
+
+
         ?>
 
         <header id="page_header">
@@ -44,6 +59,8 @@
 
                 <div id="concert_grid">
                     <div class="columns">
+
+
                         <?php foreach ($processed_dates as $date) : ?>
                             <div class="column">
 
