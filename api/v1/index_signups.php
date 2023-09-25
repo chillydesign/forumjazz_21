@@ -23,9 +23,11 @@ foreach ($requests_array as $request) {
 
     $name =  $request->post_title;
     $concert = get_post($request->post_parent);
+    $user = get_user_by('id', $request->post_author);
+
 
     $ar = array(
-        $name,
+        $user->user_nicename,
         $concert->post_title,
         $concert->post_date,
     );
