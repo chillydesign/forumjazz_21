@@ -11,6 +11,7 @@
 <?php $video_clip = get_field('video_clip'); ?>
 <?php $subtitle = get_field('subtitle'); ?>
 <?php $intervenants = get_field('intervenants'); ?>
+<?php $moderateurs = get_field('moderateur'); ?>
 <?php $facebook = get_field('facebook'); ?>
 <?php $instagram = get_field('instagram'); ?>
 <?php $spotify = get_field('spotify'); ?>
@@ -116,6 +117,27 @@
                                     <h3>
                                         <?php echo ($intervenant['user_firstname']); ?>
                                         <?php echo ($intervenant['user_lastname']); ?>
+                                    </h3>
+                                    <p> <strong><?php echo $structure; ?> </strong>
+                                    </p>
+                                </div>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                <?php endif; ?>
+                <?php if ($moderateurs) : ?>
+                    <h3><?php _e('Modérateur', 'blankslate'); ?></h3>
+                    <div class="participants_container participants_container_small">
+                        <?php foreach ($moderateurs as $moderateur) : ?>
+                            <?php $user_image = user_structure_image($moderateur['ID']); ?>
+                            <?php $structure =  get_field('structure_name',  "user_" . $moderateur['ID']); ?>
+                            <div class="participant_container">
+                                <div class="participant_image" style="background-image: url('<?php echo $user_image; ?>');">
+                                </div>
+                                <div class="participant_text">
+                                    <h3>
+                                        <?php echo ($moderateur['user_firstname']); ?>
+                                        <?php echo ($moderateur['user_lastname']); ?>
                                     </h3>
                                     <p> <strong><?php echo $structure; ?> </strong>
                                     </p>
