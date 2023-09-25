@@ -165,17 +165,29 @@
                         <?php if ($current_user_id) : ?>
                             <?php $has_signedup_already = user_signup_to_post($event_id, $current_user_id); ?>
                             <?php if (!$has_signedup_already) : ?>
-                                <div class="alert">
-                                    <p><strong>L’accès gratuit à cet événement est réservé aux professionnels de la diffusion, dans la limite des places disponibles.</strong></p>
-                                    <p>Nombre de places disponibles restantes pour cet évènement :
-                                        <?php echo $max_signups - $current_signup_count; ?>
-                                    </p>
-                                    <form action="<?php echo   esc_url(admin_url('admin-post.php')); ?>" method="post">
-                                        <input type="hidden" name="post_id" value="<?php echo $event_id; ?>" />
-                                        <input type="hidden" name="action" value="signup_form">
-                                        <button type="submit">S'inscrire</button>
-                                    </form>
-                                </div>
+
+                                <?php $bought_free_prod =  chilly_customer_already_bought_product(2839); ?>
+
+                                <?php if ($bought_free_prod) : ?>
+
+                                    <div class="alert">
+                                        <p><strong>L’accès gratuit à cet événement est réservé aux professionnels de la diffusion, dans la limite des places disponibles.</strong></p>
+                                        <p>Nombre de places disponibles restantes pour cet évènement :
+                                            <?php echo $max_signups - $current_signup_count; ?>
+                                        </p>
+                                        <form action="<?php echo   esc_url(admin_url('admin-post.php')); ?>" method="post">
+                                            <input type="hidden" name="post_id" value="<?php echo $event_id; ?>" />
+                                            <input type="hidden" name="action" value="signup_form">
+                                            <button type="submit">S'inscrire</button>
+                                        </form>
+                                    </div>
+
+                                <?php else : ?>
+                                    <div class="alert">
+                                        <p><strong>You must buy the free product. </strong></p>
+                                        <a class="button" href="https://forumjazz.com/pass-pro/">Click here to go</a>
+                                    </div>
+                                <?php endif; ?>
                             <?php else : ?>
                                 <?php if (!isset($_GET['success'])) : ?>
                                     <p class="alert">Vous êtes déjà inscrit(e) à cet évènement.</p>

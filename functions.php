@@ -1794,4 +1794,19 @@ add_action("add_meta_boxes", "add_signups_concerts_box");
 // add_filter('login_redirect', 'admin_default_page');
 
 
+
+
+function chilly_customer_already_bought_product($product_id) {
+    if (!is_user_logged_in()) {
+        return false;
+    }
+    if (wc_customer_bought_product('', get_current_user_id(), $product_id)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+
 ?>

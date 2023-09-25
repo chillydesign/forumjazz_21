@@ -1330,6 +1330,12 @@ body {
     border-radius: 20px;
     text-align: center;
 
+
+    &.pricing_box_free {
+        background-color: $yellow;
+
+    }
+
     h3 {
         font-size: 2em;
         font-weight: bold;
@@ -1338,7 +1344,7 @@ body {
     }
 
     p {
-        min-height: 100px;
+        min-height: 200px;
         padding: 0;
 
         &:last-child {
