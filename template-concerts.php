@@ -3,11 +3,11 @@
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <?php
         $dates =  array(
-            array('date' => '2023-11-29', 'nice_date' =>  __('Mercredi', 'blankslate') .  ' 29 nov.', 'concerts' => array()),
-            array('date' => '2023-11-30', 'nice_date' =>  __('Jeudi', 'blankslate') .  ' 30 nov.', 'concerts' => array()),
-            array('date' => '2023-12-01', 'nice_date' =>  __('Vendredi', 'blankslate') .  ' 01 déc.', 'concerts' => array()),
-            array('date' => '2023-12-02', 'nice_date' =>  __('Samedi', 'blankslate') .  ' 02 déc.', 'concerts' => array()),
-            array('date' => '2023-12-03', 'nice_date' =>  __('Dimanche', 'blankslate') .  ' 03 déc.', 'concerts' => array()),
+            array('date' => '2023-11-29', 'nice_date' =>  __('Mercredi', 'blankslate') .  '<br>29 nov.', 'concerts' => array()),
+            array('date' => '2023-11-30', 'nice_date' =>  __('Jeudi', 'blankslate') .  '<br>30 nov.', 'concerts' => array()),
+            array('date' => '2023-12-01', 'nice_date' =>  __('Vendredi', 'blankslate') .  '<br>01 déc.', 'concerts' => array()),
+            array('date' => '2023-12-02', 'nice_date' =>  __('Samedi', 'blankslate') .  '<br>02 déc.', 'concerts' => array()),
+            array('date' => '2023-12-03', 'nice_date' =>  __('Dimanche', 'blankslate') .  '<br>03 déc.', 'concerts' => array()),
         );
 
         $tax_query = array(

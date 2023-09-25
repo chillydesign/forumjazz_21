@@ -1773,6 +1773,9 @@ function signups_concerts_box_html() {
         echo "<li><a href=\"{$link}\">{$post->post_date}</a> <br>  {$post->post_title}</li>";
     endforeach;
     echo '</ul>';
+    $tdu = get_template_directory_uri();
+    $download_link = $tdu . '/api/v1/index_signups.php?id=' . get_the_ID();
+    echo '<div><a class="action button-primary button" href="' . $download_link . '">Télécharger CSV</a></div>';
 }
 
 function add_signups_concerts_box() {
