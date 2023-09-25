@@ -11,7 +11,7 @@
 $concerts  = get_posts(array(
     'post_type' => 'concert',
     'posts_per_page' => -1,
-    'tax_query'      =>  $tax_query,
+    // 'tax_query'      =>  $tax_query,  // use if you want to hide showcases
     'meta_key' => 'show_in_ticketing',
     'meta_query' => array(
         array(

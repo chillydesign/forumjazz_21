@@ -166,7 +166,7 @@
                             <?php $has_signedup_already = user_signup_to_post($event_id, $current_user_id); ?>
                             <?php if (!$has_signedup_already) : ?>
                                 <div class="alert">
-                                    <p><strong>L’accès à cet événement est réservé aux professionnels de la diffusion, dans la limite des places disponibles.</strong></p>
+                                    <p><strong>L’accès gratuit à cet événement est réservé aux professionnels de la diffusion, dans la limite des places disponibles.</strong></p>
                                     <p>Nombre de places disponibles restantes pour cet évènement :
                                         <?php echo $max_signups - $current_signup_count; ?>
                                     </p>
@@ -182,9 +182,11 @@
                                 <?php endif; ?>
                             <?php endif; ?>
                         <?php else : ?>
+
+
                             <?php $url = $_SERVER['REQUEST_URI']; ?>
                             <div class="alert">
-                                <p><strong>L’accès à cet événement est réservé aux professionnels de la diffusion, dans la limite des places disponibles.</strong></p>
+                                <p><strong>L’accès gratuit à cet événement est réservé aux professionnels de la diffusion, dans la limite des places disponibles.</strong></p>
                                 <p>Veuillez réserver un Pass Pro correspondant à la date de l’événement afin de vous permettre l’accès aux inscriptions.</p>
                                 <p>Si vous avez déjà réservé le Pass Pro correspondant, veuillez-vous connecter à votre compte personnel afin de vous inscrire à cet événement.</p>
                                 <div class="button_group">
