@@ -167,27 +167,23 @@
                             <?php if (!$has_signedup_already) : ?>
 
                                 <?php $bought_free_prod =  chilly_customer_already_bought_product(2839); ?>
-
-                                <?php if ($bought_free_prod) : ?>
-
-                                    <div class="alert">
-                                        <p><strong>L’accès gratuit à cet événement est réservé aux professionnels de la diffusion, dans la limite des places disponibles.</strong></p>
-                                        <p>Nombre de places disponibles restantes pour cet évènement :
-                                            <?php echo $max_signups - $current_signup_count; ?>
-                                        </p>
+                                <div class="alert">
+                                    <p><strong>L’accès gratuit à cet événement est réservé aux professionnels de la diffusion, dans la limite des places disponibles.</strong></p>
+                                    <p>Nombre de places disponibles restantes pour cet évènement :
+                                        <?php echo $max_signups - $current_signup_count; ?>
+                                    </p>
+                                    <?php if ($bought_free_prod) : ?>
                                         <form action="<?php echo   esc_url(admin_url('admin-post.php')); ?>" method="post">
                                             <input type="hidden" name="post_id" value="<?php echo $event_id; ?>" />
                                             <input type="hidden" name="action" value="signup_form">
                                             <button type="submit">S'inscrire</button>
                                         </form>
-                                    </div>
+                                    <?php else : ?>
+                                        <p><strong>Veuillez prendre le pass gratuit diffuseurs pour vous inscrire.</strong></p>
+                                        <a class="button" href="https://forumjazz.com/pass-pro/">Choisir le pass</a>
+                                    <?php endif; ?>
+                                </div>
 
-                                <?php else : ?>
-                                    <div class="alert">
-                                        <p><strong>You must buy the free product. </strong></p>
-                                        <a class="button" href="https://forumjazz.com/pass-pro/">Click here to go</a>
-                                    </div>
-                                <?php endif; ?>
                             <?php else : ?>
                                 <?php if (!isset($_GET['success'])) : ?>
                                     <p class="alert">Vous êtes déjà inscrit(e) à cet évènement.</p>
