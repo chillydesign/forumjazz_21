@@ -24,11 +24,9 @@
                 <ul class="welcome_buttons">
 
                     <li><a href="<?php echo get_home_url(); ?>/conference-de-presse/"><strong><?php _e('Conférence de Presse', 'blankslate'); ?></strong><span><?php _e('Le 26 septembre 2023 au Périscope, Lyon', 'blankslate'); ?></span></a></li>
-
-
-                    <li style="display:none"><a href="<?php echo get_home_url(); ?>/concerts"><strong> <?php _e('Concerts', 'blankslate'); ?></strong><span><?php _e('Ouverts au public & aux professionnels dans la limite des places disponibles.', 'blankslate'); ?></span></a></li>
-                    <li style="display:none"><a href="<?php echo get_home_url(); ?>/rencontres"><strong><?php _e('Forum professionel & showcases', 'blankslate'); ?></strong><span><?php _e('Uniquement accessible aux professionnels et étudiants sur inscription.', 'blankslate'); ?></span></a></li>
-                    <li style="display:none"><a href="<?php echo get_home_url(); ?>/billetterie"><strong><?php _e('Billetterie', 'blankslate'); ?></strong><span><?php _e('Achetez vos tickets pour les concerts ou notre pass professionnel', 'blankslate'); ?>
+                    <li><a href="<?php echo get_home_url(); ?>/concerts"><strong> <?php _e('Concerts', 'blankslate'); ?></strong><span><?php _e('Ouverts au public & aux professionnels dans la limite des places disponibles.', 'blankslate'); ?></span></a></li>
+                    <li><a href="<?php echo get_home_url(); ?>/rencontres"><strong><?php _e('Forum professionel & showcases', 'blankslate'); ?></strong><span><?php _e('Uniquement accessible aux professionnels et étudiants sur inscription.', 'blankslate'); ?></span></a></li>
+                    <li><a href="<?php echo get_home_url(); ?>/billetterie"><strong><?php _e('Billetterie', 'blankslate'); ?></strong><span><?php _e('Achetez vos tickets pour les concerts ou notre pass professionnel', 'blankslate'); ?>
                             </span></a></li>
                 </ul>
                 <?php $tdu = get_template_directory_uri(); ?>
