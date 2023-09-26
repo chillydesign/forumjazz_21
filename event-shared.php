@@ -148,19 +148,19 @@
                 <?php endif; ?>
 
 
+
                 <?php $can_signup = get_field('can_signup'); ?>
                 <?php $event_id =  get_the_ID(); ?>
                 <?php if ($can_signup) : ?>
                     <?php if (isset($_GET['success'])) : ?>
-                        <p class="alert alert_success">Votre inscription a été enregistrée. </p>
+                        <p class="alert alert_success"><?php _e('Votre inscription a été enregistrée.', 'blankslate'); ?></p>
                     <?php endif; ?>
                     <?php if (isset($_GET['problem'])) : ?>
-                        <p class="alert alert_problem">Une erreur s'est produite. Veuillez réessayer.</p>
+                        <p class="alert alert_problem"> <?php _e("Une erreur s'est produite. Veuillez réessayer.", 'blankslate'); ?></p>
                     <?php endif; ?>
                     <?php $max_signups = get_field('max_signups'); ?>
                     <?php $current_signup_count = current_signup_count($event_id); ?>
                     <?php if ($current_signup_count < $max_signups) : ?>
-                        <!-- <p> Signups: <?php echo $current_signup_count; ?> / <?php echo $max_signups; ?></p> -->
                         <?php $current_user_id = get_current_user_id(); ?>
                         <?php if ($current_user_id) : ?>
                             <?php $has_signedup_already = user_signup_to_post($event_id, $current_user_id); ?>
@@ -168,43 +168,45 @@
 
                                 <?php $bought_free_prod =  chilly_customer_already_bought_product(2839); ?>
                                 <div class="alert">
-                                    <p><strong>L’accès gratuit à cet événement est réservé aux professionnels de la diffusion, dans la limite des places disponibles.</strong></p>
-                                    <p>Nombre de places disponibles restantes pour cet évènement :
+                                    <p><strong> <?php _e("L’accès gratuit à cet événement est réservé aux professionnels de la diffusion, dans la limite des places disponibles.", 'blankslate'); ?></strong></p>
+                                    <p><?php _e("Nombre de places disponibles restantes pour cet évènement :", 'blankslate'); ?>
                                         <?php echo $max_signups - $current_signup_count; ?>
                                     </p>
                                     <?php if ($bought_free_prod) : ?>
                                         <form action="<?php echo   esc_url(admin_url('admin-post.php')); ?>" method="post">
                                             <input type="hidden" name="post_id" value="<?php echo $event_id; ?>" />
                                             <input type="hidden" name="action" value="signup_form">
-                                            <button type="submit">S'inscrire</button>
+                                            <button type="submit"> <?php _e("S'inscrire", 'blankslate'); ?></button>
                                         </form>
                                     <?php else : ?>
-                                        <p><strong>Veuillez prendre le pass gratuit diffuseurs pour vous inscrire.</strong></p>
-                                        <a class="button" href="https://forumjazz.com/pass-pro/">Choisir le pass</a>
+                                        <p><strong> <?php _e("Veuillez prendre le pass gratuit diffuseurs pour vous inscrire.", 'blankslate'); ?></strong></p>
+                                        <a class="button" href="https://forumjazz.com/pass-pro/"><?php _e("Choisir le pass", 'blankslate'); ?></a>
                                     <?php endif; ?>
                                 </div>
 
                             <?php else : ?>
                                 <?php if (!isset($_GET['success'])) : ?>
-                                    <p class="alert">Vous êtes déjà inscrit(e) à cet évènement.</p>
+                                    <p class="alert"> <?php _e("Vous êtes déjà inscrit(e) à cet évènement.", 'blankslate'); ?></p>
                                 <?php endif; ?>
                             <?php endif; ?>
                         <?php else : ?>
 
 
+
                             <?php $url = $_SERVER['REQUEST_URI']; ?>
                             <div class="alert">
-                                <p><strong>L’accès gratuit à cet événement est réservé aux professionnels de la diffusion, dans la limite des places disponibles.</strong></p>
-                                <p>Veuillez réserver un Pass Pro correspondant à la date de l’événement afin de vous permettre l’accès aux inscriptions.</p>
-                                <p>Si vous avez déjà réservé le Pass Pro correspondant, veuillez-vous connecter à votre compte personnel afin de vous inscrire à cet événement.</p>
+                                <p><strong> <?php _e("L’accès gratuit à cet événement est réservé aux professionnels de la diffusion, dans la limite des places disponibles.", 'blankslate'); ?></strong></p>
+                                <p><?php _e("Veuillez réserver un Pass Pro correspondant à la date de l’événement afin de vous permettre l’accès aux inscriptions.", 'blankslate'); ?></p>
+                                <p> <?php _e("Si vous avez déjà réservé le Pass Pro correspondant, veuillez-vous connecter à votre compte personnel afin de vous inscrire à cet événement.", 'blankslate'); ?></p>
                                 <div class="button_group">
-                                    <a class="button" href="<?php echo  wp_login_url($url); ?> ">Connexion</a>
-                                    <a class="button" href="<?php echo  site_url('pass-pro'); ?> ">Réserver un Pass Pro</a>
+                                    <a class="button" href="<?php echo  wp_login_url($url); ?> "> <?php _e("Connexion", 'blankslate'); ?></a>
+
+                                    <a class="button" href="<?php echo  site_url('pass-pro'); ?> "><?php _e("Réserver un Pass Pro", 'blankslate'); ?></a>
                                 </div>
                             </div>
                         <?php endif; ?>
                     <?php else : ?>
-                        <p class="alert">L'évènement est complet.</p>
+                        <p class="alert"> <?php _e("L'évènement est complet.", 'blankslate'); ?></p>
                     <?php endif; ?>
                 <?php endif; ?>
 
