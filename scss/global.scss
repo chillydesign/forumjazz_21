@@ -823,8 +823,14 @@ $con_ren_height: 60px;
         font-size: $font_size;
         padding: 0;
         margin: 0;
-        background: no-repeat center 10px black;
-        background-size: 190px;
+        // background: no-repeat center 10px black;
+        // background-size: 190px;
+        background: no-repeat center center black;
+        background-size: cover;
+
+
+
+
         border-radius: 5px;
 
         a {

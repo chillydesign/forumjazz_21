@@ -32,11 +32,14 @@
         $margegare1->location = null;
         $margegare1->location_name = "Marché gare";
         $margegare1->post_title = "Afficher les showcases du Marché Gare";
+        $margegare1->image = 'https://forumjazz.com/wp-content/uploads/2023/09/2JEUDI-30.11-SHOWCASES-MARCHE-GARE-400x300.jpg';
         $margegare1->time = '19:00';
         $margegare1->search_time = '19:00';
         $margegare1->url = "https://marchegare.fr/agenda/forum-jazz-2023-0";
         $margegare2 = clone $margegare1;
         $margegare2->url = "https://marchegare.fr/agenda/forum-jazz-2023";
+        $margegare2->image = 'https://forumjazz.com/wp-content/uploads/2023/09/VENDREDI-01.12-SHOWCASES-MARCHE-GARE-400x300.jpg';
+
         array_push($processed_dates[1]['concerts'], $margegare1);
         array_push($processed_dates[2]['concerts'], $margegare2);
 
