@@ -35,13 +35,25 @@
         $margegare1->image = 'https://forumjazz.com/wp-content/uploads/2023/09/2JEUDI-30.11-SHOWCASES-MARCHE-GARE-300x300.jpg';
         $margegare1->time = '18:00';
         $margegare1->search_time = '18:00';
-        $margegare1->url = "https://marchegare.fr/agenda/forum-jazz-2023-0";
+        $margegare1->url = "https://forumjazz.com/rencontres/?subpage=showcases";
         $margegare2 = clone $margegare1;
-        $margegare2->url = "https://marchegare.fr/agenda/forum-jazz-2023";
         $margegare2->image = 'https://forumjazz.com/wp-content/uploads/2023/09/VENDREDI-01.12-SHOWCASES-MARCHE-GARE-400x300.jpg';
+
+
+        // - Also on the same page can you add 2 new fake events on Thursday and Friday, at 22h, text "Afficher les showcases pro du Périscope", link  https://forumjazz.com/rencontres/?subpage=showcases, photos attached to the email (jeudi for Thursday and vendredi for Friday)
+
+        $margegare3 = clone $margegare1;
+        $margegare3->post_title = "Afficher les showcases pro du Périscope";
+        $margegare3->time = '22:00';
+        $margegare3->search_time = '22:00';
+        $margegare3->image = 'https://forumjazz.com/wp-content/uploads/2023/10/2JEUDI-30.11-SHOWCASES-PERISCOPE-600x450.jpg';
+        $margegare4 = clone $margegare3;
+        $margegare4->image = 'https://forumjazz.com/wp-content/uploads/2023/10/VENDREDI-01.12-SHOWCASES-PERISCOPE-400x300.jpg';
 
         array_push($processed_dates[1]['concerts'], $margegare1);
         array_push($processed_dates[2]['concerts'], $margegare2);
+        array_push($processed_dates[1]['concerts'], $margegare3);
+        array_push($processed_dates[2]['concerts'], $margegare4);
 
 
         ?>
