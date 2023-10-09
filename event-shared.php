@@ -105,7 +105,7 @@
                 <?php endif; ?>
 
                 <?php if ($intervenants) : ?>
-                    <h3><?php _e('Intervenants', 'blankslate'); ?></h3>
+                    <h3><?php _e('Intervention', 'blankslate'); ?></h3>
                     <div class="participants_container participants_container_small">
                         <?php foreach ($intervenants as $intervenant) : ?>
                             <?php $user_image = user_structure_image($intervenant['ID']); ?>
@@ -126,7 +126,7 @@
                     </div>
                 <?php endif; ?>
                 <?php if ($moderateurs) : ?>
-                    <h3><?php _e('Modérateur', 'blankslate'); ?></h3>
+                    <h3><?php _e('Modération', 'blankslate'); ?></h3>
                     <div class="participants_container participants_container_small">
                         <?php foreach ($moderateurs as $moderateur) : ?>
                             <?php $user_image = user_structure_image($moderateur['ID']); ?>
