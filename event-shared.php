@@ -110,6 +110,8 @@
                         <?php foreach ($intervenants as $intervenant) : ?>
                             <?php $user_image = user_structure_image($intervenant['ID']); ?>
                             <?php $structure =  get_field('structure_name',  "user_" . $intervenant['ID']); ?>
+                            <?php $website =  get_field('structure_website',  "user_" . $intervenant['ID']); ?>
+
                             <div class="participant_container">
                                 <div class="participant_image" style="background-image: url('<?php echo $user_image; ?>');">
                                 </div>
@@ -121,6 +123,11 @@
                                     <p> <strong><?php echo $structure; ?> </strong>
                                     </p>
                                 </div>
+                                <?php if ($website) : ?>
+                                    <span class="social_links">
+                                        <a class="website" title="site web" href="<?php echo $website; ?>" target="_blank"></a>
+                                    </span>
+                                <?php endif; ?>
                             </div>
                         <?php endforeach ?>
                     </div>
