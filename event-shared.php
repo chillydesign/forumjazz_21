@@ -111,6 +111,7 @@
                             <?php $user_image = user_structure_image($intervenant['ID']); ?>
                             <?php $structure =  get_field('structure_name',  "user_" . $intervenant['ID']); ?>
                             <?php $website =  get_field('structure_website',  "user_" . $intervenant['ID']); ?>
+                            <?php $position =  get_field('structure_position',  "user_" . $intervenant['ID']); ?>
 
                             <div class="participant_container">
                                 <div class="participant_image" style="background-image: url('<?php echo $user_image; ?>');">
@@ -120,7 +121,8 @@
                                         <?php echo ($intervenant['user_firstname']); ?>
                                         <?php echo ($intervenant['user_lastname']); ?>
                                     </h3>
-                                    <p> <strong><?php echo $structure; ?> </strong>
+                                    <p><strong><?php echo $structure; ?>&nbsp;</strong>
+                                        <em class="overflow"><?php echo $position; ?></em>
                                     </p>
                                 </div>
                                 <?php if ($website) : ?>
