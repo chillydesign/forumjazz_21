@@ -1090,7 +1090,7 @@ if (!function_exists('api_save_csv_string')) {
 function chilly_extra_woocommerce_fields() {
     return array(
         array('structure_name', __('Structure', 'blankslate')),
-        array('structure_position',   __('Position', 'blankslate')),
+        array('structure_position',   __('Fonction', 'blankslate')),
         array('structure_website',   __('Site web', 'blankslate')),
         array('structure_telephone',  __('Phone', 'blankslate'))
     );
@@ -1203,6 +1203,28 @@ function chilly_add_custom_user_meta($order_id) {
         update_user_meta($user_id, 'structure_image',   $_POST['structure_image_id']);
     }
 }
+
+
+
+
+
+
+add_filter('woocommerce_thankyou_order_received_text', 'chilly_thankyou_order_received_text_filter', 10, 2);
+
+
+function chilly_thankyou_order_received_text_filter($esc_html__, $order) {
+    $item_ids = array();
+    $items = $order->get_items();
+    foreach ($items as $item_id => $item) {
+        $item_id =  ($item->get_product_id());
+        array_push($item_ids, $item_id);
+    }
+    // return 'You have bought items :' . implode(',', $item_ids);
+    return $esc_html__;
+}
+
+
+
 
 
 /**

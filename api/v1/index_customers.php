@@ -17,7 +17,7 @@ $participants = get_users(
 $product_ids =  array(531, 532, 533, 534);
 
 
-$data =  'ID;Date;Prénom;Nom;Email;Structure;Position;Site web;Mercredi;Jeudi;Vendredi;Samedi'  .   "\n";
+$data =  'ID;Date;Prénom;Nom;Email;Structure;Fonction;Site web;Mercredi;Jeudi;Vendredi;Samedi'  .   "\n";
 
 foreach ($participants as $participant) {
 
