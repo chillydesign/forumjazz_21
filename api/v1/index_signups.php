@@ -4,16 +4,24 @@
 ini_set('default_charset', 'UTF-8');
 header('Content-Type: application/json;charset=UTF-8');
 require_once('../../../../../wp-config.php');
-$concert_id = $_GET['id'];
 
-$requests_array = get_posts(
-    array(
-        'post_type'  => 'signup',
-        'posts_per_page' => -1,
-        'post_status' => 'publish',
-        'post_parent' => $concert_id,
-    )
+$concert_id = 'all';
+
+$args =  array(
+    'post_type'  => 'signup',
+    'posts_per_page' => -1,
+    'post_status' => 'publish',
 );
+
+
+if (isset($_GET['id'])) {
+    $concert_id = $_GET['id'];
+    $args['post_parent'] = $concert_id;
+}
+
+$requests_array = get_posts($args);
+
+
 
 $data =  'nom;concert;date'  .   "\n";
 
